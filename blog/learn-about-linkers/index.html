@@ -1,0 +1,361 @@
+<!DOCTYPE html> <html lang=" en "><head> <meta charset="utf-8" /> <title> Reverse Engineering: An Introduction to Linkers - The Code Guardian </title> <meta http-equip="X-UA-Compatible" content="IE=edge" /> <meta name="viewport" content="width=device-width, initial-scale=1" /> <meta name="description" content="Learn about Linkers and how to write a Linker script.- Reverse Engineering: An Introduction to Linkers"> <meta name="keywords" content="Reverse Engineering: An Introduction to Linkers, The Code Guardian, kernel, reverse-engineering, linux, operating-systems,encryption, hacking, security, mac, weak encryption, weak, sha1, sha, hashing"/> <link rel="alternate" type="application/rss+xml" title="RSS" href="/feed.xml" /> <meta content="" property="fb:app_id" /> <meta content="The Code Guardian" property="og:site_name" /> <meta content="Reverse Engineering: An Introduction to Linkers" property="og:title" /> <meta content="article" property="og:type" /> <meta content="Learn about Linkers and how to write a Linker script." property="og:description" /> <meta content="/blog/learn-about-linkers/" property="og:url" /> <meta content="2024-03-15T05:05:23+00:00" property="article:published_time" /> <meta content="/about/" property="article:author" /> <meta content="/assets/img/posts/gnu.png" property="og:image" /> <meta content="kernel" property="article:section" /> <meta content="encryption" property="article:tag" /> <!-- Twitter Cards --> <meta name="twitter:card" content="summary" /> <meta name="twitter:site" content="@" /> <meta name="twitter:creator" content="@" /> <meta name="twitter:title" content="Reverse Engineering: An Introduction to Linkers" /> <meta name="twitter:url" content="/blog/learn-about-linkers/" /> <meta name="twitter:description" content="Learn about Linkers and how to write a Linker script." /> <link rel="stylesheet" href="/assets/css/main.css" /> <!-- <link rel="stylesheet" href="/assets/css/custom-style.css" /> --> <link rel="stylesheet" href="/assets/bower_components/lightgallery/dist/css/lightgallery.min.css" /> <link rel="stylesheet" href="https://cdn.snipcart.com/themes/v3.0.0-beta.3/default/snipcart.css" /> <link rel="stylesheet" href="/assets/bower_components/bootstrap/dist/css/bootstrap.min.css" /> <link rel="stylesheet" href="/assets/bower_components/font-awesome/web-fonts-with-css/css/fontawesome-all.min.css" /> <link rel="stylesheet" href="/assets/bower_components/icono/dist/icono.min.css" /> <!-- Fonts--> <link href="https://fonts.googleapis.com/css?family=Quicksand&display=swap" rel="stylesheet" /> <!-- Favicon --> <link rel="icon" href="/assets/img/favicon.ico" type="image/gif" sizes="16x16" /> <script> var base_url = '' ; </script> <!-- Jquery --> <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha384-vk5WoKIaW/vJyUAd9n/wmopsmNhiy+L2Z+SBxGYnUkunIxVxAv/UtMOhba/xskxh" crossorigin="anonymous" ></script> <!-- <script src="/assets/bower_components/jquery/dist/jquery.min.js"></script> --> <script src="/assets/js/mode-switcher.js"></script> <script src="/assets/bower_components/jquery.easing/jquery.easing.min.js"></script> <script src="/assets/bower_components/bootstrap/dist/js/bootstrap.bundle.min.js"></script> <script src="/assets/bower_components/jquery-mousewheel/jquery.mousewheel.min.js"></script> <script src="/assets/bower_components/ghosthunter/dist/jquery.ghostHunter.min.js"></script> <script src="/assets/bower_components/lightgallery/dist/js/lightgallery-all.min.js"></script> <script src="https://cdnjs.cloudflare.com/ajax/libs/picturefill/3.0.2/picturefill.min.js"></script> <script src="/assets/bower_components/imagesloaded/imagesloaded.pkgd.min.js"></script> <script src="/assets/bower_components/nanobar/nanobar.min.js"></script> <script src="/assets/bower_components/typewrite/dist/typewrite.min.js"></script> <script src="/assets/js/search.js"></script> <script src="/assets/js/on-scroll-progress.js"></script> <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.20.1/moment.min.js"></script> <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script> <!-- for Mathjax support --> <!-- Github Button --> <script async defer src="https://buttons.github.io/buttons.js"></script> <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous" ></script> <!-- (you can remove the below scripts but do buy me a coffee to show some support :) --> <!-- Maker widget --> <!-- <script> (function(d, h, m){ var js, fjs = d.getElementsByTagName(h)[0]; if (d.getElementById(m)){return;} js = d.createElement(h); js.id = m; js.onload = function(){ window.makerWidgetComInit({ position: "left", widget: "fpxmrokbtojuu96d-wopkbgn3zvyakwcl-ajbpqueomjtmrw1x" })}; js.src = "https://makerwidget.com/js/embed.js"; fjs.parentNode.insertBefore(js, fjs) }(document, "script", "dhm")) </script> --> <!-- buy me a coffeee --> <!-- <script data-name="BMC-Widget" src="https://cdnjs.buymeacoffee.com/1.0.0/widget.prod.min.js" data-id="mauriceg" data-description="Support me on Buy me a coffee!" data-message="" data-color="#FF813F" data-position="right" data-x_margin="10" data-y_margin="10" ></script> --> <!--[if lt IE 7]> <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]--> <!--[if IE 7]> <html class="no-js lt-ie9 lt-ie8"> <![endif]--> <!--[if IE 8]> <html class="no-js lt-ie9"> <![endif]--> <!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]--> </head> <body> <nav class="navbar navbar-expand-lg fixed-top navbar-dark" id="topNav"> <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation" > <span class="icono-hamburger" id="navbar-hamburger"> </span> </button> <a class="navbar-brand" href="/">The Code Guardian</a> <div class="collapse navbar-collapse" id="navbarNav"> <ul class="navbar-nav"> <li class="nav-item"> <a class="nav-link" href="/" >Home</a > </li> <li class="nav-item"> <a class="nav-link" href="/about" >About</a > </li> <li class="nav-item"> <a class="nav-link" href="/blog" >Blog</a > </li> <li class="nav-item"> <a class="nav-link" href="/contact" >Contact</a > </li> <li class="nav-item"> <a class="nav-link" href="https://docs.thecodeguardian.dev" >Knowledge Base</a > </li> </ul> </div> <ul class="nav justify-content-end"> <li class="nav-item"> <a class="nav-link" href="/disclaimer"> Legal Disclaimer </a> </li> <li class="nav-item"> <a class="nav-link toggle-search-button" href="#search"> <i class="fa fa-search search-icon" aria-hidden="true"></i> </a> </li> <li class="nav-item"> <input class="nav-link switch theme-toggle" type="checkbox" name="checkbox" /> </li> </ul> </nav> <div id="progress-bar"></div> <!-- Search Form --> <div class="search-form-container"> <form class="search-form"> <fieldset class="search-form__fieldset"> <div class="row"> <div class="col-lg-8 offset-md-2"> <input class="search-form__field" placeholder="Type to Search..." autofocus> <input class="search-form__submit" type="submit" value="search"> </div> </div> </fieldset> </form> <div class="row"> <div class="col-lg-8 offset-md-2 search-results"> <div class="card search-results"></div> </div> </div> <div class="close-search-button search-form-container__close"> <i class="fa fa-times icon"></i> </div> </div><div class="main-container"> <div class="row justify-content-center" id="blog-post-container"> <div class="col-lg-10"><article class="card" itemscope itemtype="http://schema.org/BlogPosting"> <div class="card-header"> <h1 class="post-title" itemprop="name headline">Reverse Engineering: An Introduction to Linkers</h1> <h4 class="post-meta">Learn about Linkers and how to write a Linker script.</h4> <p class="post-summary"> Posted by : <span itemprop="author" itemscope itemtype="http://schema.org/Person"> <span itemprop="name"><a href="/blog/authors/Maurice">Maurice</a></span> </span > on <time datetime="2024-03-15 05:05:23 +0000" itemprop="datePublished" >Mar 15, 2024</time > </p> <span class="disqus-comment-count" data-disqus-identifier="/blog/learn-about-linkers/" ></span> <div class="post-categories"> Category : <a href="/blog/categories/kernel" >kernel</a > &nbsp; <a href="/blog/categories/reverse-engineering" >reverse-engineering</a > &nbsp; <a href="/blog/categories/linux" >linux</a > &nbsp; <a href="/blog/categories/operating-systems" >operating-systems</a > </div> </div> <div class="card-body" itemprop="articleBody"> <img class="card-img-top" src="/assets/img/posts/gnu.png" alt="" /> <br /> <br /> <h2 id="learn-about-linkers">Learn about Linkers</h2> <p>Whether your interested in low-level development or reverse engineering malware, understanding how linkers work and being able to write your own linker script is an important skill.</p> <p>I recently created a gitbook, that will elaborate on several important linker topics, such as: PLT/GOT, Relocation, Dynamic Linking, linking with shared libraries, loaders, and ELF binaries.</p> <p>I’ve also included some additional resources for those interested in learning more.</p> <h3 id="gitbook-knowledge-base---linkers">Gitbook Knowledge Base - Linkers</h3> <p>Check out <a href="https://docs.thecodeguardian.dev/">my Gitbook</a> and feel free to contact me with any questions, corrections, or connections.</p> <h2 id="why-learn-about-linkers">Why Learn About Linkers?</h2> <p>Learning to write a linker script is vital when developing an operating system or hypervisor. Usually, user-space development will include linker scripts with the toolchain; however, these are unsuitable when writing a kernel.</p> <p>When writing a kernel, we must write our own linker to link the bootloader and kernel object files together to produce a kernel image. Admittedly, writing a linker is not a skill that many possess; nevertheless, it is vital when developing a kernel or hypervisor.</p> <p>The GNU Linker (ld) and Linker Script are well-documented and include more information than you probably need. I will do my best to synthesize this to include the most important parts. If you’re interested in a comprehensive study, here are a few helpful resources.</p> <h3 id="additional-resources">Additional Resources</h3> <p><a href="https://www.amazon.com/Linkers-Kaufmann-Software-Engineering-Programming/dp/1558604960">Linkers and Loaders</a> (Levine): This book is old, but it is gold! Look no further to learn about linkers and loaders.</p> <p><a href="https://www.amazon.com/Advanced-Compiler-Design-Implementation-Muchnick/dp/1558603204">Advanced Compiler Design</a> (Muchnick): This is the gold standard for learning about compilers and includes a lot of good information on linkers. You’ll learn about PLT and GOT, the Procedure Linkage Table, and the Global Offset Table, which are crucial for understanding dynamic linking and reverse engineering.</p> <p><a href="https://www.airs.com/blog/page/4?s=Linkers">Blog Series</a> (Ian Lance Tayler): Ian is the developer of GOLD, which is a linker for ELF binaries and is also included in GNU binutils. He knows his stuff!</p> <h2 id="what-is-a-linker">What is a Linker?</h2> <p>Linkers are an important part of a development toolchain used by any low-level programmer. Other important components include the compiler and assembler.</p> <p>In a future post, I’ll discuss toolchains and cross-compilers, which are important when you need to target an architecture that differs from the local computer. My computers have Intel, M2, and AMD/NVIDIA(GPU) architectures, and I will target a RISC-V architecture.</p> <p>Most developers include GNU <a href="https://www.gnu.org/software/binutils/">binutils</a> in their toolchain, which includes ld, the GNU linker. To understand linkers, you must first understand why they are needed. Compilers generate object files for each source code file that contain information about that source file. The object file information, however, is incomplete; most source files reference other source files to include part of the code. Source files from other programs can also be referenced to include portions of the program code in the current program.</p> <p>The linker is responsible for combining all of these object files into a single object file or binary. It is also responsible for reorganizing memory so that the combined pieces fit together; this is done by combining similar sections. Finally, the linker must modify the addresses to allow the program to run under the new memory organization.</p> <h3 id="object-files">Object Files</h3> <p>In my Gitbook, I included an example from a cryptographic program that I wrote, implementing Diffie-Hellman and RSA. Here, I’ll include a simple picture that illustrates the point.</p> <p><img src="/assets/img/posts/object_files.png" alt="Make the program" /></p> <h2 id="types-of-linking">Types of Linking</h2> <p>Linkers can link statically or dynamically. Static linking implies references are fully resolved before runtime. Dynamic linking means that the location where the library will be loaded isn’t known until runtime; instead, the references are resolved during runtime, dynamically.</p> <p>When the compiler’s assembler runs, it doesn’t know the address of external references so it marks places a zero in the object file. This is the incomplete information that I alluded to in the previous section. The linker is responsible for solving this reference, and it does so either dynamically or statically. In most cases, references to shared libraries are solved dynamically during runtime. The linker builds a jump table and a dynamic loader is used to fill the table.</p> <p>I will include additional notes that explore linkers and loaders more in depth.</p> <h2 id="analyzing-linker-script">Analyzing Linker Script</h2> <p>On Linux, run <code class="language-plaintext highlighter-rouge">ld --verbose</code> to view the default linker script used by your system. I will give a brief introduction to the linker script, covering only the main parts. If you’re interested in learning more, checkout some of the resources listed above.</p> <h3 id="gnu-linker-script">GNU Linker Script</h3><pre><code class="language-ld">OUTPUT_FORMAT("elf64-x86-64", "elf64-x86-64",
+              "elf64-x86-64")
+OUTPUT_ARCH(i386:x86-64)
+ENTRY(_start)
+SEARCH_DIR("/usr/x86_64-pc-linux-gnu/lib64"); SEARCH_DIR("/usr/lib"); SEARCH_DIR("/usr/local/lib"); SEARCH_DIR("/usr/x86_64-pc-linux-gnu/lib");
+SECTIONS
+{
+  PROVIDE (__executable_start = SEGMENT_START("text-segment", 0x400000)); . = SEGMENT_START("text-segment", 0x400000) + SIZEOF_HEADERS;
+  .interp         : { *(.interp) }
+  .note.gnu.build-id  : { *(.note.gnu.build-id) }
+  .hash           : { *(.hash) }
+  .gnu.hash       : { *(.gnu.hash) }
+  .dynsym         : { *(.dynsym) }
+  .dynstr         : { *(.dynstr) }
+  .gnu.version    : { *(.gnu.version) }
+  .gnu.version_d  : { *(.gnu.version_d) }
+  .gnu.version_r  : { *(.gnu.version_r) }
+  .rela.dyn       :
+    {
+      *(.rela.init)
+      *(.rela.text .rela.text.* .rela.gnu.linkonce.t.*)
+      *(.rela.fini)
+      *(.rela.rodata .rela.rodata.* .rela.gnu.linkonce.r.*)
+      *(.rela.data .rela.data.* .rela.gnu.linkonce.d.*)
+      *(.rela.tdata .rela.tdata.* .rela.gnu.linkonce.td.*)
+      *(.rela.tbss .rela.tbss.* .rela.gnu.linkonce.tb.*)
+      *(.rela.ctors)
+      *(.rela.dtors)
+      *(.rela.got)
+      *(.rela.bss .rela.bss.* .rela.gnu.linkonce.b.*)
+      *(.rela.ldata .rela.ldata.* .rela.gnu.linkonce.l.*)
+      *(.rela.lbss .rela.lbss.* .rela.gnu.linkonce.lb.*)
+      *(.rela.lrodata .rela.lrodata.* .rela.gnu.linkonce.lr.*)
+      *(.rela.ifunc)
+    }
+  .rela.plt       :
+    {
+      *(.rela.plt)
+      PROVIDE_HIDDEN (__rela_iplt_start = .);
+      *(.rela.iplt)
+      PROVIDE_HIDDEN (__rela_iplt_end = .);
+    }
+  .relr.dyn : { *(.relr.dyn) }
+  . = ALIGN(CONSTANT (MAXPAGESIZE));
+  .init           :
+  {
+    KEEP (*(SORT_NONE(.init)))
+  }
+  .plt            : { *(.plt) *(.iplt) }
+.plt.got        : { *(.plt.got) }
+.plt.sec        : { *(.plt.sec) }
+  .text           :
+  {
+    *(.text.unlikely .text.*_unlikely .text.unlikely.*)
+    *(.text.exit .text.exit.*)
+    *(.text.startup .text.startup.*)
+    *(.text.hot .text.hot.*)
+    *(SORT(.text.sorted.*))
+    *(.text .stub .text.* .gnu.linkonce.t.*)
+    /* .gnu.warning sections are handled specially by elf.em.  */
+    *(.gnu.warning)
+  }
+  .fini           :
+  {
+    KEEP (*(SORT_NONE(.fini)))
+  }
+  PROVIDE (__etext = .);
+  PROVIDE (_etext = .);
+  PROVIDE (etext = .);
+  . = ALIGN(CONSTANT (MAXPAGESIZE));
+  /* Adjust the address for the rodata segment.  We want to adjust up to
+     the same address within the page on the next page up.  */
+  . = SEGMENT_START("rodata-segment", ALIGN(CONSTANT (MAXPAGESIZE)) + (. &amp; (CONSTANT (MAXPAGESIZE) - 1)));
+  .rodata         : { *(.rodata .rodata.* .gnu.linkonce.r.*) }
+  .rodata1        : { *(.rodata1) }
+  .eh_frame_hdr   : { *(.eh_frame_hdr) *(.eh_frame_entry .eh_frame_entry.*) }
+  .eh_frame       : ONLY_IF_RO { KEEP (*(.eh_frame)) *(.eh_frame.*) }
+  .sframe         : ONLY_IF_RO { *(.sframe) *(.sframe.*) }
+  .gcc_except_table   : ONLY_IF_RO { *(.gcc_except_table .gcc_except_table.*) }
+  .gnu_extab   : ONLY_IF_RO { *(.gnu_extab*) }
+  /* These sections are generated by the Sun/Oracle C++ compiler.  */
+  .exception_ranges   : ONLY_IF_RO { *(.exception_ranges*) }
+  /* Adjust the address for the data segment.  We want to adjust up to
+     the same address within the page on the next page up.  */
+  . = DATA_SEGMENT_ALIGN (CONSTANT (MAXPAGESIZE), CONSTANT (COMMONPAGESIZE));
+  /* Exception handling  */
+  .eh_frame       : ONLY_IF_RW { KEEP (*(.eh_frame)) *(.eh_frame.*) }
+  .sframe         : ONLY_IF_RW { *(.sframe) *(.sframe.*) }
+  .gnu_extab      : ONLY_IF_RW { *(.gnu_extab) }
+  .gcc_except_table   : ONLY_IF_RW { *(.gcc_except_table .gcc_except_table.*) }
+  .exception_ranges   : ONLY_IF_RW { *(.exception_ranges*) }
+  /* Thread Local Storage sections  */
+  .tdata          :
+   {
+     PROVIDE_HIDDEN (__tdata_start = .);
+     *(.tdata .tdata.* .gnu.linkonce.td.*)
+   }
+  .tbss           : { *(.tbss .tbss.* .gnu.linkonce.tb.*) *(.tcommon) }
+  .preinit_array    :
+  {
+    PROVIDE_HIDDEN (__preinit_array_start = .);
+    KEEP (*(.preinit_array))
+    PROVIDE_HIDDEN (__preinit_array_end = .);
+  }
+  .init_array    :
+  {
+    PROVIDE_HIDDEN (__init_array_start = .);
+    KEEP (*(SORT_BY_INIT_PRIORITY(.init_array.*) SORT_BY_INIT_PRIORITY(.ctors.*)))
+    KEEP (*(.init_array EXCLUDE_FILE (*crtbegin.o *crtbegin?.o *crtend.o *crtend?.o ) .ctors))
+    PROVIDE_HIDDEN (__init_array_end = .);
+  }
+  .fini_array    :
+  {
+    PROVIDE_HIDDEN (__fini_array_start = .);
+    KEEP (*(SORT_BY_INIT_PRIORITY(.fini_array.*) SORT_BY_INIT_PRIORITY(.dtors.*)))
+    KEEP (*(.fini_array EXCLUDE_FILE (*crtbegin.o *crtbegin?.o *crtend.o *crtend?.o ) .dtors))
+    PROVIDE_HIDDEN (__fini_array_end = .);
+  }
+  .ctors          :
+  {
+    /* gcc uses crtbegin.o to find the start of
+       the constructors, so we make sure it is
+       first.  Because this is a wildcard, it
+       doesn't matter if the user does not
+       actually link against crtbegin.o; the
+       linker won't look for a file to match a
+       wildcard.  The wildcard also means that it
+       doesn't matter which directory crtbegin.o
+       is in.  */
+    KEEP (*crtbegin.o(.ctors))
+    KEEP (*crtbegin?.o(.ctors))
+    /* We don't want to include the .ctor section from
+       the crtend.o file until after the sorted ctors.
+       The .ctor section from the crtend file contains the
+       end of ctors marker and it must be last */
+    KEEP (*(EXCLUDE_FILE (*crtend.o *crtend?.o ) .ctors))
+    KEEP (*(SORT(.ctors.*)))
+    KEEP (*(.ctors))
+  }
+  .dtors          :
+  {
+    KEEP (*crtbegin.o(.dtors))
+    KEEP (*crtbegin?.o(.dtors))
+    KEEP (*(EXCLUDE_FILE (*crtend.o *crtend?.o ) .dtors))
+    KEEP (*(SORT(.dtors.*)))
+    KEEP (*(.dtors))
+  }
+  .jcr            : { KEEP (*(.jcr)) }
+  .data.rel.ro : { *(.data.rel.ro.local* .gnu.linkonce.d.rel.ro.local.*) *(.data.rel.ro .data.rel.ro.* .gnu.linkonce.d.rel.ro.*) }
+  .dynamic        : { *(.dynamic) }
+  .got            : { *(.got) *(.igot) }
+  . = DATA_SEGMENT_RELRO_END (SIZEOF (.got.plt) &gt;= 24 ? 24 : 0, .);
+  .got.plt        : { *(.got.plt) *(.igot.plt) }
+  .data           :
+  {
+    *(.data .data.* .gnu.linkonce.d.*)
+    SORT(CONSTRUCTORS)
+  }
+  .data1          : { *(.data1) }
+  _edata = .; PROVIDE (edata = .);
+  . = ALIGN(ALIGNOF(NEXT_SECTION));
+  __bss_start = .;
+  .bss            :
+  {
+   *(.dynbss)
+   *(.bss .bss.* .gnu.linkonce.b.*)
+   *(COMMON)
+   /* Align here to ensure that the .bss section occupies space up to
+      _end.  Align after .bss to ensure correct alignment even if the
+      .bss section disappears because there are no input sections.
+      FIXME: Why do we need it? When there is no .bss section, we do not
+      pad the .data section.  */
+   . = ALIGN(. != 0 ? 64 / 8 : 1);
+  }
+  .lbss   :
+  {
+    *(.dynlbss)
+    *(.lbss .lbss.* .gnu.linkonce.lb.*)
+    *(LARGE_COMMON)
+  }
+  . = ALIGN(64 / 8);
+  . = SEGMENT_START("ldata-segment", .);
+  .lrodata   ALIGN(CONSTANT (MAXPAGESIZE)) + (. &amp; (CONSTANT (MAXPAGESIZE) - 1)) :
+  {
+    *(.lrodata .lrodata.* .gnu.linkonce.lr.*)
+  }
+  .ldata   ALIGN(CONSTANT (MAXPAGESIZE)) + (. &amp; (CONSTANT (MAXPAGESIZE) - 1)) :
+  {
+    *(.ldata .ldata.* .gnu.linkonce.l.*)
+    . = ALIGN(. != 0 ? 64 / 8 : 1);
+  }
+  . = ALIGN(64 / 8);
+  _end = .; PROVIDE (end = .);
+  . = DATA_SEGMENT_END (.);
+  /* Stabs debugging sections.  */
+  .stab          0 : { *(.stab) }
+  .stabstr       0 : { *(.stabstr) }
+  .stab.excl     0 : { *(.stab.excl) }
+  .stab.exclstr  0 : { *(.stab.exclstr) }
+  .stab.index    0 : { *(.stab.index) }
+  .stab.indexstr 0 : { *(.stab.indexstr) }
+  .comment 0 (INFO) : { *(.comment); LINKER_VERSION; }
+  .gnu.build.attributes : { *(.gnu.build.attributes .gnu.build.attributes.*) }
+  /* DWARF debug sections.
+     Symbols in the DWARF debugging sections are relative to the beginning
+     of the section so we begin them at 0.  */
+  /* DWARF 1.  */
+  .debug          0 : { *(.debug) }
+  .line           0 : { *(.line) }
+  /* GNU DWARF 1 extensions.  */
+  .debug_srcinfo  0 : { *(.debug_srcinfo) }
+  .debug_sfnames  0 : { *(.debug_sfnames) }
+  /* DWARF 1.1 and DWARF 2.  */
+  .debug_aranges  0 : { *(.debug_aranges) }
+  .debug_pubnames 0 : { *(.debug_pubnames) }
+  /* DWARF 2.  */
+  .debug_info     0 : { *(.debug_info .gnu.linkonce.wi.*) }
+  .debug_abbrev   0 : { *(.debug_abbrev) }
+  .debug_line     0 : { *(.debug_line .debug_line.* .debug_line_end) }
+  .debug_frame    0 : { *(.debug_frame) }
+  .debug_str      0 : { *(.debug_str) }
+  .debug_loc      0 : { *(.debug_loc) }
+  .debug_macinfo  0 : { *(.debug_macinfo) }
+  /* SGI/MIPS DWARF 2 extensions.  */
+  .debug_weaknames 0 : { *(.debug_weaknames) }
+  .debug_funcnames 0 : { *(.debug_funcnames) }
+  .debug_typenames 0 : { *(.debug_typenames) }
+  .debug_varnames  0 : { *(.debug_varnames) }
+  /* DWARF 3.  */
+  .debug_pubtypes 0 : { *(.debug_pubtypes) }
+  .debug_ranges   0 : { *(.debug_ranges) }
+  /* DWARF 5.  */
+  .debug_addr     0 : { *(.debug_addr) }
+  .debug_line_str 0 : { *(.debug_line_str) }
+  .debug_loclists 0 : { *(.debug_loclists) }
+  .debug_macro    0 : { *(.debug_macro) }
+  .debug_names    0 : { *(.debug_names) }
+  .debug_rnglists 0 : { *(.debug_rnglists) }
+  .debug_str_offsets 0 : { *(.debug_str_offsets) }
+  .debug_sup      0 : { *(.debug_sup) }
+  .gnu.attributes 0 : { KEEP (*(.gnu.attributes)) }
+  /DISCARD/ : { *(.note.GNU-stack) *(.gnu_debuglink) *(.gnu.lto_*) }
+}
+</code></pre><h3 id="gnu-linker-script-explanation">GNU Linker Script Explanation</h3> <ul> <li><code class="language-plaintext highlighter-rouge">OUTPUT_FORMAT()</code>: This declarative allows you to provide an output format for your executable. For a listing of acceptable formats, run <code class="language-plaintext highlighter-rouge">objdump -i</code>.</li> <li><code class="language-plaintext highlighter-rouge">ENTRY()</code>: ENRTRY allows you to include the symbol defined in your program in the .text section that represents the first byte of executable code; that is, the entrypoint. Checkout the disassembled example below, which shows the start entrypoint. Note: In the disassembled code, the program (that only prints) was written in C and then compiled. The start section includes a lot of extra work to prepare the program, such as initializing registers, getting command-line arguments, calling main(), and handling exit().</li> <li><code class="language-plaintext highlighter-rouge">SECTIONS()</code>: This allows you to define a structured format in the output (object) file by segmenting the data in memory. The linker script allows the developer to control the type of data that is in each section. To learn about ELF binaries and the included sections, visit the <a href="https://man7.org/linux/man-pages/man5/elf.5.html">Linux manual page</a>. <ul> <li>Declaring a section follows the format .section and sections are interpreted in the order they are listed. For example, .text is the section in ELF binaries that includes the executable code of your program.</li> <li>You can also map subsection names using a wildcard, to a specific object file or any object file. For example, <em>(.text.unlikely .text.</em>_unlikely .text.unlikely.*) will match any section that matches the pattern. Notice the wildcard before the parenthesis; alternatively, we could specify the object file like startup.o(.text.unlikely …) however the wildcard is more common because file names can change. Why are there so many alias names? It allows the developer to organize the code by controlling where it is placed in memory. In the example above, sections matching the that text pattern is unlikely to be executed. Grouping that code together can, for example, improve cache locality by letter hot code (code that is frequently executed) be grouped together.</li> <li><code class="language-plaintext highlighter-rouge">PROVIDE()</code>: provides a symbol that can be referenced code.</li> </ul> </li> <li><code class="language-plaintext highlighter-rouge">MEMORY()</code>: The memory declaration is not included in the example above; however, it is very important for kernel developers. The example below, shows how a memory region is declared with access attributes. Sections defined in SECTIONS can map to a specific region by adding the following after the closing bracket: &gt;RAM AT&gt;ROM. The first ( &gt;RAM ) means store the preceding section in RAM and ( AT&gt;ROM ) sets the LMA (load memory address) to ROM, or read-only memory.</li> </ul> <h2 id="code-examples">Code Examples</h2> <h3 id="memory-declarative">Memory Declarative</h3><pre><code class="language-ld">MEMORY
+{
+    ROM (rx) : ORIGIN = 0, LENGTH = 256k
+    RAM (wx) : org = 0x00100000, len = 1M
+}
+</code></pre><h3 id="disassembled-example-objdump-output">Disassembled Example (Objdump output)</h3> <div class="language-nasm highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nl">output:</span>     <span class="nf">file</span> <span class="nv">format</span> <span class="nv">elf64</span><span class="o">-</span><span class="nv">x86</span><span class="o">-</span><span class="mi">64</span>
+
+
+<span class="nf">Disassembly</span> <span class="nv">of</span> <span class="nv">section</span> <span class="nv">.init</span><span class="p">:</span>
+
+<span class="err">0000000000001000</span> <span class="err">&lt;</span><span class="nf">_init</span><span class="o">&gt;</span><span class="p">:</span>
+    <span class="err">1000:</span>       <span class="nf">f3</span> <span class="mi">0</span><span class="nv">f</span> <span class="mi">1</span><span class="nv">e</span> <span class="nv">fa</span>             <span class="nv">endbr64</span>
+    <span class="err">1004:</span>       <span class="err">48</span> <span class="err">83</span> <span class="nf">ec</span> <span class="mi">08</span>             <span class="nv">sub</span>    <span class="nb">rsp</span><span class="p">,</span><span class="mh">0x8</span>
+    <span class="err">1008:</span>       <span class="err">48</span> <span class="err">8</span><span class="nf">b</span> <span class="mi">05</span> <span class="nv">c1</span> <span class="mi">2</span><span class="nv">f</span> <span class="mi">00</span> <span class="mi">00</span>    <span class="nv">mov</span>    <span class="nb">rax</span><span class="p">,</span><span class="kt">QWORD</span> <span class="nv">PTR</span> <span class="p">[</span><span class="nv">rip</span><span class="o">+</span><span class="mh">0x2fc1</span><span class="p">]</span>        <span class="err">#</span> <span class="mi">3</span><span class="nv">fd0</span> <span class="o">&lt;</span><span class="nv">__gmon_start__@Base</span><span class="o">&gt;</span>
+    <span class="err">100</span><span class="nl">f:</span>       <span class="err">48</span> <span class="err">85</span> <span class="nf">c0</span>                <span class="nv">test</span>   <span class="nb">rax</span><span class="p">,</span><span class="nb">rax</span>
+    <span class="err">1012:</span>       <span class="err">74</span> <span class="err">02</span>                   <span class="nf">je</span>     <span class="mi">1016</span> <span class="o">&lt;</span><span class="nv">_init</span><span class="o">+</span><span class="mh">0x16</span><span class="o">&gt;</span>
+    <span class="err">1014:</span>       <span class="nf">ff</span> <span class="nv">d0</span>                   <span class="nv">call</span>   <span class="nb">rax</span>
+    <span class="err">1016:</span>       <span class="err">48</span> <span class="err">83</span> <span class="nf">c4</span> <span class="mi">08</span>             <span class="nv">add</span>    <span class="nb">rsp</span><span class="p">,</span><span class="mh">0x8</span>
+    <span class="err">101</span><span class="nl">a:</span>       <span class="nf">c3</span>                      <span class="nv">ret</span>
+
+<span class="nf">Disassembly</span> <span class="nv">of</span> <span class="nv">section</span> <span class="nv">.plt</span><span class="p">:</span>
+
+<span class="err">0000000000001020</span> <span class="err">&lt;</span><span class="nf">puts@plt</span><span class="o">-</span><span class="mh">0x10</span><span class="o">&gt;</span><span class="p">:</span>
+    <span class="err">1020:</span>       <span class="nf">ff</span> <span class="mi">35</span> <span class="nv">ca</span> <span class="mi">2</span><span class="nv">f</span> <span class="mi">00</span> <span class="mi">00</span>       <span class="nv">push</span>   <span class="kt">QWORD</span> <span class="nv">PTR</span> <span class="p">[</span><span class="nv">rip</span><span class="o">+</span><span class="mh">0x2fca</span><span class="p">]</span>        <span class="err">#</span> <span class="mi">3</span><span class="nv">ff0</span> <span class="o">&lt;</span><span class="nv">_GLOBAL_OFFSET_TABLE_</span><span class="o">+</span><span class="mh">0x8</span><span class="o">&gt;</span>
+    <span class="err">1026:</span>       <span class="nf">ff</span> <span class="mi">25</span> <span class="nv">cc</span> <span class="mi">2</span><span class="nv">f</span> <span class="mi">00</span> <span class="mi">00</span>       <span class="nv">jmp</span>    <span class="kt">QWORD</span> <span class="nv">PTR</span> <span class="p">[</span><span class="nv">rip</span><span class="o">+</span><span class="mh">0x2fcc</span><span class="p">]</span>        <span class="err">#</span> <span class="mi">3</span><span class="nv">ff8</span> <span class="o">&lt;</span><span class="nv">_GLOBAL_OFFSET_TABLE_</span><span class="o">+</span><span class="mh">0x10</span><span class="o">&gt;</span>
+    <span class="err">102</span><span class="nl">c:</span>       <span class="err">0</span><span class="nf">f</span> <span class="mi">1</span><span class="nv">f</span> <span class="mi">40</span> <span class="mi">00</span>             <span class="nv">nop</span>    <span class="kt">DWORD</span> <span class="nv">PTR</span> <span class="p">[</span><span class="nb">rax</span><span class="o">+</span><span class="mh">0x0</span><span class="p">]</span>
+
+<span class="err">0000000000001030</span> <span class="err">&lt;</span><span class="nf">puts@plt</span><span class="o">&gt;</span><span class="p">:</span>
+    <span class="err">1030:</span>       <span class="nf">ff</span> <span class="mi">25</span> <span class="nv">ca</span> <span class="mi">2</span><span class="nv">f</span> <span class="mi">00</span> <span class="mi">00</span>       <span class="nv">jmp</span>    <span class="kt">QWORD</span> <span class="nv">PTR</span> <span class="p">[</span><span class="nv">rip</span><span class="o">+</span><span class="mh">0x2fca</span><span class="p">]</span>        <span class="err">#</span> <span class="mi">4000</span> <span class="o">&lt;</span><span class="nv">puts@GLIBC_2.2.5</span><span class="o">&gt;</span>
+    <span class="err">1036:</span>       <span class="err">68</span> <span class="err">00</span> <span class="err">00</span> <span class="err">00</span> <span class="err">00</span>          <span class="nf">push</span>   <span class="mh">0x0</span>
+    <span class="err">103</span><span class="nl">b:</span>       <span class="nf">e9</span> <span class="nv">e0</span> <span class="nv">ff</span> <span class="nv">ff</span> <span class="nv">ff</span>          <span class="nv">jmp</span>    <span class="mi">1020</span> <span class="o">&lt;</span><span class="nv">_init</span><span class="o">+</span><span class="mh">0x20</span><span class="o">&gt;</span>
+
+<span class="nf">Disassembly</span> <span class="nv">of</span> <span class="nv">section</span> <span class="nv">.text</span><span class="p">:</span>
+
+<span class="err">0000000000001040</span> <span class="err">&lt;</span><span class="nf">main</span><span class="o">&gt;</span><span class="p">:</span>
+    <span class="err">1040:</span>       <span class="err">48</span> <span class="err">83</span> <span class="nf">ec</span> <span class="mi">08</span>             <span class="nv">sub</span>    <span class="nb">rsp</span><span class="p">,</span><span class="mh">0x8</span>
+    <span class="err">1044:</span>       <span class="err">48</span> <span class="err">8</span><span class="nf">d</span> <span class="mi">3</span><span class="nv">d</span> <span class="nv">b9</span> <span class="mi">0</span><span class="nv">f</span> <span class="mi">00</span> <span class="mi">00</span>    <span class="nv">lea</span>    <span class="nb">rdi</span><span class="p">,[</span><span class="nv">rip</span><span class="o">+</span><span class="mh">0xfb9</span><span class="p">]</span>        <span class="err">#</span> <span class="mi">2004</span> <span class="o">&lt;</span><span class="nv">_IO_stdin_used</span><span class="o">+</span><span class="mh">0x4</span><span class="o">&gt;</span>
+    <span class="err">104</span><span class="nl">b:</span>       <span class="nf">e8</span> <span class="nv">e0</span> <span class="nv">ff</span> <span class="nv">ff</span> <span class="nv">ff</span>          <span class="nv">call</span>   <span class="mi">1030</span> <span class="o">&lt;</span><span class="nv">puts@plt</span><span class="o">&gt;</span>
+    <span class="err">1050:</span>       <span class="err">31</span> <span class="nf">c0</span>                   <span class="nv">xor</span>    <span class="nb">eax</span><span class="p">,</span><span class="nb">eax</span>
+    <span class="err">1052:</span>       <span class="err">48</span> <span class="err">83</span> <span class="nf">c4</span> <span class="mi">08</span>             <span class="nv">add</span>    <span class="nb">rsp</span><span class="p">,</span><span class="mh">0x8</span>
+    <span class="err">1056:</span>       <span class="nf">c3</span>                      <span class="nv">ret</span>
+    <span class="err">1057:</span>       <span class="err">66</span> <span class="err">0</span><span class="nf">f</span> <span class="mi">1</span><span class="nv">f</span> <span class="mi">84</span> <span class="mi">00</span> <span class="mi">00</span> <span class="mi">00</span>    <span class="nv">nop</span>    <span class="kt">WORD</span> <span class="nv">PTR</span> <span class="p">[</span><span class="nb">rax</span><span class="o">+</span><span class="nb">rax</span><span class="o">*</span><span class="mi">1</span><span class="o">+</span><span class="mh">0x0</span><span class="p">]</span>
+    <span class="err">105</span><span class="nl">e:</span>       <span class="err">00</span> <span class="err">00</span>
+
+<span class="err">0000000000001060</span> <span class="err">&lt;</span><span class="nf">_start</span><span class="o">&gt;</span><span class="p">:</span>
+    <span class="err">1060:</span>       <span class="nf">f3</span> <span class="mi">0</span><span class="nv">f</span> <span class="mi">1</span><span class="nv">e</span> <span class="nv">fa</span>             <span class="nv">endbr64</span>
+    <span class="err">1064:</span>       <span class="err">31</span> <span class="nf">ed</span>                   <span class="nv">xor</span>    <span class="nb">ebp</span><span class="p">,</span><span class="nb">ebp</span>
+    <span class="err">1066:</span>       <span class="err">49</span> <span class="err">89</span> <span class="nf">d1</span>                <span class="nv">mov</span>    <span class="nv">r9</span><span class="p">,</span><span class="nb">rdx</span>
+    <span class="err">1069:</span>       <span class="err">5</span><span class="nf">e</span>                      <span class="nv">pop</span>    <span class="nb">rsi</span>
+    <span class="err">106</span><span class="nl">a:</span>       <span class="err">48</span> <span class="err">89</span> <span class="nf">e2</span>                <span class="nv">mov</span>    <span class="nb">rdx</span><span class="p">,</span><span class="nb">rsp</span>
+    <span class="err">106</span><span class="nl">d:</span>       <span class="err">48</span> <span class="err">83</span> <span class="nf">e4</span> <span class="nv">f0</span>             <span class="nv">and</span>    <span class="nb">rsp</span><span class="p">,</span><span class="mh">0xfffffffffffffff0</span>
+    <span class="err">1071:</span>       <span class="err">50</span>                      <span class="nf">push</span>   <span class="nb">rax</span>
+    <span class="err">1072:</span>       <span class="err">54</span>                      <span class="nf">push</span>   <span class="nb">rsp</span>
+    <span class="err">1073:</span>       <span class="err">45</span> <span class="err">31</span> <span class="nf">c0</span>                <span class="nv">xor</span>    <span class="nb">r8d</span><span class="p">,</span><span class="nb">r8d</span>
+    <span class="err">1076:</span>       <span class="err">31</span> <span class="nf">c9</span>                   <span class="nv">xor</span>    <span class="nb">ecx</span><span class="p">,</span><span class="nb">ecx</span>
+    <span class="err">1078:</span>       <span class="err">48</span> <span class="err">8</span><span class="nf">d</span> <span class="mi">3</span><span class="nv">d</span> <span class="nv">c1</span> <span class="nv">ff</span> <span class="nv">ff</span> <span class="nv">ff</span>    <span class="nv">lea</span>    <span class="nb">rdi</span><span class="p">,[</span><span class="nv">rip</span><span class="o">+</span><span class="mh">0xffffffffffffffc1</span><span class="p">]</span>        <span class="err">#</span> <span class="mi">1040</span> <span class="o">&lt;</span><span class="nv">main</span><span class="o">&gt;</span>
+    <span class="err">107</span><span class="nl">f:</span>       <span class="nf">ff</span> <span class="mi">15</span> <span class="mi">3</span><span class="nv">b</span> <span class="mi">2</span><span class="nv">f</span> <span class="mi">00</span> <span class="mi">00</span>       <span class="nv">call</span>   <span class="kt">QWORD</span> <span class="nv">PTR</span> <span class="p">[</span><span class="nv">rip</span><span class="o">+</span><span class="mh">0x2f3b</span><span class="p">]</span>        <span class="err">#</span> <span class="mi">3</span><span class="nv">fc0</span> <span class="o">&lt;</span><span class="nv">__libc_start_main@GLIBC_2.34</span><span class="o">&gt;</span>
+    <span class="err">1085:</span>       <span class="nf">f4</span>                      <span class="nv">hlt</span>
+    <span class="err">1086:</span>       <span class="err">66</span> <span class="err">2</span><span class="nf">e</span> <span class="mi">0</span><span class="nv">f</span> <span class="mi">1</span><span class="nv">f</span> <span class="mi">84</span> <span class="mi">00</span> <span class="mi">00</span>    <span class="nb">cs</span> <span class="nv">nop</span> <span class="kt">WORD</span> <span class="nv">PTR</span> <span class="p">[</span><span class="nb">rax</span><span class="o">+</span><span class="nb">rax</span><span class="o">*</span><span class="mi">1</span><span class="o">+</span><span class="mh">0x0</span><span class="p">]</span>
+    <span class="err">108</span><span class="nl">d:</span>       <span class="err">00</span> <span class="err">00</span> <span class="err">00</span>
+    <span class="err">1090:</span>       <span class="err">48</span> <span class="err">8</span><span class="nf">d</span> <span class="mi">3</span><span class="nv">d</span> <span class="mi">81</span> <span class="mi">2</span><span class="nv">f</span> <span class="mi">00</span> <span class="mi">00</span>    <span class="nv">lea</span>    <span class="nb">rdi</span><span class="p">,[</span><span class="nv">rip</span><span class="o">+</span><span class="mh">0x2f81</span><span class="p">]</span>        <span class="err">#</span> <span class="mi">4018</span> <span class="o">&lt;</span><span class="nv">__TMC_END__</span><span class="o">&gt;</span>
+    <span class="err">1097:</span>       <span class="err">48</span> <span class="err">8</span><span class="nf">d</span> <span class="mi">05</span> <span class="mi">7</span><span class="nv">a</span> <span class="mi">2</span><span class="nv">f</span> <span class="mi">00</span> <span class="mi">00</span>    <span class="nv">lea</span>    <span class="nb">rax</span><span class="p">,[</span><span class="nv">rip</span><span class="o">+</span><span class="mh">0x2f7a</span><span class="p">]</span>        <span class="err">#</span> <span class="mi">4018</span> <span class="o">&lt;</span><span class="nv">__TMC_END__</span><span class="o">&gt;</span>
+    <span class="err">109</span><span class="nl">e:</span>       <span class="err">48</span> <span class="err">39</span> <span class="nf">f8</span>                <span class="nv">cmp</span>    <span class="nb">rax</span><span class="p">,</span><span class="nb">rdi</span>
+    <span class="err">10</span><span class="nl">a1:</span>       <span class="err">74</span> <span class="err">15</span>                   <span class="nf">je</span>     <span class="mb">10b</span><span class="mi">8</span> <span class="o">&lt;</span><span class="nv">_start</span><span class="o">+</span><span class="mh">0x58</span><span class="o">&gt;</span>
+    <span class="err">10</span><span class="nl">a3:</span>       <span class="err">48</span> <span class="err">8</span><span class="nf">b</span> <span class="mi">05</span> <span class="mi">1</span><span class="nv">e</span> <span class="mi">2</span><span class="nv">f</span> <span class="mi">00</span> <span class="mi">00</span>    <span class="nv">mov</span>    <span class="nb">rax</span><span class="p">,</span><span class="kt">QWORD</span> <span class="nv">PTR</span> <span class="p">[</span><span class="nv">rip</span><span class="o">+</span><span class="mh">0x2f1e</span><span class="p">]</span>        <span class="err">#</span> <span class="mi">3</span><span class="nv">fc8</span> <span class="o">&lt;</span><span class="nv">_ITM_deregisterTMCloneTable@Base</span><span class="o">&gt;</span>
+    <span class="err">10</span><span class="nl">aa:</span>       <span class="err">48</span> <span class="err">85</span> <span class="nf">c0</span>                <span class="nv">test</span>   <span class="nb">rax</span><span class="p">,</span><span class="nb">rax</span>
+    <span class="err">10</span><span class="nl">ad:</span>       <span class="err">74</span> <span class="err">09</span>                   <span class="nf">je</span>     <span class="mb">10b</span><span class="mi">8</span> <span class="o">&lt;</span><span class="nv">_start</span><span class="o">+</span><span class="mh">0x58</span><span class="o">&gt;</span>
+    <span class="err">10</span><span class="nl">af:</span>       <span class="nf">ff</span> <span class="nv">e0</span>                   <span class="nv">jmp</span>    <span class="nb">rax</span>
+    <span class="err">10</span><span class="nl">b1:</span>       <span class="err">0</span><span class="nf">f</span> <span class="mi">1</span><span class="nv">f</span> <span class="mi">80</span> <span class="mi">00</span> <span class="mi">00</span> <span class="mi">00</span> <span class="mi">00</span>    <span class="nv">nop</span>    <span class="kt">DWORD</span> <span class="nv">PTR</span> <span class="p">[</span><span class="nb">rax</span><span class="o">+</span><span class="mh">0x0</span><span class="p">]</span>
+    <span class="err">10</span><span class="nl">b8:</span>       <span class="nf">c3</span>                      <span class="nv">ret</span>
+    <span class="err">10</span><span class="nl">b9:</span>       <span class="err">0</span><span class="nf">f</span> <span class="mi">1</span><span class="nv">f</span> <span class="mi">80</span> <span class="mi">00</span> <span class="mi">00</span> <span class="mi">00</span> <span class="mi">00</span>    <span class="nv">nop</span>    <span class="kt">DWORD</span> <span class="nv">PTR</span> <span class="p">[</span><span class="nb">rax</span><span class="o">+</span><span class="mh">0x0</span><span class="p">]</span>
+    <span class="err">10</span><span class="nl">c0:</span>       <span class="err">48</span> <span class="err">8</span><span class="nf">d</span> <span class="mi">3</span><span class="nv">d</span> <span class="mi">51</span> <span class="mi">2</span><span class="nv">f</span> <span class="mi">00</span> <span class="mi">00</span>    <span class="nv">lea</span>    <span class="nb">rdi</span><span class="p">,[</span><span class="nv">rip</span><span class="o">+</span><span class="mh">0x2f51</span><span class="p">]</span>        <span class="err">#</span> <span class="mi">4018</span> <span class="o">&lt;</span><span class="nv">__TMC_END__</span><span class="o">&gt;</span>
+    <span class="err">10</span><span class="nl">c7:</span>       <span class="err">48</span> <span class="err">8</span><span class="nf">d</span> <span class="mi">35</span> <span class="mi">4</span><span class="nv">a</span> <span class="mi">2</span><span class="nv">f</span> <span class="mi">00</span> <span class="mi">00</span>    <span class="nv">lea</span>    <span class="nb">rsi</span><span class="p">,[</span><span class="nv">rip</span><span class="o">+</span><span class="mh">0x2f4a</span><span class="p">]</span>        <span class="err">#</span> <span class="mi">4018</span> <span class="o">&lt;</span><span class="nv">__TMC_END__</span><span class="o">&gt;</span>
+    <span class="err">10</span><span class="nl">ce:</span>       <span class="err">48</span> <span class="err">29</span> <span class="nf">fe</span>                <span class="nv">sub</span>    <span class="nb">rsi</span><span class="p">,</span><span class="nb">rdi</span>
+    <span class="err">10</span><span class="nl">d1:</span>       <span class="err">48</span> <span class="err">89</span> <span class="nf">f0</span>                <span class="nv">mov</span>    <span class="nb">rax</span><span class="p">,</span><span class="nb">rsi</span>
+    <span class="err">10</span><span class="nl">d4:</span>       <span class="err">48</span> <span class="nf">c1</span> <span class="nv">ee</span> <span class="mi">3</span><span class="nv">f</span>             <span class="nv">shr</span>    <span class="nb">rsi</span><span class="p">,</span><span class="mh">0x3f</span>
+    <span class="err">10</span><span class="nl">d8:</span>       <span class="err">48</span> <span class="nf">c1</span> <span class="nv">f8</span> <span class="mi">03</span>             <span class="nv">sar</span>    <span class="nb">rax</span><span class="p">,</span><span class="mh">0x3</span>
+    <span class="err">10</span><span class="nl">dc:</span>       <span class="err">48</span> <span class="err">01</span> <span class="nf">c6</span>                <span class="nv">add</span>    <span class="nb">rsi</span><span class="p">,</span><span class="nb">rax</span>
+    <span class="err">10</span><span class="nl">df:</span>       <span class="err">48</span> <span class="nf">d1</span> <span class="nv">fe</span>                <span class="nv">sar</span>    <span class="nb">rsi</span><span class="p">,</span><span class="mi">1</span>
+    <span class="err">10</span><span class="nl">e2:</span>       <span class="err">74</span> <span class="err">14</span>                   <span class="nf">je</span>     <span class="mi">10</span><span class="nv">f8</span> <span class="o">&lt;</span><span class="nv">_start</span><span class="o">+</span><span class="mh">0x98</span><span class="o">&gt;</span>
+    <span class="err">10</span><span class="nl">e4:</span>       <span class="err">48</span> <span class="err">8</span><span class="nf">b</span> <span class="mi">05</span> <span class="nv">ed</span> <span class="mi">2</span><span class="nv">e</span> <span class="mi">00</span> <span class="mi">00</span>    <span class="nv">mov</span>    <span class="nb">rax</span><span class="p">,</span><span class="kt">QWORD</span> <span class="nv">PTR</span> <span class="p">[</span><span class="nv">rip</span><span class="o">+</span><span class="mh">0x2eed</span><span class="p">]</span>        <span class="err">#</span> <span class="mi">3</span><span class="nv">fd8</span> <span class="o">&lt;</span><span class="nv">_ITM_registerTMCloneTable@Base</span><span class="o">&gt;</span>
+    <span class="err">10</span><span class="nl">eb:</span>       <span class="err">48</span> <span class="err">85</span> <span class="nf">c0</span>                <span class="nv">test</span>   <span class="nb">rax</span><span class="p">,</span><span class="nb">rax</span>
+    <span class="err">10</span><span class="nl">ee:</span>       <span class="err">74</span> <span class="err">08</span>                   <span class="nf">je</span>     <span class="mi">10</span><span class="nv">f8</span> <span class="o">&lt;</span><span class="nv">_start</span><span class="o">+</span><span class="mh">0x98</span><span class="o">&gt;</span>
+    <span class="err">10</span><span class="nl">f0:</span>       <span class="nf">ff</span> <span class="nv">e0</span>                   <span class="nv">jmp</span>    <span class="nb">rax</span>
+    <span class="err">10</span><span class="nl">f2:</span>       <span class="err">66</span> <span class="err">0</span><span class="nf">f</span> <span class="mi">1</span><span class="nv">f</span> <span class="mi">44</span> <span class="mi">00</span> <span class="mi">00</span>       <span class="nv">nop</span>    <span class="kt">WORD</span> <span class="nv">PTR</span> <span class="p">[</span><span class="nb">rax</span><span class="o">+</span><span class="nb">rax</span><span class="o">*</span><span class="mi">1</span><span class="o">+</span><span class="mh">0x0</span><span class="p">]</span>
+    <span class="err">10</span><span class="nl">f8:</span>       <span class="nf">c3</span>                      <span class="nv">ret</span>
+    <span class="err">10</span><span class="nl">f9:</span>       <span class="err">0</span><span class="nf">f</span> <span class="mi">1</span><span class="nv">f</span> <span class="mi">80</span> <span class="mi">00</span> <span class="mi">00</span> <span class="mi">00</span> <span class="mi">00</span>    <span class="nv">nop</span>    <span class="kt">DWORD</span> <span class="nv">PTR</span> <span class="p">[</span><span class="nb">rax</span><span class="o">+</span><span class="mh">0x0</span><span class="p">]</span>
+    <span class="err">1100:</span>       <span class="nf">f3</span> <span class="mi">0</span><span class="nv">f</span> <span class="mi">1</span><span class="nv">e</span> <span class="nv">fa</span>             <span class="nv">endbr64</span>
+    <span class="err">1104:</span>       <span class="err">80</span> <span class="err">3</span><span class="nf">d</span> <span class="mi">0</span><span class="nv">d</span> <span class="mi">2</span><span class="nv">f</span> <span class="mi">00</span> <span class="mi">00</span> <span class="mi">00</span>    <span class="nv">cmp</span>    <span class="kt">BYTE</span> <span class="nv">PTR</span> <span class="p">[</span><span class="nv">rip</span><span class="o">+</span><span class="mh">0x2f0d</span><span class="p">],</span><span class="mh">0x0</span>        <span class="err">#</span> <span class="mi">4018</span> <span class="o">&lt;</span><span class="nv">__TMC_END__</span><span class="o">&gt;</span>
+    <span class="err">110</span><span class="nl">b:</span>       <span class="err">75</span> <span class="err">33</span>                   <span class="nf">jne</span>    <span class="mi">1140</span> <span class="o">&lt;</span><span class="nv">_start</span><span class="o">+</span><span class="mh">0xe0</span><span class="o">&gt;</span>
+    <span class="err">110</span><span class="nl">d:</span>       <span class="err">55</span>                      <span class="nf">push</span>   <span class="nb">rbp</span>
+    <span class="err">110</span><span class="nl">e:</span>       <span class="err">48</span> <span class="err">83</span> <span class="err">3</span><span class="nf">d</span> <span class="nv">ca</span> <span class="mi">2</span><span class="nv">e</span> <span class="mi">00</span> <span class="mi">00</span>    <span class="nv">cmp</span>    <span class="kt">QWORD</span> <span class="nv">PTR</span> <span class="p">[</span><span class="nv">rip</span><span class="o">+</span><span class="mh">0x2eca</span><span class="p">],</span><span class="mh">0x0</span>        <span class="err">#</span> <span class="mi">3</span><span class="nv">fe0</span> <span class="o">&lt;</span><span class="nv">__cxa_finalize@GLIBC_2.2.5</span><span class="o">&gt;</span>
+    <span class="err">1115:</span>       <span class="err">00</span>
+    <span class="err">1116:</span>       <span class="err">48</span> <span class="err">89</span> <span class="nf">e5</span>                <span class="nv">mov</span>    <span class="nb">rbp</span><span class="p">,</span><span class="nb">rsp</span>
+    <span class="err">1119:</span>       <span class="err">74</span> <span class="err">0</span><span class="nf">d</span>                   <span class="nv">je</span>     <span class="mi">1128</span> <span class="o">&lt;</span><span class="nv">_start</span><span class="o">+</span><span class="mh">0xc8</span><span class="o">&gt;</span>
+    <span class="err">111</span><span class="nl">b:</span>       <span class="err">48</span> <span class="err">8</span><span class="nf">b</span> <span class="mi">3</span><span class="nv">d</span> <span class="nv">ee</span> <span class="mi">2</span><span class="nv">e</span> <span class="mi">00</span> <span class="mi">00</span>    <span class="nv">mov</span>    <span class="nb">rdi</span><span class="p">,</span><span class="kt">QWORD</span> <span class="nv">PTR</span> <span class="p">[</span><span class="nv">rip</span><span class="o">+</span><span class="mh">0x2eee</span><span class="p">]</span>        <span class="err">#</span> <span class="mi">4010</span> <span class="o">&lt;</span><span class="nv">__dso_handle</span><span class="o">&gt;</span>
+    <span class="err">1122:</span>       <span class="nf">ff</span> <span class="mi">15</span> <span class="nv">b8</span> <span class="mi">2</span><span class="nv">e</span> <span class="mi">00</span> <span class="mi">00</span>       <span class="nv">call</span>   <span class="kt">QWORD</span> <span class="nv">PTR</span> <span class="p">[</span><span class="nv">rip</span><span class="o">+</span><span class="mh">0x2eb8</span><span class="p">]</span>        <span class="err">#</span> <span class="mi">3</span><span class="nv">fe0</span> <span class="o">&lt;</span><span class="nv">__cxa_finalize@GLIBC_2.2.5</span><span class="o">&gt;</span>
+    <span class="err">1128:</span>       <span class="nf">e8</span> <span class="mi">63</span> <span class="nv">ff</span> <span class="nv">ff</span> <span class="nv">ff</span>          <span class="nv">call</span>   <span class="mi">1090</span> <span class="o">&lt;</span><span class="nv">_start</span><span class="o">+</span><span class="mh">0x30</span><span class="o">&gt;</span>
+    <span class="err">112</span><span class="nl">d:</span>       <span class="nf">c6</span> <span class="mi">05</span> <span class="nv">e4</span> <span class="mi">2</span><span class="nv">e</span> <span class="mi">00</span> <span class="mi">00</span> <span class="mi">01</span>    <span class="nv">mov</span>    <span class="kt">BYTE</span> <span class="nv">PTR</span> <span class="p">[</span><span class="nv">rip</span><span class="o">+</span><span class="mh">0x2ee4</span><span class="p">],</span><span class="mh">0x1</span>        <span class="err">#</span> <span class="mi">4018</span> <span class="o">&lt;</span><span class="nv">__TMC_END__</span><span class="o">&gt;</span>
+    <span class="err">1134:</span>       <span class="err">5</span><span class="nf">d</span>                      <span class="nv">pop</span>    <span class="nb">rbp</span>
+    <span class="err">1135:</span>       <span class="nf">c3</span>                      <span class="nv">ret</span>
+    <span class="err">1136:</span>       <span class="err">66</span> <span class="err">2</span><span class="nf">e</span> <span class="mi">0</span><span class="nv">f</span> <span class="mi">1</span><span class="nv">f</span> <span class="mi">84</span> <span class="mi">00</span> <span class="mi">00</span>    <span class="nb">cs</span> <span class="nv">nop</span> <span class="kt">WORD</span> <span class="nv">PTR</span> <span class="p">[</span><span class="nb">rax</span><span class="o">+</span><span class="nb">rax</span><span class="o">*</span><span class="mi">1</span><span class="o">+</span><span class="mh">0x0</span><span class="p">]</span>
+    <span class="err">113</span><span class="nl">d:</span>       <span class="err">00</span> <span class="err">00</span> <span class="err">00</span>
+    <span class="err">1140:</span>       <span class="nf">c3</span>                      <span class="nv">ret</span>
+    <span class="err">1141:</span>       <span class="err">66</span> <span class="err">66</span> <span class="err">2</span><span class="nf">e</span> <span class="mi">0</span><span class="nv">f</span> <span class="mi">1</span><span class="nv">f</span> <span class="mi">84</span> <span class="mi">00</span>    <span class="nv">data16</span> <span class="nb">cs</span> <span class="nv">nop</span> <span class="kt">WORD</span> <span class="nv">PTR</span> <span class="p">[</span><span class="nb">rax</span><span class="o">+</span><span class="nb">rax</span><span class="o">*</span><span class="mi">1</span><span class="o">+</span><span class="mh">0x0</span><span class="p">]</span>
+    <span class="err">1148:</span>       <span class="err">00</span> <span class="err">00</span> <span class="err">00</span> <span class="err">00</span>
+    <span class="err">114</span><span class="nl">c:</span>       <span class="err">0</span><span class="nf">f</span> <span class="mi">1</span><span class="nv">f</span> <span class="mi">40</span> <span class="mi">00</span>             <span class="nv">nop</span>    <span class="kt">DWORD</span> <span class="nv">PTR</span> <span class="p">[</span><span class="nb">rax</span><span class="o">+</span><span class="mh">0x0</span><span class="p">]</span>
+    <span class="err">1150:</span>       <span class="nf">f3</span> <span class="mi">0</span><span class="nv">f</span> <span class="mi">1</span><span class="nv">e</span> <span class="nv">fa</span>             <span class="nv">endbr64</span>
+    <span class="err">1154:</span>       <span class="nf">e9</span> <span class="mi">67</span> <span class="nv">ff</span> <span class="nv">ff</span> <span class="nv">ff</span>          <span class="nv">jmp</span>    <span class="mi">10</span><span class="nv">c0</span> <span class="o">&lt;</span><span class="nv">_start</span><span class="o">+</span><span class="mh">0x60</span><span class="o">&gt;</span>
+
+<span class="nf">Disassembly</span> <span class="nv">of</span> <span class="nv">section</span> <span class="nv">.fini</span><span class="p">:</span>
+
+<span class="err">000000000000115</span><span class="nf">c</span> <span class="o">&lt;</span><span class="nv">_fini</span><span class="o">&gt;</span><span class="p">:</span>
+    <span class="err">115</span><span class="nl">c:</span>       <span class="nf">f3</span> <span class="mi">0</span><span class="nv">f</span> <span class="mi">1</span><span class="nv">e</span> <span class="nv">fa</span>             <span class="nv">endbr64</span>
+    <span class="err">1160:</span>       <span class="err">48</span> <span class="err">83</span> <span class="nf">ec</span> <span class="mi">08</span>             <span class="nv">sub</span>    <span class="nb">rsp</span><span class="p">,</span><span class="mh">0x8</span>
+    <span class="err">1164:</span>       <span class="err">48</span> <span class="err">83</span> <span class="nf">c4</span> <span class="mi">08</span>             <span class="nv">add</span>    <span class="nb">rsp</span><span class="p">,</span><span class="mh">0x8</span>
+    <span class="err">1168:</span>       <span class="nf">c3</span>                      <span class="nv">ret</span>
+</code></pre></div></div> <br /><!-- Load Facebook SDK for JavaScript --> <div id="fb-root"></div> <script> (function(d, s, id) { var js, fjs = d.getElementsByTagName(s)[0]; if (d.getElementById(id)) return; js = d.createElement(s); js.id = id; js.src = "https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v3.0"; fjs.parentNode.insertBefore(js, fjs); })(document, "script", "facebook-jssdk"); </script> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8" ></script> <div class="share-page"> <p class="share-text">Share this on &rarr;</p> <a href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="twitter-share-button" data-size="large" data-show-count="false" style="margin-top:5px;" >Tweet</a > <a class="fb-share-button" data-href="/blog/learn-about-linkers/" data-size="large" data-layout="button" >Share</a> </div><!-- Author box --> <div class="card"> <div class="card-header"> About Maurice </div> <div class="card-body"> <div class="row"> <div class="col-md-4"> <img class="author-profile-img" src="/assets/img/authors/maurice.png" alt="Maurice" /> </div> <div class="col-md-6"> <p class="author_bio">DevOps Engineer & Security Researcher</p> <p>Email : maurice.green@thecodeguardian.dev</p> <p>Website : http://thecodeguardian.dev</p> <p class="profile-links"> <a class="social-link" href="https://github.com/0x0M03II" target="_blank"><i class="fab fa-github fa-fw"></i></a> <a class="social-link" href="https://www.twitter.com/Maurice_GreenJr" target="_blank"><i class="fab fa-twitter fa-fw"></i></a> </p> </div> </div> </div> </div> </div><!-- Incomment incase you want to use Disqus <div id="disqus_thread"></div> --> </article> <script> var disqus_config = function () { this.page.url = "/blog/learn-about-linkers/"; /* Replace PAGE_URL with your page's canonical URL variable */ this.page.identifier = "/blog/all-about-linkers"; /* Replace PAGE_IDENTIFIER with your page's unique identifier variable */ }; (function () { /* DON'T EDIT BELOW THIS LINE */ var d = document, s = d.createElement('script'); s.src = 'https://thecodeguardian-dev.disqus.com.disqus.com/embed.js'; s.setAttribute('data-timestamp', +new Date()); (d.head || d.body).appendChild(s); })(); </script> <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a> </noscript></div> </div> <div class="row"> <div class="col-md-4"> <div class="card"> <div class="card-header">About Maurice</div> <div class="card-body"> <p class="author_bio">Hello! I am a security and CS enthusiast and most importantly a partaker of the grace of God and a follower of Jesus! Check out my other Blogs: - <a href="https://www.excellencyofchrist.blog">Excellency Of Christ</a>, - <a href="https://www.romans1520.blog">Romans 15:20</a>. </p><!-- Place this tag where you want the github button to render. --> <a class="github-button" href="https://github.com/0x0M03II/AES-Encryption" data-color-scheme="no-preference: dark; light: dark; dark: dark;" data-icon="octicon-star" data-size="large" data-show-count="true" aria-label="Star 0x0m03ii/AES-Encryption on GitHub">Star</a> </div> </div> </div> <div class="col-md-4"> <div class="card"> <div class="card-header">Categories</div> <div class="card-body text-dark"> <div id="#kernel"></div> <li class="tag-head"> <a href="/blog/categories/kernel">kernel</a> </li> <a name="kernel"></a> <div id="#reverse-engineering"></div> <li class="tag-head"> <a href="/blog/categories/reverse-engineering">reverse-engineering</a> </li> <a name="reverse-engineering"></a> <div id="#linux"></div> <li class="tag-head"> <a href="/blog/categories/linux">linux</a> </li> <a name="linux"></a> <div id="#operating-systems"></div> <li class="tag-head"> <a href="/blog/categories/operating-systems">operating-systems</a> </li> <a name="operating-systems"></a> <div id="#encryption"></div> <li class="tag-head"> <a href="/blog/categories/encryption">encryption</a> </li> <a name="encryption"></a> <div id="#math"></div> <li class="tag-head"> <a href="/blog/categories/math">math</a> </li> <a name="math"></a> <div id="#security"></div> <li class="tag-head"> <a href="/blog/categories/security">security</a> </li> <a name="security"></a> <div id="#algorithm"></div> <li class="tag-head"> <a href="/blog/categories/algorithm">algorithm</a> </li> <a name="algorithm"></a> <div id="#programming"></div> <li class="tag-head"> <a href="/blog/categories/programming">programming</a> </li> <a name="programming"></a> <div id="#arm"></div> <li class="tag-head"> <a href="/blog/categories/arm">arm</a> </li> <a name="arm"></a> <div id="#architecture"></div> <li class="tag-head"> <a href="/blog/categories/architecture">architecture</a> </li> <a name="architecture"></a> <div id="#cpu"></div> <li class="tag-head"> <a href="/blog/categories/cpu">cpu</a> </li> <a name="cpu"></a> <div id="#operating systems"></div> <li class="tag-head"> <a href="/blog/categories/operating systems">operating systems</a> </li> <a name="operating systems"></a> <div id="#hpc"></div> <li class="tag-head"> <a href="/blog/categories/hpc">hpc</a> </li> <a name="hpc"></a> <div id="#networking"></div> <li class="tag-head"> <a href="/blog/categories/networking">networking</a> </li> <a name="networking"></a> <div id="#systems"></div> <li class="tag-head"> <a href="/blog/categories/systems">systems</a> </li> <a name="systems"></a> <div id="#rust"></div> <li class="tag-head"> <a href="/blog/categories/rust">rust</a> </li> <a name="rust"></a> <div id="#opinion"></div> <li class="tag-head"> <a href="/blog/categories/opinion">opinion</a> </li> <a name="opinion"></a> </div> </div> </div> <div class="col-md-4"> <div class="card"> <div class="card-header">Useful Links</div> <div class="card-body text-dark"> <li> <a href="/">Home</a> </li> <li> <a href="/about">About</a> </li> <li> <a href="/blog">Blog</a> </li> <li> <a href="/contact">Contact</a> </li> <li> <a href="https://docs.thecodeguardian.dev">Knowledge Base</a> </li> </div> </div> </div> </div> </div> <div class="col-lg-12" id="newsletter_footer"><!-- Mailchimp Newletters --> </div><footer> <p> Powered by<a href="https://0x0M03II.github.io"> devlopr jekyll</a>. Hosted with <a href="https://pages.github.com">Github Pages</a>. </p> </footer> <script> var options = { classname: 'progressline', id: 'my-id' }; var nanobar = new Nanobar( options ); nanobar.go( 30 ); nanobar.go( 76 ); nanobar.go(100); </script> <div hidden id="snipcart" data-api-key="Y2I1NTAyNWYtMTNkMy00ODg0LWE4NDItNTZhYzUxNzJkZTI5NjM3MDI4NTUzNzYyMjQ4NzU0"></div> <script src="https://cdn.snipcart.com/themes/v3.0.0-beta.3/default/snipcart.js" defer></script> <script> if (window.netlifyIdentity) { window.netlifyIdentity.on("init", user => { if (!user) { window.netlifyIdentity.on("login", () => { document.location.href = "/admin/"; }); } }); } </script> </body> </html>

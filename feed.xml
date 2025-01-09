@@ -1,0 +1,1705 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!--
+  <meta name="follow.it-verification-code" content="QVdphpennsrKpSVYxleW"/>
+-->
+
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>The Code Guardian</title>
+    <description>This is a Security and Tech blog.</description>
+    <link></link>
+    <atom:link href="/feed.xml" rel="self" type="application/rss+xml"/>
+    <pubDate>Thu, 09 Jan 2025 23:38:45 +0000</pubDate>
+    <lastBuildDate>Thu, 09 Jan 2025 23:38:45 +0000</lastBuildDate>
+    <generator>Jekyll v4.3.2</generator>
+
+    
+      <item>
+        <title>The Rust Programming Language: Will Rust replace C/C++?</title>
+        <description>&lt;p&gt;I’m writing this article to share my opinion on the Rust vs C/C++ debate. This is my opinion, and it’s not backed by research. Admittedly, I’m biased toward C/C++; as a systems enthusiast, I appreciate the aspect of memory management and prefer being responsible for it. Nevertheless, I will be as objective as possible.  The list includes reasons why I don’t think Rust will replace C/C++ within the next ten years.&lt;/p&gt;
+
+&lt;h1 id=&quot;reasons-why-rust-may-not-replace-cc&quot;&gt;Reasons Why Rust may not replace C/C++&lt;/h1&gt;
+
+&lt;h2 id=&quot;legacy-code&quot;&gt;Legacy Code&lt;/h2&gt;
+
+&lt;p&gt;One of the primary inhibitors to replacing a language is the existence of legacy code. Many legacy programs are written in C/C++, and many are poorly documented, making them challenging for engineers to replace. Especially in Telecommunications and Banking, people avoid touching functional systems running legacy code if those systems are vital to business continuity. Replacing legacy code can be time-consuming and expensive and may require adjusting how systems integrate, further complicating the matter.&lt;/p&gt;
+
+&lt;h2 id=&quot;operating-systems&quot;&gt;Operating Systems&lt;/h2&gt;
+
+&lt;p&gt;Furthermore, the most popular operating system kernels (Windows NT, XNU, and Linux) are written in C/C++, which precludes either language from becoming obsolete. &lt;em&gt;(Nearly every operating system is written in C/C++).&lt;/em&gt; OS Development is less common but never stagnates; each operating system requires continuous development to meet changing demands and bug fixes. The relationship between compiler, operating system, and architecture is strong. The approaching end of Moore’s Law has led researchers to explore software-hardware co-design to achieve further performance improvements. The operating system cannot be (fully) circumvented to achieve co-design goals. (Note: There is an increasing amount of support for Rust in the Linux Kernel)[&lt;a href=&quot;https://docs.kernel.org/rust/&quot;&gt;1&lt;/a&gt;,&lt;a href=&quot;https://rust-for-linux.com/rust-reference-drivers&quot;&gt;2&lt;/a&gt;].&lt;/p&gt;
+
+&lt;h2 id=&quot;industry-adoption&quot;&gt;Industry Adoption&lt;/h2&gt;
+
+&lt;p&gt;Industries will continue using antiquated languages, provided the tradeoffs between performance, security, and portability are reasonable. Consider Scientific and High-Performance Computing, especially in physics and meteorology, where Fortran remains a prevalent language because it efficiently handles large and computationally expensive models. For a programming language, including Rust, to replace C/C++ in an industrial context, it must significantly outperform them in their specific applications, rendering any negative tradeoffs negligible.&lt;/p&gt;
+
+&lt;p&gt;Crucially, performance is not measured uniformly, and a preference to optimize one performance aspect can inadvertently degrade another. Consider this &lt;a href=&quot;https://benchmarksgame-team.pages.debian.net/benchmarksgame/fastest/rust-gpp.html&quot;&gt;performance benchmark comparing C++ to Rust&lt;/a&gt;. As I mentioned earlier, the relationship between compiler, OS, and architecture matters; the data included in this post illustrates how the compiler and form of programming matter, and the results, in most cases, are comparable. The relevancy of non-marginal differences between C++ and Rust is constrained to context. This underscores my original point about industry adoption, where the &lt;em&gt;why&lt;/em&gt; matters.&lt;/p&gt;
+
+&lt;h2 id=&quot;standardization--community&quot;&gt;Standardization &amp;amp; Community&lt;/h2&gt;
+
+&lt;p&gt;System complexity, especially systems with 3rd party integrations, may discourage product owners from adopting Rust as a replacement for C++. To date, Rust does not have its own ABI; rather, it provides compatibility against the C ABI. Furthermore, C++ is more popular and has a larger community of support. The lack of broad community and standardization may make the complete adoption of Rust unfavorable in contexts demanding high availability and with low fault tolerance. Despite not having an official Rust ABI, Rust appears to be a predominantly dynamically linked language that can take advantage of Link-Time optimizations.&lt;/p&gt;
+
+&lt;h2 id=&quot;learning-barrier&quot;&gt;Learning Barrier&lt;/h2&gt;
+
+&lt;p&gt;Learning Rust can be challenging! As stated in an &lt;a href=&quot;https://www.efinancialcareers.com/news/rust-vs-c-plus-plus-financial-services-low-latency&quot;&gt;efinancialcareers.com article&lt;/a&gt;, an incentive (most likely money) is likely a prerequisite to learning Rust well. My experience working in engineering in a few FinTech firms is that Quants and Traders like to make code contributions; this is good. For traders, writing code, in most cases, is a voluntary aspect of their job and, in some cases, a preference. Therefore, the incentive to learn Rust well is low, albeit those who contribute to the C++ code base are typically Full-Time engineers or Quants. To reiterate an earlier point, if the performance improvements when using Rust are marginal for the specific applications in which C++ is currently used, the incentive to replace C++ with Rust is low.&lt;/p&gt;
+
+&lt;h2 id=&quot;other-languages&quot;&gt;Other Languages&lt;/h2&gt;
+
+&lt;p&gt;The common motif of this post is that context matters. One industry where C++ remains popular is FinTech. After thinking about Rust replacing C++ in the financial industry, I was reminded of another language, OCaml, which has grown in popularity at a famous firm known as Jane Street. Although I’ve explored the OCaml compiler in the past, I don’t feel qualified to compare it with Rust; however, I was able to find &lt;a href=&quot;https://blog.darklang.com/first-thoughts-on-rust-vs-ocaml/&quot;&gt;another individual who did&lt;/a&gt;. Other programming languages are gaining popularity, most notably the Julia programming language. Julia is marketed as a high-performance programming language ideal for environments demanding parallelism and speed. A &lt;a href=&quot;https://guides.libraries.uc.edu/julia#:~:text=Julia%20is%20a%20high%2Dlevel,easy%20to%20use%20as%20Python&quot;&gt;post by the University of &lt;/a&gt;Cincinnati states that it’s “designed to give users the speed of C/C++ while remaining as easy to use as Python.”  Some engineering teams may choose to incorporate Julia to replace C++ code. It’s also possible that organizations may choose to continue developing applications in C++ in tandem with other robust and performant languages like Rust or Julia.&lt;/p&gt;
+
+&lt;h1 id=&quot;when-is-c-ideal&quot;&gt;When is C++ ideal?&lt;/h1&gt;
+
+&lt;p&gt;Briefly, C++ is excellent for GPU programming, High-Performance applications, such as those used for real-time processing, and gamedev (game development). C++ has been around for a while, so you can search for anything you want.&lt;/p&gt;
+
+&lt;h1 id=&quot;when-is-rust-ideal&quot;&gt;When is Rust Ideal?&lt;/h1&gt;
+
+&lt;p&gt;Rust is excellent for low-level operations, and I wouldn’t be surprised if it eventually becomes the primary language in embedded systems development [&lt;a href=&quot;https://www.rust-lang.org/what/embedded&quot;&gt;1&lt;/a&gt;]. If Rust is suitable for embedded, it may also have an opportunity to become a mainstream mobile operating system. A language-based operating system named &lt;a href=&quot;https://github.com/ryanra/RustOS&quot;&gt;RustOS&lt;/a&gt; has grown in popularity. If that’s not convincing enough, Google is developing an operating system called &lt;a href=&quot;https://fuchsia.dev/&quot;&gt;Fuchsia&lt;/a&gt;, a “general purpose OS, designed to power a diverse ecosystem of software and hardware.”  Google has a successful track record of turning in-house applications and tools into widely adopted commercial products: ChromeOS, Android, Kubernetes, and Google Cloud Platform, to name a few. Though not fully developed in Rust, much of the code is written in Rust.&lt;/p&gt;
+
+&lt;h1 id=&quot;what-can-accelerate-adoption-of-rust&quot;&gt;What Can Accelerate Adoption of Rust?&lt;/h1&gt;
+
+&lt;p&gt;Feel free to enumerate this list to explore each idea further if interested.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;University Computer Science and Cybersecurity programs must incorporate Rust into the curriculum.
+    &lt;ul&gt;
+      &lt;li&gt;Students always remember their first, and the first language learned and used typically remains the favorite. My university’s CS department preferred C and C++, mainly C++. Programming assignments were almost exclusively written in C/C++. This is not surprising for systems-based courses like Computer Architecture, Operating Systems, Systems Programming, Computer Networking, and Compilers &amp;amp; Runtime; however, it remains true for DS&amp;amp;A, Intro to Programming, etc. Although I use and appreciate Python, I rarely use Java, C#/.NET, Go, or any other language. Being a systems guy, I am undoubtedly biased, but if my assignments were written in Java, I’d like it more.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;University and industry Rust hackathons.
+    &lt;ul&gt;
+      &lt;li&gt;Hackathons incentivize students and professionals to learn Rust well.&lt;/li&gt;
+      &lt;li&gt;Builds the Rust community, which leads to broader support for libraries, integration, and migration (from legacy code to Rust).&lt;/li&gt;
+      &lt;li&gt;Analogous to bug bounty programs, organizations can outsource the development of secure solutions to professionals and hobbyists worldwide.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Application-specific texts for learning Rust.
+    &lt;ul&gt;
+      &lt;li&gt;Books that converse Fundamentals&lt;/li&gt;
+      &lt;li&gt;Book for Systems programmers&lt;/li&gt;
+      &lt;li&gt;Book for Compiler Engineers&lt;/li&gt;
+      &lt;li&gt;Book for Financial Engineers&lt;/li&gt;
+      &lt;li&gt;Book for Scientists&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Accessible and Structured Course for learning Rust
+    &lt;ul&gt;
+      &lt;li&gt;Should be paid for by the employer&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;High-paying Rust jobs&lt;/li&gt;
+  &lt;li&gt;An Operating System written in Rust
+    &lt;ul&gt;
+      &lt;li&gt;As mentioned, there are a few exciting projects under development. A powerful Rust-based operating system for embedded, mobile, enterprise, and consumer computing devices would completely change Rust’s trajectory.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;On a potentially positive note for Rust, the White House issued a press release in 2024 advocating memory safety and the use of memory-safe programming languages [&lt;a href=&quot;https://www.whitehouse.gov/oncd/briefing-room/2024/02/26/press-release-technical-report/&quot;&gt;1&lt;/a&gt;, &lt;a href=&quot;https://www.whitehouse.gov/wp-content/uploads/2024/02/Final-ONCD-Technical-Report.pdf&quot;&gt;2&lt;/a&gt;].&lt;/p&gt;
+</description>
+        <pubDate>Wed, 11 Sep 2024 06:59:00 +0000</pubDate>
+        <link>/blog/rust-vs-cpp/</link>
+        <guid isPermaLink="true">/blog/rust-vs-cpp/</guid>
+      </item>
+    
+      <item>
+        <title>Packet flow in Linux Kernel</title>
+        <description>&lt;h1 id=&quot;introduction&quot;&gt;Introduction&lt;/h1&gt;
+&lt;p&gt;While working on a current research project, I started thinking about socket API calls such as &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;send()&lt;/code&gt; and &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;recv()&lt;/code&gt; and their primitive form.  I decided to investigate how the Linux kernel processes network data when the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;send()&lt;/code&gt; method is called.  In this post, I will describe the control flow for a TCP packet.&lt;/p&gt;
+
+&lt;p&gt;This post assumes that the reader has a strong understanding of TCP/IP networking.&lt;/p&gt;
+
+&lt;h2 id=&quot;system-call-send&quot;&gt;System Call send()&lt;/h2&gt;
+&lt;p&gt;To begin, the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;send&lt;/code&gt; system call is registered, and simply calls the function &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;__send_sendto()&lt;/code&gt; :&lt;/p&gt;
+
+&lt;h3 id=&quot;send-syscall-registration&quot;&gt;send() syscall registration&lt;/h3&gt;
+&lt;div class=&quot;language-c highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;SYSCALL_DEFINE4&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;send&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;fd&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;__user&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;buff&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;size_t&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;len&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+		&lt;span class=&quot;kt&quot;&gt;unsigned&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;flags&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+	&lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;__sys_sendto&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;fd&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;buff&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;len&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;flags&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;NULL&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;__sys_sendto---call&quot;&gt;__sys_sendto( … ) call&lt;/h3&gt;
+&lt;div class=&quot;language-c highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;__sys_sendto&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;fd&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;__user&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;buff&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;size_t&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;len&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;unsigned&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;flags&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+		 &lt;span class=&quot;k&quot;&gt;struct&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;sockaddr&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;__user&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;addr&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;  &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;addr_len&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+	&lt;span class=&quot;k&quot;&gt;struct&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;socket&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;sock&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+	&lt;span class=&quot;k&quot;&gt;struct&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;sockaddr_storage&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;address&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+	&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;err&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+	&lt;span class=&quot;k&quot;&gt;struct&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;msghdr&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;msg&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+	&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;fput_needed&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+
+	&lt;span class=&quot;n&quot;&gt;err&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;import_ubuf&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ITER_SOURCE&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;buff&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;len&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;amp;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;msg&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;msg_iter&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+	&lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;unlikely&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;err&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
+		&lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;err&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+	&lt;span class=&quot;n&quot;&gt;sock&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;sockfd_lookup_light&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;fd&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;amp;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;err&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;amp;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;fput_needed&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+	&lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;!&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;sock&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+		&lt;span class=&quot;k&quot;&gt;goto&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;out&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+
+	&lt;span class=&quot;n&quot;&gt;msg&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;msg_name&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;NULL&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+	&lt;span class=&quot;n&quot;&gt;msg&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;msg_control&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;NULL&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+	&lt;span class=&quot;n&quot;&gt;msg&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;msg_controllen&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+	&lt;span class=&quot;n&quot;&gt;msg&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;msg_namelen&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+	&lt;span class=&quot;n&quot;&gt;msg&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;msg_ubuf&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;NULL&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+	&lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;addr&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+		&lt;span class=&quot;n&quot;&gt;err&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;move_addr_to_kernel&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;addr&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;addr_len&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;amp;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;address&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+		&lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;err&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+			&lt;span class=&quot;k&quot;&gt;goto&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;out_put&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+		&lt;span class=&quot;n&quot;&gt;msg&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;msg_name&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;struct&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;sockaddr&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;amp;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;address&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+		&lt;span class=&quot;n&quot;&gt;msg&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;msg_namelen&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;addr_len&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+	&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+	&lt;span class=&quot;n&quot;&gt;flags&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;amp;=&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;~&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;MSG_INTERNAL_SENDMSG_FLAGS&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+	&lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;sock&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;file&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;f_flags&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;amp;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;O_NONBLOCK&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+		&lt;span class=&quot;n&quot;&gt;flags&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;|=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;MSG_DONTWAIT&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+	&lt;span class=&quot;n&quot;&gt;msg&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;msg_flags&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;flags&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+	&lt;span class=&quot;n&quot;&gt;err&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;__sock_sendmsg&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;sock&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;amp;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;msg&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+
+&lt;span class=&quot;nl&quot;&gt;out_put:&lt;/span&gt;
+	&lt;span class=&quot;n&quot;&gt;fput_light&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;sock&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;file&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;fput_needed&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;nl&quot;&gt;out:&lt;/span&gt;
+	&lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;err&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;__sock_sendmsg---sock_sendmsg_noec&quot;&gt;__sock_sendmsg() -&amp;gt; sock_sendmsg_noec()&lt;/h3&gt;
+
+&lt;p&gt;A brief note about INDIRECT_CALL_INET, &lt;a href=&quot;https://www.gnu.org/software/gawk/manual/html_node/Indirect-Calls.html&quot;&gt;indirect calls&lt;/a&gt;, in this context, they are used as an alternative to if/else conditionals to determine the function that the function pointer points to.  Presumably, this method is preferred to avoid using branch instructions (and potential misprediction) and the overhead.  The sock-&amp;gt;ops-&amp;gt;sendmsg is a function pointer; for INET messages, the inet_sendmsg routine will be selected.&lt;/p&gt;
+
+&lt;div class=&quot;language-c highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;static&lt;/span&gt; &lt;span class=&quot;kr&quot;&gt;inline&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;sock_sendmsg_nosec&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;struct&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;socket&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;sock&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;struct&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;msghdr&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;msg&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+	&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ret&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;INDIRECT_CALL_INET&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;READ_ONCE&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;sock&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ops&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;sendmsg&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;inet6_sendmsg&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+				     &lt;span class=&quot;n&quot;&gt;inet_sendmsg&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;sock&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;msg&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+				     &lt;span class=&quot;n&quot;&gt;msg_data_left&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;msg&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;));&lt;/span&gt;
+	&lt;span class=&quot;n&quot;&gt;BUG_ON&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ret&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;EIOCBQUEUED&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+
+	&lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;trace_sock_send_length_enabled&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;())&lt;/span&gt;
+		&lt;span class=&quot;n&quot;&gt;call_trace_sock_send_length&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;sock&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;sk&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ret&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+	&lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ret&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;The function pointer is defined in linux/include/linux/net.h and takes the following arguments.&lt;/p&gt;
+&lt;div class=&quot;language-c highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;	&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt;		&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;sendmsg&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;   &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;struct&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;socket&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;sock&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;struct&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;msghdr&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;m&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+				      &lt;span class=&quot;kt&quot;&gt;size_t&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;total_len&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;If you’d like to understand how the indirect call is used, please visit the &lt;a href=&quot;https://github.com/torvalds/linux/blob/master/include/linux/indirect_call_wrapper.h#L57&quot;&gt;indirect_call_wrapper.h&lt;/a&gt; header.&lt;/p&gt;
+
+&lt;h3 id=&quot;inet_sendmsg---indirect_call_2tcp-or-udp&quot;&gt;inet_sendmsg() -&amp;gt; Indirect_call_2(tcp or udp)&lt;/h3&gt;
+&lt;p&gt;The inet_sendmsg routine uses another indirect call; the function pointer will point to the TCP or UDP sendmsg implementation.  The TCP sendmsg routine calls tcp_sendmsg_lock().  The socket is &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;locked&lt;/code&gt; before data is transmitted.&lt;/p&gt;
+
+&lt;div class=&quot;language-c highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;inet_sendmsg&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;struct&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;socket&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;sock&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;struct&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;msghdr&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;msg&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;size_t&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;size&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+	&lt;span class=&quot;k&quot;&gt;struct&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;sock&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;sk&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;sock&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;sk&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+
+	&lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;unlikely&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;inet_send_prepare&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;sk&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)))&lt;/span&gt;
+		&lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;EAGAIN&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+
+	&lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;INDIRECT_CALL_2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;sk&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;sk_prot&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;sendmsg&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;tcp_sendmsg&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;udp_sendmsg&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+			       &lt;span class=&quot;n&quot;&gt;sk&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;msg&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;size&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;div class=&quot;language-c highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;tcp_sendmsg&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;struct&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;sock&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;sk&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;struct&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;msghdr&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;msg&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;size_t&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;size&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+	&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ret&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+
+	&lt;span class=&quot;n&quot;&gt;lock_sock&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;sk&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+	&lt;span class=&quot;n&quot;&gt;ret&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;tcp_sendmsg_locked&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;sk&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;msg&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;size&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+	&lt;span class=&quot;n&quot;&gt;release_sock&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;sk&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+
+	&lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ret&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;moving-tcp-to-ip-layer&quot;&gt;Moving TCP to IP Layer&lt;/h3&gt;
+&lt;p&gt;The implementation of &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;tcp_sendmsg_locked&lt;/code&gt; includes a call to &lt;a href=&quot;https://github.com/torvalds/linux/blob/master/net/ipv4/tcp.c#L1297&quot;&gt;__tcp_push_pending_frames&lt;/a&gt;, and this is where things get interesting.  Pushing page frames involves invoking tcp_write_xmit, which traverses the write queue that belongs to the socket and clones the packet.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;[!Note]
+You’ll notice several function calls that are wrapped with likely() or &lt;a href=&quot;https://github.com/torvalds/linux/blob/master/net/ipv4/tcp_output.&amp;gt; c#L3011&quot;&gt;unlikley()&lt;/a&gt;.  This is a classification used with ELF binaries to improve locality.  See my note about this in the post on &lt;a href=&quot;https://www.thecodeguardian.dev/blog/learn-about-linkers/#/&quot;&gt;Linkers&lt;/a&gt; in the section &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;GNU Linker Script Explanation&lt;/code&gt;.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h3 id=&quot;tcp_write_xmit---tcp_transmit_skb&quot;&gt;tcp_write_xmit() -&amp;gt; tcp_transmit_skb()&lt;/h3&gt;
+
+&lt;p&gt;Next, the function tcp_transmit_skb is called, which builds the TCP header.  Once complete, the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;queue_xmit&lt;/code&gt; function pointer is called which invokes IPv4 or IPv6 processing.  The respecitve INET routine will encapsulate the buffered TCP (or UDP) data.&lt;/p&gt;
+
+&lt;div class=&quot;language-c highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;static&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;__tcp_transmit_skb&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;struct&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;sock&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;sk&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;struct&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;sk_buff&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;skb&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+			      &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;clone_it&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;gfp_t&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;gfp_mask&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;u32&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;rcv_nxt&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+
+    &lt;span class=&quot;c1&quot;&gt;////////////////////////////&lt;/span&gt;
+	&lt;span class=&quot;p&quot;&gt;....&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;LINES&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;OMITTED&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;...&lt;/span&gt;
+
+    &lt;span class=&quot;c1&quot;&gt;///////////////////////////&lt;/span&gt;
+
+	&lt;span class=&quot;n&quot;&gt;err&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;INDIRECT_CALL_INET&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;icsk&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;icsk_af_ops&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;queue_xmit&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+				 &lt;span class=&quot;n&quot;&gt;inet6_csk_xmit&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ip_queue_xmit&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+				 &lt;span class=&quot;n&quot;&gt;sk&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;skb&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;amp;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;inet&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;cork&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;fl&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+
+	&lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;unlikely&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;err&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+		&lt;span class=&quot;n&quot;&gt;tcp_enter_cwr&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;sk&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+		&lt;span class=&quot;n&quot;&gt;err&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;net_xmit_eval&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;err&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+	&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+	&lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;!&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;err&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;oskb&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+		&lt;span class=&quot;n&quot;&gt;tcp_update_skb_after_send&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;sk&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;oskb&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;prior_wstamp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+		&lt;span class=&quot;n&quot;&gt;tcp_rate_skb_sent&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;sk&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;oskb&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+	&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+	&lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;err&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;A similar process follows for each of the lower layers.&lt;/p&gt;
+
+&lt;h2 id=&quot;understanding-the-skb-data-structure&quot;&gt;Understanding the SKB Data structure&lt;/h2&gt;
+&lt;p&gt;It’s important that you understand the SKB data structure, which is used to represent network packets.  There are several sources online that discuss SKB; however, I found the official &lt;a href=&quot;https://docs.kernel.org/networking/skbuff.html&quot;&gt;Linux kernel documentation&lt;/a&gt; to be the most helpful.&lt;/p&gt;
+
+&lt;h2 id=&quot;why-is-this-important&quot;&gt;Why is this important&lt;/h2&gt;
+
+&lt;p&gt;Current research in High-Performance Computing (which typically defines the initiaives of network developers) is exploring alternative ways to efficiently transmit large amounts of data.  Zero-copy networking is a popular strategy that involves bypassing the kernel networking stack (every I explainned above), to allow data movement from user-space buffers directly to the NIC.  Furthermore, cloud platforms like Azure, have adopted the use of RDMA to support buffer-to-buffer transmission.&lt;/p&gt;
+
+&lt;p&gt;Understanding how current implementations of TCP/IP work is crucial for discovering improvements.  I was recently introduced to DPDK (Data plane Development Kit); a frameware for implementing zero-copy networking and an abstraction layer in the networking model.  Other interesting projects include &lt;a href=&quot;&quot;&gt;Named Data Networking&lt;/a&gt;, which is one of the &lt;a href=&quot;http://www.nets-fia.net/&quot;&gt;five initiatives sponsered by the National Science Foundation&lt;/a&gt; for future architecutre of the internet.&lt;/p&gt;
+</description>
+        <pubDate>Sat, 22 Jun 2024 15:44:00 +0000</pubDate>
+        <link>/blog/linux-kernel-flow/</link>
+        <guid isPermaLink="true">/blog/linux-kernel-flow/</guid>
+      </item>
+    
+      <item>
+        <title>ARM: Going down a rabbit trail in ARM</title>
+        <description>&lt;h1 id=&quot;how-it-started&quot;&gt;How it started&lt;/h1&gt;
+&lt;p&gt;Earlier today I as looking at some code that I wrote on &lt;a href=&quot;https://godbolt.org/&quot;&gt;godbolt.org&lt;/a&gt; and noticed an interesting symbol named &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;__aeabi_idivmod&lt;/code&gt;.  The code included an implementation of gcd(a, b), following the Euclidean (non-extended) algorithm, which includes modulo operation.  The assembly label that included the reference to the previous symbol is included below.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-ArmAsm&quot;&gt;.L31:
+        mov     r1, r4
+        bl      __aeabi_idivmod
+        mov     r0, r4
+        cmp     r1, #0
+        bne     .L40
+        cmp     r4, #1
+        beq     .L41
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Curiosity prompted an investigation into &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;__aeabi_idivmod&lt;/code&gt;; I was able to find the &lt;a href=&quot;https://codebrowser.dev/llvm/compiler-rt/lib/builtins/arm/aeabi_idivmod.S.html&quot;&gt;ARM assembler file&lt;/a&gt; that includes the definition for this modulo division.  This is an obvious reference to an ABI and I found some &lt;a href=&quot;https://github.com/ARM-software/abi-aa/blob/main/rtabi32/rtabi32.rst#other-c-and-assembly-language-helper-functions&quot;&gt;helpful documentation&lt;/a&gt; on GitHub that provides some interesting information.  One thing in particular stood out:&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Implementations of idiv, uidiv, idivmod, and uidivmod have full &lt;a href=&quot;https://github.com/ARM-software/abi-aa/releases&quot;&gt;AAPCS32&lt;/a&gt; privileges and may corrupt any register an AAPCS-conforming call may corrupt.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h2 id=&quot;what-is-aapcs32&quot;&gt;What is AAPCS32?&lt;/h2&gt;
+&lt;p&gt;Full documentation on AACS32 can be found &lt;a href=&quot;https://github.com/ARM-software/abi-aa/releases/download/2023Q3/aapcs32.pdf&quot;&gt;here&lt;/a&gt;.  Notably, the order of function parameter matters.  According to the AACS32 documentation, the following general purpose registers are relevant: r0, r1, r2, and r3.  (For additional information on ARM registers, please refer to my &lt;a href=&quot;https://docs.thecodeguardian.dev/v/reverse-engineering/arm-registers&quot;&gt;GitBook Reverse Engineering page&lt;/a&gt;).  Note that the majority of my notes are included in the &lt;a href=&quot;https://docs.thecodeguardian.dev/&quot;&gt;Low Level Computing&lt;/a&gt; page and not the Reverse Engineering page.&lt;/p&gt;
+
+&lt;p&gt;According to the AACS32, registers r0 &amp;amp; r1 are scratch registers for results, while r2 &amp;amp; r3 are scratch registers for other use.  Crucially, AACS32 defines different behavior for datatypes that exceed 32-bits.&lt;/p&gt;
+
+&lt;p&gt;The first four registers (r0, r1, r2, and r3) are used to pass argument values into a subroutine and return a result.  Something else worth mentioning, is that AAPCS32 seems to be linked to the THUMB ISA.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;The AAPCS requires that all sub-routine call and return sequences support inter-working between Arm and Thumb states….&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;In the snippet above, you’ll notice that the instruction is &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;bl&lt;/code&gt; or branch with link; an instruction that, according to the AAPCS32, is used to call a subroutine. Remember that general purpose register r14 on an ARM architecture is used for link; that is, r14 will hold the address to return when a subroutine call completes.&lt;/p&gt;
+
+&lt;div class=&quot;language-cpp highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;gcd&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;b&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;b&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;gcd&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;b&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;a&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;%&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;b&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Looking at the function above, the subroutine call to &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;__aeabi_idivmod&lt;/code&gt; is implementing gcd(b, a % b).  The assembly shows that a value in the register r4 is moved in r1, which is a scratch register used for arguments (along with r3).  The &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;bl&lt;/code&gt; instruction calls the subroutine and stores the return address in &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;r14&lt;/code&gt; the Link register.  The quotient is stored in &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;r0&lt;/code&gt; and the remainder in &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;r1&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;I believe the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;mov r0, r4&lt;/code&gt; instruction is moving the value for b into &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;r0&lt;/code&gt; for a comparison, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;if (b == 0)&lt;/code&gt;.  The instructoin  &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;cmp r1, #0&lt;/code&gt; compares the remainder (int &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;r1&lt;/code&gt;) to 0&lt;/p&gt;
+
+&lt;p&gt;The remaining assmebly is self-explanatory.&lt;/p&gt;
+
+&lt;h2 id=&quot;why-did-i-investigate-this&quot;&gt;Why did I investigate this?&lt;/h2&gt;
+&lt;p&gt;Learning about the internals of a CPU (or anything in general) is always beneficial in cybersecurity.  The more you know, the capable you are as a security researcher.&lt;/p&gt;
+
+&lt;p&gt;Additionally, I find this topic interesting, and enjoy learning about the internals of a CPU and the compiler.&lt;/p&gt;
+</description>
+        <pubDate>Sat, 25 May 2024 18:15:00 +0000</pubDate>
+        <link>/blog/arm-rabbit-trail/</link>
+        <guid isPermaLink="true">/blog/arm-rabbit-trail/</guid>
+      </item>
+    
+      <item>
+        <title>Asymptotic Analysis: Arithmetic Sequence</title>
+        <description>&lt;h2 id=&quot;introduction&quot;&gt;Introduction&lt;/h2&gt;
+&lt;p&gt;Recently, a friend who is considering a career shift to software engineering sparked a conversation about algorithms and the analysis of runtime complexity. This friend is naturally curious, often asking “why” to understand new concepts—an admirable habit that many could benefit from adopting. In this post, I’ll delve into the runtime of a function, striving to answer as many “why” questions as possible. While I’m not an expert in mathematics, I’ll do my best to address these queries, though some may remain unanswered.&lt;/p&gt;
+
+&lt;h3 id=&quot;the-function&quot;&gt;The function&lt;/h3&gt;
+&lt;p&gt;The following snippet shows a nested for loop.  The outer loop starts at 1 and continues through to n - 1.  The inner loop is a little more interesting; it will always start at i + 1, and continue through to n (inclusive).  This means the number of iterations for the inner loop depends on the current value if i.&lt;/p&gt;
+
+&lt;p&gt;Observing this routine, it is immediately clear that the Big O time complexity is O(n&lt;sup&gt;2&lt;/sup&gt;).  Simarly, Theta notation would also be (\Theta(n^2)).&lt;/p&gt;
+
+&lt;div class=&quot;language-cpp highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;myfunction&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;n&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;j&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+
+    &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;n&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;++&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;j&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;j&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;n&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;j&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;++&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;answering-the-first-why&quot;&gt;Answering the First Why&lt;/h3&gt;
+&lt;p&gt;How do we determine that the runtime of this routine is quadratic?&lt;/p&gt;
+
+&lt;p&gt;Remember that asympotic notation to analyze the runtime of an algorithm is looking at the tail behavior of the algorithm.  That is, for a sufficiently large input size n, as n approaches infinity, how does my functions effort grow respective to n.  When working with nested for loops, the key is to count the number of iterations; however, the number of iterations varies, because it depends on the size of n.  In this case, finding the sum requires the use of a little math to find the sum of terms of an arithmetic sequence.  During my original explanation, I immediately provided a well known series to show exactly why this is quadratic.&lt;/p&gt;
+
+&lt;p&gt;S&lt;sub&gt;n&lt;/sub&gt; = n(a&lt;sub&gt;1&lt;/sub&gt; + a&lt;sub&gt;n&lt;/sub&gt;)⁄2&lt;/p&gt;
+
+&lt;p&gt;Where a&lt;sub&gt;1&lt;/sub&gt; is the first term in the sequence, a&lt;sub&gt;n&lt;/sub&gt; is the last term, and d (not shown above) is the common difference.&lt;/p&gt;
+
+&lt;p&gt;Before I could procede, I was once again asked, “why?”  So, before I show how to find the sum using the formula above, I’ll show why this formula even works.&lt;/p&gt;
+
+&lt;h4 id=&quot;derivation-of-sum-of-arithmetic-series&quot;&gt;Derivation of Sum of Arithmetic Series&lt;/h4&gt;
+&lt;p&gt;Consider the sequence 99 + 98 + 97 + 96 + … + 1.  It is quite easy to see that the common difference is -1, and that the value of a given term a&lt;sub&gt;i&lt;/sub&gt; is simply a&lt;sub&gt;n&lt;/sub&gt; = a&lt;sub&gt;1&lt;/sub&gt; + (n - 1)d.  For example, let n equal 4, then the 4&lt;sup&gt;th&lt;/sup&gt; term in this sequence, a&lt;sub&gt;4&lt;/sub&gt;, is 96.  This could easily be found by taking n - 1, which is 3 and multiplying it by the common difference of -1 to give -3.  Then, adding this to a&lt;sub&gt;1&lt;/sub&gt;, yields 99 + (-3) = 96.&lt;/p&gt;
+
+&lt;p&gt;This works well, but how did I know that the n&lt;sup&gt;th&lt;/sup&gt; term can be found using the formula a&lt;sub&gt;n&lt;/sub&gt; = a&lt;sub&gt;1&lt;/sub&gt; + (n - 1)d?  To show this, I will start by defining a few variables:&lt;/p&gt;
+
+&lt;p&gt;S&lt;sub&gt;n&lt;/sub&gt; = Sum of the sequence for the first n terms.
+d = Again, refers to the common difference between any two neighboring numbers in the sequence.
+a&lt;sub&gt;1&lt;/sub&gt; = The first number in the sequence.
+a&lt;sub&gt;n&lt;/sub&gt; = The n&lt;sup&gt;th&lt;/sup&gt; term in the sequence.&lt;/p&gt;
+
+&lt;p&gt;Looking at a sequence, I can develop a pattern that will allow me to build a formula.&lt;/p&gt;
+
+&lt;p&gt;S&lt;sub&gt;n&lt;/sub&gt; = a + (a + d) + (a + 2d) + (a + 3d) + … + [a + (n - 1)d]&lt;/p&gt;
+
+&lt;p&gt;Notice that the first term a&lt;sub&gt;1&lt;/sub&gt; begins with a and the second term increases a by the common difference, d.  Makese perfect sense so far!  The third term, therefore, must be 1 more than the second; however, since I’m only looking to develop a formula and don’t know what the second term is, I must use for first term a&lt;sub&gt;1&lt;/sub&gt; or a, as a base.  Every other term will calculate its value relative to the base a.  Remember that there is a common difference d between two neighboring numbers in the sequence.  So, the second term is simply (a + d), while the third term would be (a + d + d), or (a + 2d).  That’s because it is &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;d&lt;/code&gt; more than its predecessor (a + d).  This pattern continues until the end of the sequence: (a + 3d), (a + 4d), …, [a + (n - 1)d].  The final term uses &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;(n - 1)&lt;/code&gt; instead of an integer because we don’t know the size of the sequence.&lt;/p&gt;
+
+&lt;p&gt;The next step is to reverse the sum that we just defined above.&lt;/p&gt;
+
+&lt;p&gt;Given S&lt;sub&gt;n&lt;/sub&gt; = a + (a + d) + (a + 2d) + (a + 3d) + … + , the reversed sum is&lt;/p&gt;
+
+&lt;p&gt;S&lt;sub&gt;n&lt;/sub&gt; = [a + (n - 1)d] + [a + (n - 2)d] + [a + (n - 3)d] + … + a&lt;/p&gt;
+
+&lt;p&gt;Finally, we add the two together:&lt;/p&gt;
+
+&lt;p&gt;S&lt;sub&gt;n&lt;/sub&gt; + S&lt;sub&gt;n&lt;/sub&gt; = {a + [a + (n - 1)d]} + {[a + d] + [a + (n - 2)d]} + {[a + 2d] + [a + (n - 3)d]} + {[a + 3d] + [a + (n - 4)d]} + {[a + (n - 1)d] + a}&lt;/p&gt;
+
+&lt;p&gt;Simplifying gives:&lt;/p&gt;
+
+&lt;p&gt;2S&lt;sub&gt;n&lt;/sub&gt; = [a + a + (n - 1)d] + [a + d + a + (n-2)d] + [a + 2d + a + (n - 3)d] + [a + 3d + a + (n - 4)d] + [a + a + (n - 1)d] .&lt;/p&gt;
+
+&lt;p&gt;Each term simplifies to [2a + (n - 1)d].  To save time, I won’t simplify each one, but I’ll show how to simpify the second term, [a + d + a + (n-2)d].&lt;/p&gt;
+
+&lt;p&gt;[a + d + a + (n-2)d] can be written as [a + d + a + dn -2d], which becomes [2a + d + dn - 2d].  This simplifies further to [2a + dn - 1d] and factoring yields the same [2a + (n - 1)d].&lt;/p&gt;
+
+&lt;p&gt;We now know that each term is [2a + (n - 1)d] and given &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;n&lt;/code&gt; terms, we are left with the following:&lt;/p&gt;
+
+&lt;p&gt;2S&lt;sub&gt;n&lt;/sub&gt; = n * [2a + (n - 1)d].  To isolate S, we simply divide by two: S&lt;sub&gt;n&lt;/sub&gt; = n * [2a + (n - 1)d]⁄2 .&lt;/p&gt;
+
+&lt;p&gt;Our formula is as follows:&lt;/p&gt;
+
+&lt;p&gt;S&lt;sub&gt;n&lt;/sub&gt; = n * [2a + (n - 1)d]⁄2&lt;/p&gt;
+
+&lt;h4 id=&quot;what-exactly-does-this-mean&quot;&gt;What exactly does this mean?&lt;/h4&gt;
+&lt;p&gt;Remember that we want to find the sum of the first to n&lt;sup&gt;th&lt;/sup&gt; (or first to last term).  Given the formula above, we consider the first element of the sequence, a&lt;sub&gt;1&lt;/sub&gt; to be &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;a&lt;/code&gt; and the n&lt;sup&gt;th&lt;/sup&gt; element, a&lt;sub&gt;n&lt;/sub&gt; to be a&lt;sub&gt;n&lt;/sub&gt; = a + (n - 1)d.  Therefore,&lt;/p&gt;
+
+&lt;p&gt;[2a + (n - 1)d]⁄2 = a + [a + (n - 1)d] = a&lt;sub&gt;1&lt;/sub&gt; + a&lt;sub&gt;n&lt;/sub&gt;&lt;/p&gt;
+
+&lt;p&gt;Finally giving, S&lt;sub&gt;n&lt;/sub&gt; = n(a&lt;sub&gt;1&lt;/sub&gt; + a&lt;sub&gt;n&lt;/sub&gt;)⁄2&lt;/p&gt;
+
+&lt;h3 id=&quot;applying-this-to-our-loop&quot;&gt;Applying this to our loop!&lt;/h3&gt;
+&lt;p&gt;Looking at our original loop, we are now able to count the number of iterations for the inner and outer loop.&lt;/p&gt;
+
+&lt;div class=&quot;language-cpp highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;myfunction&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;n&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;j&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+
+    &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;n&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;++&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;j&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;j&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;n&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;j&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;++&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;This snippet uses n, I don’t know when the loop will terminate.  Instead, I can define a series that uses n as a relative point.&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;i = 1&lt;/th&gt;
+      &lt;th&gt;i = 2&lt;/th&gt;
+      &lt;th&gt;i = 3&lt;/th&gt;
+      &lt;th&gt;i = 4&lt;/th&gt;
+      &lt;th&gt;i = …&lt;/th&gt;
+      &lt;th&gt;i = (n - 1)&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;j = 2; (n - 2) + 1 iterations&lt;/td&gt;
+      &lt;td&gt;j = 3; (n - 3) + 1 iterations&lt;/td&gt;
+      &lt;td&gt;j = 4; (n - 4) + 1 iterations&lt;/td&gt;
+      &lt;td&gt;j = 5; (n - 4) + 1 iteratoins&lt;/td&gt;
+      &lt;td&gt;…&lt;/td&gt;
+      &lt;td&gt;j = n; 1 iteration&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;Inner loop sequence: (n - 2) + 1, (n - 3) + 1, (n - 4) + 1, …, 1 which simiplifies to:&lt;/p&gt;
+
+&lt;p&gt;(n - 1), (n - 2), (n - 3), … , 1&lt;/p&gt;
+
+&lt;p&gt;Using the formula defined earlier, we have S&lt;sub&gt;n&lt;/sub&gt; = n ((n - 1) + 1)⁄2 , which simplifies to n&lt;sup&gt;2&lt;/sup&gt;⁄2.  The dominant term is clearly n&lt;sup&gt;2&lt;/sup&gt;, which is how we know that the nested loop above is O(n&lt;sup&gt;2&lt;/sup&gt;) and grows quadratically with &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;n&lt;/code&gt;.&lt;/p&gt;
+
+&lt;h3 id=&quot;theta-notation&quot;&gt;Theta Notation&lt;/h3&gt;
+&lt;p&gt;The functional definition of Theta notation is: \Theta(g(n)) = f(n) ∃ c&lt;sub&gt;1&lt;/sub&gt;, c&lt;sub&gt;2&lt;/sub&gt; &amp;gt;= 0 and n&lt;sub&gt;0&lt;/sub&gt; such that 0 &amp;lt;= c&lt;sub&gt;1&lt;/sub&gt; * g(n) &amp;lt;= f(n) &amp;lt;= c&lt;sub&gt;2&lt;/sub&gt; * g(n) ∀ n &amp;gt;= n&lt;sub&gt;0&lt;/sub&gt;.&lt;/p&gt;
+
+&lt;h4 id=&quot;upper-bound&quot;&gt;Upper Bound&lt;/h4&gt;
+
+&lt;p&gt;T(n) = n&lt;sup&gt;2&lt;/sup&gt;⁄2 &amp;lt;= n&lt;sup&gt;2&lt;/sup&gt;⁄2 so I can choose 1⁄2 for c&lt;sub&gt;2&lt;/sub&gt;&lt;/p&gt;
+
+&lt;h4 id=&quot;lower-bound&quot;&gt;Lower Bound&lt;/h4&gt;
+
+&lt;p&gt;T(n) = n&lt;sup&gt;2&lt;/sup&gt;⁄2 &amp;gt;= n&lt;sup&gt;2&lt;/sup&gt;⁄4 so I can choose 1⁄4 for c&lt;sub&gt;1&lt;/sub&gt;.&lt;/p&gt;
+
+&lt;p&gt;Finally, I have 1⁄4 * n&lt;sup&gt;2&lt;/sup&gt; &amp;lt;= f(n) &amp;lt;= 1⁄2 * n&lt;sup&gt;2&lt;/sup&gt; .  This means that for a sufficiently large n, this routine is \Theta(n&lt;sup&gt;2&lt;/sup&gt;).&lt;/p&gt;
+</description>
+        <pubDate>Sat, 25 May 2024 10:15:00 +0000</pubDate>
+        <link>/blog/asymptotic-analysis-sequence/</link>
+        <guid isPermaLink="true">/blog/asymptotic-analysis-sequence/</guid>
+      </item>
+    
+      <item>
+        <title>Public-Key Cryptography: Diffie-Hellman</title>
+        <description>&lt;h2 id=&quot;public-key-cryptography&quot;&gt;Public-Key Cryptography&lt;/h2&gt;
+
+&lt;p&gt;Public-Key cryptography works by using pairs of mathematically related keys generated by cryptographic algorithms.  These cryptographic algorithms are based on difficult ( one-way ) mathematical problems, such as the discrete logarithm assumption.  In other words, the security of many public-key cryptographic algorithms depends on mathematical and computational difficulty.  A key pair consists of a private key and a public key; the private key should never be shared with anyone.  Public-key algorithms support encryption and digital signatures.&lt;/p&gt;
+
+&lt;p&gt;Encryption provides confidentiality and works by using a recipients public key to encrypt a message.  Once the message is received, the recipient will use his or her own private key to decrypt the message.&lt;/p&gt;
+
+&lt;p&gt;Digital signatures provide integrity and non-repudiation.  Integrity refers to the assurance that the data is accurate and has not been changed.  Non-repudiation is the inability for someone to deny the origin or source of data.  An example use case would be for a service such as DocuSign, where authenticity of a signature is vital, and, once a contract is signed, it should not be possible for anyone to deny the authenticity of the signature.  In order to provide a digital signature, the sender of a message will encrypt the hash of the message using their private key.  The receiver of a message will use the senders public key to decrypt the hash, and compare the message hash computed by the sender with the hash computed locally.&lt;/p&gt;
+
+&lt;h3 id=&quot;math-background&quot;&gt;Math Background&lt;/h3&gt;
+
+&lt;p&gt;I will briefly introduce a few mathematical properties necessary for understanding Diffie-Hellman.  This is by no means comprehensive, and you are encouraged to do additional reading on your own.  You may be tempted to skip the math section; although it may not be the most exiting for some, it is necessary to understand Diffie-Hellman. &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Don't Skip&lt;/code&gt;&lt;/p&gt;
+
+&lt;h4 id=&quot;division-and-remainder&quot;&gt;Division and Remainder&lt;/h4&gt;
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;∀ a, b ∈ Z (set of intergers) , ∃ q, r ∈ Z such that a = b * q + r :&lt;/p&gt;
+
+    &lt;ul&gt;
+      &lt;li&gt;a is the dividend&lt;/li&gt;
+      &lt;li&gt;b is the divisor&lt;/li&gt;
+      &lt;li&gt;q is the quotient&lt;/li&gt;
+      &lt;li&gt;r is the remainder&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;⌊ a/b ⌋ = q&lt;/li&gt;
+  &lt;li&gt;a ≡ r (mod b)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h5 id=&quot;greatest-common-divisor&quot;&gt;Greatest Common Divisor&lt;/h5&gt;
+&lt;ul&gt;
+  &lt;li&gt;∀ a, b ∈ Z, a | b iff the remainder of dividing b by a is zero.
+    &lt;ul&gt;
+      &lt;li&gt;a | b should be read “&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;a&lt;/code&gt; divides &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;b&lt;/code&gt;”&lt;/li&gt;
+      &lt;li&gt;iff = if and only if&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;The greatest common divisor of &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;a&lt;/code&gt; and &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;b&lt;/code&gt; is the largest number that is a divisor of both &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;a&lt;/code&gt; and &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;b&lt;/code&gt;.
+    &lt;ul&gt;
+      &lt;li&gt;gcd(a, b) = d&lt;/li&gt;
+      &lt;li&gt;if gcd(a, b) = 1, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;a&lt;/code&gt; and &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;b&lt;/code&gt; are said to be coprime or relatively prime.&lt;/li&gt;
+      &lt;li&gt;gcd(a, 0) = a ∀ a ≠ 0.&lt;/li&gt;
+      &lt;li&gt;∀ a, b ∈ Z,  ∃ s, t ∈ Z such that gcd(a, b) = a * s + b * t&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;GCD(a, b) can easily be coded using the euclidian algorithm as show below.  &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Note&lt;/code&gt;: do not confuse the Euclidian algorithm with the Extended Euclidian algorithm; I will introduce that in my next post that will cover RSA.&lt;/p&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;gcd&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;b&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;b&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;a&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;!=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;a&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;gcd&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;b&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;a&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;%&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;b&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;h5 id=&quot;prime-numbers&quot;&gt;Prime Numbers&lt;/h5&gt;
+&lt;ul&gt;
+  &lt;li&gt;p is a prime number iff its set of divisors is {1, p}
+    &lt;ul&gt;
+      &lt;li&gt;∀ a ∈ Z, gcd(a, p) ∈ {1, p}&lt;/li&gt;
+      &lt;li&gt;∀ a ≠ 0 ∈ Z&lt;sub&gt;p&lt;/sub&gt;, gcd(a, p) = 1&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;How many prime numbers are ≤ x ?
+    &lt;ul&gt;
+      &lt;li&gt;π(x) = x / ln(x)&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Prime Factorization
+    &lt;ul&gt;
+      &lt;li&gt;All integers can be expressed as a product of prime numbers
+        &lt;ul&gt;
+          &lt;li&gt;E.g. 48 = 2&lt;sup&gt;4&lt;/sup&gt;&lt;/li&gt;
+          &lt;li&gt;Factorization is the process of finding that product&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+      &lt;li&gt;Prime factorization is computationally &lt;a href=&quot;https://en.wikipedia.org/wiki/Computational_hardness_assumption&quot;&gt;Hard&lt;/a&gt; for large numbers
+        &lt;ul&gt;
+          &lt;li&gt;Currently, there aren’t any known algorithms that can compute this in polynomial time.&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h5 id=&quot;multiplicative-group&quot;&gt;Multiplicative Group&lt;/h5&gt;
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;To keep this post brief, I will provide minimal explanation of Group Mathematics.  For further understanding, read more about &lt;a href=&quot;https://en.wikipedia.org/wiki/Group_(mathematics)&quot;&gt;Group Mathematics&lt;/a&gt;.  If you have time, check out &lt;a href=&quot;https://en.wikipedia.org/wiki/Galois_group&quot;&gt;Galois Groups&lt;/a&gt; and &lt;a href=&quot;https://en.wikipedia.org/wiki/Finite_field&quot;&gt;Galois Fields&lt;/a&gt; as well.  Understanding Galois finite field mathematics isn’t necessary for understanding Diffie-Hellman in particular, but it is important for understanding other types of cryptography, such as AES (Advanced Encryption Standard).  It is, however, crucial that you understand Group Mathematics, because it plays an important role in Diffie-Hellman.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Groups are sets with operations that possess the following properties:
+    &lt;ul&gt;
+      &lt;li&gt;Closed&lt;/li&gt;
+      &lt;li&gt;Associative&lt;/li&gt;
+      &lt;li&gt;Identity Element&lt;/li&gt;
+      &lt;li&gt;Inverse element&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;For the purposes of this blog, I will focus on a multiplicative group G.  The multiplication operation provides includes the following group properties:
+    &lt;ul&gt;
+      &lt;li&gt;Closed: ∀ a, b ∈ G, a * b ∈ G&lt;/li&gt;
+      &lt;li&gt;Associative: ∀ a, b, c &amp;amp;isin G, (a * b) * c = a * (b * c)&lt;/li&gt;
+      &lt;li&gt;Identity Element: ∃ e&lt;sub&gt;0&lt;/sub&gt; ∈ G, ∀ a ∈ G, e&lt;sub&gt;0&lt;/sub&gt; * a = a * e&lt;sub&gt;0&lt;/sub&gt; = a&lt;/li&gt;
+      &lt;li&gt;Inverse Element: ∀ a ∈ G, ∃ b ∈ G, a * b = b * a = e&lt;sub&gt;0&lt;/sub&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Group( Z&lt;sub&gt;n&lt;/sub&gt;&lt;sup&gt;*&lt;/sup&gt; )&lt;/p&gt;
+
+    &lt;ul&gt;
+      &lt;li&gt;Z&lt;sub&gt;n&lt;/sub&gt;&lt;sup&gt;*&lt;/sup&gt; = {a ∈ Z&lt;sub&gt;n&lt;/sub&gt; | gcd(a,b) = 1}
+        &lt;ul&gt;
+          &lt;li&gt;Removes 0 because gcd(a, 0) = a ∀ a ≠ 0.&lt;/li&gt;
+          &lt;li&gt;If n is prime, only 0 is removed&lt;/li&gt;
+          &lt;li&gt;This means Z&lt;sub&gt;n&lt;/sub&gt;&lt;sup&gt;*&lt;/sup&gt; is the set of all integers ∈ Z&lt;sub&gt;n&lt;/sub&gt; such that gcd(a, n) = 1.  That is, a and n are coprime.&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+      &lt;li&gt;Operation is multiplication (mod n)
+        &lt;ul&gt;
+          &lt;li&gt;closed, associative, and commutative&lt;/li&gt;
+          &lt;li&gt;Identity element is (e&lt;sub&gt;0&lt;/sub&gt; = 1)&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+      &lt;li&gt;Inverse Element
+        &lt;ul&gt;
+          &lt;li&gt;∀ a ∈ Z&lt;sub&gt;n&lt;/sub&gt;&lt;sup&gt;*&lt;/sup&gt;, gcd(a, n) = 1&lt;/li&gt;
+          &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Note&lt;/code&gt;: not ∀ a ∈ Z&lt;sub&gt;n&lt;/sub&gt;, rather ∀ a ∈ Z&lt;sub&gt;n&lt;/sub&gt;&lt;sup&gt;*&lt;/sup&gt;
+            &lt;ul&gt;
+              &lt;li&gt;gcd(a, n) = a * s + n * t&lt;/li&gt;
+              &lt;li&gt;1 = a * s + n * t&lt;/li&gt;
+              &lt;li&gt;1 = a * s + n * t (mod n)&lt;/li&gt;
+              &lt;li&gt;1 ≡ a * s (mod n)&lt;/li&gt;
+            &lt;/ul&gt;
+          &lt;/li&gt;
+          &lt;li&gt;a&lt;sup&gt;-1&lt;/sup&gt; ≡ s (mod n)&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Subgroup
+    &lt;ul&gt;
+      &lt;li&gt;G&lt;sub&gt;a&lt;/sub&gt; = {a&lt;sup&gt;1&lt;/sup&gt;, a&lt;sup&gt;2&lt;/sup&gt;, …, a&lt;sup&gt;m-1&lt;/sup&gt;, a&lt;sup&gt;m&lt;/sup&gt;} ⊆ G&lt;/li&gt;
+      &lt;li&gt;G&lt;sub&gt;a&lt;/sub&gt; is a subset of G and inherits all of the operations of G&lt;/li&gt;
+      &lt;li&gt;∀ a ∈ G, |a| = |G&lt;sub&gt;a&lt;/sub&gt;|, |G&amp;gt;sub&amp;gt;a&amp;lt;/sub&amp;gt;| divides |G|&lt;/li&gt;
+      &lt;li&gt;In set theory | G | is the cardinality or number of elements in a set.  It is also referred to as “order of.”
+        &lt;ul&gt;
+          &lt;li&gt;Z&lt;sub&gt;10&lt;/sub&gt;&lt;sup&gt;*&lt;/sup&gt; = {1, 3, 7, 9}&lt;/li&gt;
+          &lt;li&gt;|Z&lt;sub&gt;10&lt;/sub&gt;&lt;sup&gt;*&lt;/sup&gt;| = 4&lt;/li&gt;
+          &lt;li&gt;In Group Math, |a| is the smallest m ∈ N, such that a&lt;sup&gt;m&lt;/sup&gt; (mod n) = e&lt;sub&gt;0&lt;/sub&gt; identity element.&lt;/li&gt;
+          &lt;li&gt;Select an element from the set Z&lt;sub&gt;10&lt;/sub&gt;&lt;sup&gt;*&lt;/sup&gt; !  Let’s choose 3.
+            &lt;ul&gt;
+              &lt;li&gt;You can see below that when m is 4, 3&lt;sup&gt;4&lt;/sup&gt; = 1.  &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Remember (mod n)&lt;/code&gt;&lt;/li&gt;
+              &lt;li&gt;{3&lt;sup&gt;1&lt;/sup&gt;, 3&lt;sup&gt;2&lt;/sup&gt;, 3&lt;sup&gt;3&lt;/sup&gt;, 3&lt;sup&gt;4&lt;/sup&gt;} = {3, 9, 7, 1}&lt;/li&gt;
+            &lt;/ul&gt;
+          &lt;/li&gt;
+          &lt;li&gt;Let’s also try 9
+            &lt;ul&gt;
+              &lt;li&gt;{9&lt;sup&gt;1&lt;/sup&gt;, 9&lt;sup&gt;2&lt;/sup&gt;} = {9, 1}&lt;/li&gt;
+            &lt;/ul&gt;
+          &lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+      &lt;li&gt;Notice how |3| produces the set {3, 9, 7, 1}, which includes all of the numbers in Z&lt;sub&gt;10&lt;/sub&gt;&lt;sup&gt;*&lt;/sup&gt;.  However, |9| only includes {9, 1}.  This is important because it means that 3 is a generator of Z&lt;sub&gt;10&lt;/sub&gt;&lt;sup&gt;*&lt;/sup&gt;.
+        &lt;ul&gt;
+          &lt;li&gt;an element a ∈ Z&lt;sub&gt;n&lt;/sub&gt;&lt;sup&gt;*&lt;/sup&gt; is a generator of Z&lt;sub&gt;n&lt;/sub&gt;&lt;sup&gt;*&lt;/sup&gt; iff |a| = |G|&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;diffie-hellman&quot;&gt;Diffie-Hellman&lt;/h3&gt;
+&lt;p&gt;Okay!  Now we’re ready to explore the Diffie-Hellman algorithm.  Diffie-Hellman make heavy application of the math outlined above, so make sure you understand it before moving on.&lt;/p&gt;
+
+&lt;p&gt;Public-key cryptography is significantly slower than symmetric-key cryptography, and is typically used to bootstrap symmetric-key cryptography.  Diffie-Hellman facilitates key agreement or key exchange.&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;The following outlines the Diffie-Hellman process for some user U and K&lt;/code&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Step 1: The first step is for users to agree on a prime numbers &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;p&lt;/code&gt; and &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;q&lt;/code&gt;.
+    &lt;ul&gt;
+      &lt;li&gt;q is a prime number&lt;/li&gt;
+      &lt;li&gt;p is a large prime number, ideally 4096 bits; 2048-bit is acceptable
+        &lt;ul&gt;
+          &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;p must be a safe prime; that is, p = 2q + 1&lt;/code&gt;&lt;/li&gt;
+          &lt;li&gt;Find a prime number q, multiply it by 2, and add 1.&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+      &lt;li&gt;g ∈ Z&lt;sub&gt;p&lt;/sub&gt;&lt;sup&gt;*&lt;/sup&gt;
+        &lt;ul&gt;
+          &lt;li&gt;g is a &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;generator&lt;/code&gt; (see above for explanation of a generator) that generates an order &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;q&lt;/code&gt; subgroup of Z&lt;sub&gt;p&lt;/sub&gt;&lt;sup&gt;*&lt;/sup&gt;.&lt;/li&gt;
+          &lt;li&gt;g&lt;sup&gt;q&lt;/sup&gt; produces every element of Z&lt;sub&gt;p&lt;/sub&gt;&lt;sup&gt;*&lt;/sup&gt;&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+      &lt;li&gt;Why is it necessary to use a generator g ∈ Z&lt;sub&gt;p&lt;/sub&gt;&lt;sup&gt;*&lt;/sup&gt; and not any arbitrary member a ∈ Z&lt;sub&gt;p&lt;/sub&gt;&lt;sup&gt;*&lt;/sup&gt; ?
+        &lt;ul&gt;
+          &lt;li&gt;Using a generator means all possible keys generated by g are reachable through the exponentiation of g, which is important for computing public keys.  When searching for the smallest m such that g&lt;sup&gt;m&lt;/sup&gt; = |G&lt;sub&gt;g&lt;/sub&gt;| = | Z&lt;sub&gt;p&lt;/sub&gt;&lt;sup&gt;*&lt;/sup&gt; |, we stop at the identity element to ensure that the entire subgroup is covered.
+            &lt;ul&gt;
+              &lt;li&gt;There is likely a better explanation available online.&lt;/li&gt;
+            &lt;/ul&gt;
+          &lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Step 2: Select a random prime a that will be the private key
+    &lt;ul&gt;
+      &lt;li&gt;a ∈ Z&lt;sub&gt;p&lt;/sub&gt;&lt;sup&gt;*&lt;/sup&gt;.&lt;/li&gt;
+      &lt;li&gt;Should not be small&lt;/li&gt;
+      &lt;li&gt;User K has the private key ak&lt;/li&gt;
+      &lt;li&gt;User U has the private key au&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Step 3: Compute public keys
+    &lt;ul&gt;
+      &lt;li&gt;user K, the public key computed is K = g&lt;sup&gt;ak&lt;/sup&gt; (mod p)&lt;/li&gt;
+      &lt;li&gt;user U, the public key computed is U = g&lt;sup&gt;au&lt;/sup&gt; (mod p)&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Step 4: Send Public Keys&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Step 5: Compute shared secret key
+    &lt;ul&gt;
+      &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Note:&lt;/code&gt; a is the private key only known to the individual users U and K; au and ak, respectively.&lt;/li&gt;
+      &lt;li&gt;User K, computes a shared secret key using the public key of user U.
+        &lt;ul&gt;
+          &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;shared_key&lt;/code&gt; = U&lt;sup&gt;ak&lt;/sup&gt; (mod p)&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+      &lt;li&gt;User U, computes a shared secret key using the public key of user K.
+        &lt;ul&gt;
+          &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;shared_key&lt;/code&gt; = K&lt;sup&gt;au&lt;/sup&gt; (mod p)&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Step 6: Both User K and U have a shared secret and turn it into a symmetric key
+    &lt;ul&gt;
+      &lt;li&gt;An example would be SHA256(shared_key) and using some agreed upon length &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;l&lt;/code&gt;.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Diffie-Hellman depends on the difficulty of the Discrete Logaraithm Problem (DLP), which is
+    &lt;ul&gt;
+      &lt;li&gt;Given A = g&lt;sup&gt;a&lt;/sup&gt; (mod p), it is computationally hard to calculate &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;a&lt;/code&gt; knowing only &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;A&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;g&lt;/code&gt;, and &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;p&lt;/code&gt;.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h5 id=&quot;additoinal-reading&quot;&gt;Additoinal Reading&lt;/h5&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;You may want to do some additional reading, here are a few topics to consider:
+    &lt;ul&gt;
+      &lt;li&gt;Miller-Rabin Primality Test&lt;/li&gt;
+      &lt;li&gt;Eliptic Curves &amp;amp; Eliptic Curve Diffie-Hellman&lt;/li&gt;
+      &lt;li&gt;Modular Exponentiation &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Very Important&lt;/code&gt;
+        &lt;ul&gt;
+          &lt;li&gt;Algorithm using repeated squared simplifies programming modular exponentiation.&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;next-post-the-rsa-algorithm&quot;&gt;Next Post: The RSA Algorithm&lt;/h2&gt;
+
+&lt;p&gt;In my next post, I will introduce the RSA algorithm, including the foundation mathematical concepts.&lt;/p&gt;
+</description>
+        <pubDate>Sat, 30 Mar 2024 10:23:00 +0000</pubDate>
+        <link>/blog/public-key-diffie-rsa/</link>
+        <guid isPermaLink="true">/blog/public-key-diffie-rsa/</guid>
+      </item>
+    
+      <item>
+        <title>Reverse Engineering: An Introduction to Linkers</title>
+        <description>&lt;h2 id=&quot;learn-about-linkers&quot;&gt;Learn about Linkers&lt;/h2&gt;
+&lt;p&gt;Whether your interested in low-level development or reverse engineering malware, understanding how linkers work and being able to write your own linker script is an important skill.&lt;/p&gt;
+
+&lt;p&gt;I recently created a gitbook, that will elaborate on several important linker topics, such as: PLT/GOT, Relocation, Dynamic Linking, linking with shared libraries, loaders, and ELF binaries.&lt;/p&gt;
+
+&lt;p&gt;I’ve also included some additional resources for those interested in learning more.&lt;/p&gt;
+
+&lt;h3 id=&quot;gitbook-knowledge-base---linkers&quot;&gt;Gitbook Knowledge Base - Linkers&lt;/h3&gt;
+&lt;p&gt;Check out &lt;a href=&quot;https://docs.thecodeguardian.dev/&quot;&gt;my Gitbook&lt;/a&gt; and feel free to contact me with any questions, corrections, or connections.&lt;/p&gt;
+
+&lt;h2 id=&quot;why-learn-about-linkers&quot;&gt;Why Learn About Linkers?&lt;/h2&gt;
+&lt;p&gt;Learning to write a linker script is vital when developing an operating system or hypervisor.  Usually, user-space development will include linker scripts with the toolchain; however, these are unsuitable when writing a kernel.&lt;/p&gt;
+
+&lt;p&gt;When writing a kernel, we must write our own linker to link the bootloader and kernel object files together to produce a kernel image. Admittedly, writing a linker is not a skill that many possess; nevertheless, it is vital when developing a kernel or hypervisor.&lt;/p&gt;
+
+&lt;p&gt;The GNU Linker (ld) and Linker Script are well-documented and include more information than you probably need.  I will do my best to synthesize this to include the most important parts.  If you’re interested in a comprehensive study, here are a few helpful resources.&lt;/p&gt;
+
+&lt;h3 id=&quot;additional-resources&quot;&gt;Additional Resources&lt;/h3&gt;
+&lt;p&gt;&lt;a href=&quot;https://www.amazon.com/Linkers-Kaufmann-Software-Engineering-Programming/dp/1558604960&quot;&gt;Linkers and Loaders&lt;/a&gt; (Levine):  This book is old, but it is gold!  Look no further to learn about linkers and loaders.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://www.amazon.com/Advanced-Compiler-Design-Implementation-Muchnick/dp/1558603204&quot;&gt;Advanced Compiler Design&lt;/a&gt; (Muchnick): This is the gold standard for learning about compilers and includes a lot of good information on linkers.  You’ll learn about PLT and GOT, the Procedure Linkage Table, and the Global Offset Table, which are crucial for understanding dynamic linking and reverse engineering.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://www.airs.com/blog/page/4?s=Linkers&quot;&gt;Blog Series&lt;/a&gt; (Ian Lance Tayler): Ian is the developer of GOLD, which is a linker for ELF binaries and is also included in GNU binutils.  He knows his stuff!&lt;/p&gt;
+
+&lt;h2 id=&quot;what-is-a-linker&quot;&gt;What is a Linker?&lt;/h2&gt;
+&lt;p&gt;Linkers are an important part of a development toolchain used by any low-level programmer.  Other important components include the compiler and assembler.&lt;/p&gt;
+
+&lt;p&gt;In a future post, I’ll discuss toolchains and cross-compilers, which are important when you need to target an architecture that differs from the local computer. My computers have Intel, M2, and AMD/NVIDIA(GPU) architectures, and I will target a RISC-V architecture.&lt;/p&gt;
+
+&lt;p&gt;Most developers include GNU &lt;a href=&quot;https://www.gnu.org/software/binutils/&quot;&gt;binutils&lt;/a&gt; in their toolchain, which includes ld, the GNU linker.  To understand linkers, you must first understand why they are needed.  Compilers generate object files for each source code file that contain information about that source file.  The object file information, however, is incomplete; most source files reference other source files to include part of the code.  Source files from other programs can also be referenced to include portions of the program code in the current program.&lt;/p&gt;
+
+&lt;p&gt;The linker is responsible for combining all of these object files into a single object file or binary. It is also responsible for reorganizing memory so that the combined pieces fit together; this is done by combining similar sections. Finally, the linker must modify the addresses to allow the program to run under the new memory organization.&lt;/p&gt;
+
+&lt;h3 id=&quot;object-files&quot;&gt;Object Files&lt;/h3&gt;
+&lt;p&gt;In my Gitbook, I included an example from a cryptographic program that I wrote, implementing Diffie-Hellman and RSA.  Here, I’ll include a simple picture that illustrates the point.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/img/posts/object_files.png&quot; alt=&quot;Make the program&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;types-of-linking&quot;&gt;Types of Linking&lt;/h2&gt;
+&lt;p&gt;Linkers can link statically or dynamically.  Static linking implies references are fully resolved before runtime.  Dynamic linking means that the location where the library will be loaded isn’t known until runtime; instead, the references are resolved during runtime, dynamically.&lt;/p&gt;
+
+&lt;p&gt;When the compiler’s assembler runs, it doesn’t know the address of external references so it marks places a zero in the object file.  This is the incomplete information that I alluded to in the previous section.  The linker is responsible for solving this reference, and it does so either dynamically or statically.  In most cases, references to shared libraries are solved dynamically during runtime.  The linker builds a jump table and a dynamic loader is used to fill the table.&lt;/p&gt;
+
+&lt;p&gt;I will include additional notes that explore linkers and loaders more in depth.&lt;/p&gt;
+
+&lt;h2 id=&quot;analyzing-linker-script&quot;&gt;Analyzing Linker Script&lt;/h2&gt;
+&lt;p&gt;On Linux, run  &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;ld --verbose&lt;/code&gt; to view the default linker script used by your system.  I will give a brief introduction to the linker script, covering only the main parts.  If you’re interested in learning more, checkout some of the resources listed above.&lt;/p&gt;
+
+&lt;h3 id=&quot;gnu-linker-script&quot;&gt;GNU Linker Script&lt;/h3&gt;
+&lt;pre&gt;&lt;code class=&quot;language-ld&quot;&gt;OUTPUT_FORMAT(&quot;elf64-x86-64&quot;, &quot;elf64-x86-64&quot;,
+              &quot;elf64-x86-64&quot;)
+OUTPUT_ARCH(i386:x86-64)
+ENTRY(_start)
+SEARCH_DIR(&quot;/usr/x86_64-pc-linux-gnu/lib64&quot;); SEARCH_DIR(&quot;/usr/lib&quot;); SEARCH_DIR(&quot;/usr/local/lib&quot;); SEARCH_DIR(&quot;/usr/x86_64-pc-linux-gnu/lib&quot;);
+SECTIONS
+{
+  PROVIDE (__executable_start = SEGMENT_START(&quot;text-segment&quot;, 0x400000)); . = SEGMENT_START(&quot;text-segment&quot;, 0x400000) + SIZEOF_HEADERS;
+  .interp         : { *(.interp) }
+  .note.gnu.build-id  : { *(.note.gnu.build-id) }
+  .hash           : { *(.hash) }
+  .gnu.hash       : { *(.gnu.hash) }
+  .dynsym         : { *(.dynsym) }
+  .dynstr         : { *(.dynstr) }
+  .gnu.version    : { *(.gnu.version) }
+  .gnu.version_d  : { *(.gnu.version_d) }
+  .gnu.version_r  : { *(.gnu.version_r) }
+  .rela.dyn       :
+    {
+      *(.rela.init)
+      *(.rela.text .rela.text.* .rela.gnu.linkonce.t.*)
+      *(.rela.fini)
+      *(.rela.rodata .rela.rodata.* .rela.gnu.linkonce.r.*)
+      *(.rela.data .rela.data.* .rela.gnu.linkonce.d.*)
+      *(.rela.tdata .rela.tdata.* .rela.gnu.linkonce.td.*)
+      *(.rela.tbss .rela.tbss.* .rela.gnu.linkonce.tb.*)
+      *(.rela.ctors)
+      *(.rela.dtors)
+      *(.rela.got)
+      *(.rela.bss .rela.bss.* .rela.gnu.linkonce.b.*)
+      *(.rela.ldata .rela.ldata.* .rela.gnu.linkonce.l.*)
+      *(.rela.lbss .rela.lbss.* .rela.gnu.linkonce.lb.*)
+      *(.rela.lrodata .rela.lrodata.* .rela.gnu.linkonce.lr.*)
+      *(.rela.ifunc)
+    }
+  .rela.plt       :
+    {
+      *(.rela.plt)
+      PROVIDE_HIDDEN (__rela_iplt_start = .);
+      *(.rela.iplt)
+      PROVIDE_HIDDEN (__rela_iplt_end = .);
+    }
+  .relr.dyn : { *(.relr.dyn) }
+  . = ALIGN(CONSTANT (MAXPAGESIZE));
+  .init           :
+  {
+    KEEP (*(SORT_NONE(.init)))
+  }
+  .plt            : { *(.plt) *(.iplt) }
+.plt.got        : { *(.plt.got) }
+.plt.sec        : { *(.plt.sec) }
+  .text           :
+  {
+    *(.text.unlikely .text.*_unlikely .text.unlikely.*)
+    *(.text.exit .text.exit.*)
+    *(.text.startup .text.startup.*)
+    *(.text.hot .text.hot.*)
+    *(SORT(.text.sorted.*))
+    *(.text .stub .text.* .gnu.linkonce.t.*)
+    /* .gnu.warning sections are handled specially by elf.em.  */
+    *(.gnu.warning)
+  }
+  .fini           :
+  {
+    KEEP (*(SORT_NONE(.fini)))
+  }
+  PROVIDE (__etext = .);
+  PROVIDE (_etext = .);
+  PROVIDE (etext = .);
+  . = ALIGN(CONSTANT (MAXPAGESIZE));
+  /* Adjust the address for the rodata segment.  We want to adjust up to
+     the same address within the page on the next page up.  */
+  . = SEGMENT_START(&quot;rodata-segment&quot;, ALIGN(CONSTANT (MAXPAGESIZE)) + (. &amp;amp; (CONSTANT (MAXPAGESIZE) - 1)));
+  .rodata         : { *(.rodata .rodata.* .gnu.linkonce.r.*) }
+  .rodata1        : { *(.rodata1) }
+  .eh_frame_hdr   : { *(.eh_frame_hdr) *(.eh_frame_entry .eh_frame_entry.*) }
+  .eh_frame       : ONLY_IF_RO { KEEP (*(.eh_frame)) *(.eh_frame.*) }
+  .sframe         : ONLY_IF_RO { *(.sframe) *(.sframe.*) }
+  .gcc_except_table   : ONLY_IF_RO { *(.gcc_except_table .gcc_except_table.*) }
+  .gnu_extab   : ONLY_IF_RO { *(.gnu_extab*) }
+  /* These sections are generated by the Sun/Oracle C++ compiler.  */
+  .exception_ranges   : ONLY_IF_RO { *(.exception_ranges*) }
+  /* Adjust the address for the data segment.  We want to adjust up to
+     the same address within the page on the next page up.  */
+  . = DATA_SEGMENT_ALIGN (CONSTANT (MAXPAGESIZE), CONSTANT (COMMONPAGESIZE));
+  /* Exception handling  */
+  .eh_frame       : ONLY_IF_RW { KEEP (*(.eh_frame)) *(.eh_frame.*) }
+  .sframe         : ONLY_IF_RW { *(.sframe) *(.sframe.*) }
+  .gnu_extab      : ONLY_IF_RW { *(.gnu_extab) }
+  .gcc_except_table   : ONLY_IF_RW { *(.gcc_except_table .gcc_except_table.*) }
+  .exception_ranges   : ONLY_IF_RW { *(.exception_ranges*) }
+  /* Thread Local Storage sections  */
+  .tdata          :
+   {
+     PROVIDE_HIDDEN (__tdata_start = .);
+     *(.tdata .tdata.* .gnu.linkonce.td.*)
+   }
+  .tbss           : { *(.tbss .tbss.* .gnu.linkonce.tb.*) *(.tcommon) }
+  .preinit_array    :
+  {
+    PROVIDE_HIDDEN (__preinit_array_start = .);
+    KEEP (*(.preinit_array))
+    PROVIDE_HIDDEN (__preinit_array_end = .);
+  }
+  .init_array    :
+  {
+    PROVIDE_HIDDEN (__init_array_start = .);
+    KEEP (*(SORT_BY_INIT_PRIORITY(.init_array.*) SORT_BY_INIT_PRIORITY(.ctors.*)))
+    KEEP (*(.init_array EXCLUDE_FILE (*crtbegin.o *crtbegin?.o *crtend.o *crtend?.o ) .ctors))
+    PROVIDE_HIDDEN (__init_array_end = .);
+  }
+  .fini_array    :
+  {
+    PROVIDE_HIDDEN (__fini_array_start = .);
+    KEEP (*(SORT_BY_INIT_PRIORITY(.fini_array.*) SORT_BY_INIT_PRIORITY(.dtors.*)))
+    KEEP (*(.fini_array EXCLUDE_FILE (*crtbegin.o *crtbegin?.o *crtend.o *crtend?.o ) .dtors))
+    PROVIDE_HIDDEN (__fini_array_end = .);
+  }
+  .ctors          :
+  {
+    /* gcc uses crtbegin.o to find the start of
+       the constructors, so we make sure it is
+       first.  Because this is a wildcard, it
+       doesn't matter if the user does not
+       actually link against crtbegin.o; the
+       linker won't look for a file to match a
+       wildcard.  The wildcard also means that it
+       doesn't matter which directory crtbegin.o
+       is in.  */
+    KEEP (*crtbegin.o(.ctors))
+    KEEP (*crtbegin?.o(.ctors))
+    /* We don't want to include the .ctor section from
+       the crtend.o file until after the sorted ctors.
+       The .ctor section from the crtend file contains the
+       end of ctors marker and it must be last */
+    KEEP (*(EXCLUDE_FILE (*crtend.o *crtend?.o ) .ctors))
+    KEEP (*(SORT(.ctors.*)))
+    KEEP (*(.ctors))
+  }
+  .dtors          :
+  {
+    KEEP (*crtbegin.o(.dtors))
+    KEEP (*crtbegin?.o(.dtors))
+    KEEP (*(EXCLUDE_FILE (*crtend.o *crtend?.o ) .dtors))
+    KEEP (*(SORT(.dtors.*)))
+    KEEP (*(.dtors))
+  }
+  .jcr            : { KEEP (*(.jcr)) }
+  .data.rel.ro : { *(.data.rel.ro.local* .gnu.linkonce.d.rel.ro.local.*) *(.data.rel.ro .data.rel.ro.* .gnu.linkonce.d.rel.ro.*) }
+  .dynamic        : { *(.dynamic) }
+  .got            : { *(.got) *(.igot) }
+  . = DATA_SEGMENT_RELRO_END (SIZEOF (.got.plt) &amp;gt;= 24 ? 24 : 0, .);
+  .got.plt        : { *(.got.plt) *(.igot.plt) }
+  .data           :
+  {
+    *(.data .data.* .gnu.linkonce.d.*)
+    SORT(CONSTRUCTORS)
+  }
+  .data1          : { *(.data1) }
+  _edata = .; PROVIDE (edata = .);
+  . = ALIGN(ALIGNOF(NEXT_SECTION));
+  __bss_start = .;
+  .bss            :
+  {
+   *(.dynbss)
+   *(.bss .bss.* .gnu.linkonce.b.*)
+   *(COMMON)
+   /* Align here to ensure that the .bss section occupies space up to
+      _end.  Align after .bss to ensure correct alignment even if the
+      .bss section disappears because there are no input sections.
+      FIXME: Why do we need it? When there is no .bss section, we do not
+      pad the .data section.  */
+   . = ALIGN(. != 0 ? 64 / 8 : 1);
+  }
+  .lbss   :
+  {
+    *(.dynlbss)
+    *(.lbss .lbss.* .gnu.linkonce.lb.*)
+    *(LARGE_COMMON)
+  }
+  . = ALIGN(64 / 8);
+  . = SEGMENT_START(&quot;ldata-segment&quot;, .);
+  .lrodata   ALIGN(CONSTANT (MAXPAGESIZE)) + (. &amp;amp; (CONSTANT (MAXPAGESIZE) - 1)) :
+  {
+    *(.lrodata .lrodata.* .gnu.linkonce.lr.*)
+  }
+  .ldata   ALIGN(CONSTANT (MAXPAGESIZE)) + (. &amp;amp; (CONSTANT (MAXPAGESIZE) - 1)) :
+  {
+    *(.ldata .ldata.* .gnu.linkonce.l.*)
+    . = ALIGN(. != 0 ? 64 / 8 : 1);
+  }
+  . = ALIGN(64 / 8);
+  _end = .; PROVIDE (end = .);
+  . = DATA_SEGMENT_END (.);
+  /* Stabs debugging sections.  */
+  .stab          0 : { *(.stab) }
+  .stabstr       0 : { *(.stabstr) }
+  .stab.excl     0 : { *(.stab.excl) }
+  .stab.exclstr  0 : { *(.stab.exclstr) }
+  .stab.index    0 : { *(.stab.index) }
+  .stab.indexstr 0 : { *(.stab.indexstr) }
+  .comment 0 (INFO) : { *(.comment); LINKER_VERSION; }
+  .gnu.build.attributes : { *(.gnu.build.attributes .gnu.build.attributes.*) }
+  /* DWARF debug sections.
+     Symbols in the DWARF debugging sections are relative to the beginning
+     of the section so we begin them at 0.  */
+  /* DWARF 1.  */
+  .debug          0 : { *(.debug) }
+  .line           0 : { *(.line) }
+  /* GNU DWARF 1 extensions.  */
+  .debug_srcinfo  0 : { *(.debug_srcinfo) }
+  .debug_sfnames  0 : { *(.debug_sfnames) }
+  /* DWARF 1.1 and DWARF 2.  */
+  .debug_aranges  0 : { *(.debug_aranges) }
+  .debug_pubnames 0 : { *(.debug_pubnames) }
+  /* DWARF 2.  */
+  .debug_info     0 : { *(.debug_info .gnu.linkonce.wi.*) }
+  .debug_abbrev   0 : { *(.debug_abbrev) }
+  .debug_line     0 : { *(.debug_line .debug_line.* .debug_line_end) }
+  .debug_frame    0 : { *(.debug_frame) }
+  .debug_str      0 : { *(.debug_str) }
+  .debug_loc      0 : { *(.debug_loc) }
+  .debug_macinfo  0 : { *(.debug_macinfo) }
+  /* SGI/MIPS DWARF 2 extensions.  */
+  .debug_weaknames 0 : { *(.debug_weaknames) }
+  .debug_funcnames 0 : { *(.debug_funcnames) }
+  .debug_typenames 0 : { *(.debug_typenames) }
+  .debug_varnames  0 : { *(.debug_varnames) }
+  /* DWARF 3.  */
+  .debug_pubtypes 0 : { *(.debug_pubtypes) }
+  .debug_ranges   0 : { *(.debug_ranges) }
+  /* DWARF 5.  */
+  .debug_addr     0 : { *(.debug_addr) }
+  .debug_line_str 0 : { *(.debug_line_str) }
+  .debug_loclists 0 : { *(.debug_loclists) }
+  .debug_macro    0 : { *(.debug_macro) }
+  .debug_names    0 : { *(.debug_names) }
+  .debug_rnglists 0 : { *(.debug_rnglists) }
+  .debug_str_offsets 0 : { *(.debug_str_offsets) }
+  .debug_sup      0 : { *(.debug_sup) }
+  .gnu.attributes 0 : { KEEP (*(.gnu.attributes)) }
+  /DISCARD/ : { *(.note.GNU-stack) *(.gnu_debuglink) *(.gnu.lto_*) }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&quot;gnu-linker-script-explanation&quot;&gt;GNU Linker Script Explanation&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;OUTPUT_FORMAT()&lt;/code&gt;: This declarative allows you to provide an output format for your executable.  For a listing of acceptable formats, run &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;objdump -i&lt;/code&gt;.&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;ENTRY()&lt;/code&gt;: ENRTRY allows you to include the symbol defined in your program in the .text section that represents the first byte of executable code; that is, the entrypoint.  Checkout the disassembled example below, which shows the start entrypoint.  Note: In the disassembled code, the program (that only prints)  was written in C and then compiled.  The start section includes a lot of extra work to prepare the program, such as initializing registers, getting command-line arguments, calling main(), and handling exit().&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;SECTIONS()&lt;/code&gt;: This allows you to define a structured format in the output (object) file by segmenting the data in memory.  The linker script allows the developer to control the type of data that is in each section.  To learn about ELF binaries and the included sections, visit the &lt;a href=&quot;https://man7.org/linux/man-pages/man5/elf.5.html&quot;&gt;Linux manual page&lt;/a&gt;.
+    &lt;ul&gt;
+      &lt;li&gt;Declaring a section follows the format .section and sections are interpreted in the order they are listed.  For example, .text is the section in ELF binaries that includes the executable code of your program.&lt;/li&gt;
+      &lt;li&gt;You can also map subsection names using a wildcard, to a specific object file or any object file.  For example, &lt;em&gt;(.text.unlikely .text.&lt;/em&gt;_unlikely .text.unlikely.*) will match any section that matches the pattern.  Notice the wildcard before the parenthesis; alternatively, we could specify the object file like startup.o(.text.unlikely …) however the wildcard is more common because file names can change.  Why are there so many alias names?  It allows the developer to organize the code by controlling where it is placed in memory.  In the example above, sections matching the that text pattern is unlikely to be executed.  Grouping that code together can, for example, improve cache locality by letter hot code (code that is frequently executed) be grouped together.&lt;/li&gt;
+      &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;PROVIDE()&lt;/code&gt;: provides a symbol that can be referenced code.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;MEMORY()&lt;/code&gt;: The memory declaration is not included in the example above; however, it is very important for kernel developers.  The example below, shows how a memory region is declared with access attributes.  Sections defined in SECTIONS can map to a specific region by adding the following after the closing bracket: &amp;gt;RAM AT&amp;gt;ROM.  The first ( &amp;gt;RAM ) means store the preceding section in RAM and ( AT&amp;gt;ROM ) sets the LMA (load memory address) to ROM, or read-only memory.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;code-examples&quot;&gt;Code Examples&lt;/h2&gt;
+
+&lt;h3 id=&quot;memory-declarative&quot;&gt;Memory Declarative&lt;/h3&gt;
+&lt;pre&gt;&lt;code class=&quot;language-ld&quot;&gt;MEMORY
+{
+    ROM (rx) : ORIGIN = 0, LENGTH = 256k
+    RAM (wx) : org = 0x00100000, len = 1M
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&quot;disassembled-example-objdump-output&quot;&gt;Disassembled Example (Objdump output)&lt;/h3&gt;
+&lt;div class=&quot;language-nasm highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nl&quot;&gt;output:&lt;/span&gt;     &lt;span class=&quot;nf&quot;&gt;file&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;format&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;elf64&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;x86&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;64&lt;/span&gt;
+
+
+&lt;span class=&quot;nf&quot;&gt;Disassembly&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;of&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;section&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;.init&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+
+&lt;span class=&quot;err&quot;&gt;0000000000001000&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;_init&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;err&quot;&gt;1000:&lt;/span&gt;       &lt;span class=&quot;nf&quot;&gt;f3&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;f&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;e&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;fa&lt;/span&gt;             &lt;span class=&quot;nv&quot;&gt;endbr64&lt;/span&gt;
+    &lt;span class=&quot;err&quot;&gt;1004:&lt;/span&gt;       &lt;span class=&quot;err&quot;&gt;48&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;83&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;ec&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;08&lt;/span&gt;             &lt;span class=&quot;nv&quot;&gt;sub&lt;/span&gt;    &lt;span class=&quot;nb&quot;&gt;rsp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mh&quot;&gt;0x8&lt;/span&gt;
+    &lt;span class=&quot;err&quot;&gt;1008:&lt;/span&gt;       &lt;span class=&quot;err&quot;&gt;48&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;8&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;b&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;05&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;c1&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;f&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;00&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;00&lt;/span&gt;    &lt;span class=&quot;nv&quot;&gt;mov&lt;/span&gt;    &lt;span class=&quot;nb&quot;&gt;rax&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;QWORD&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;PTR&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;rip&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;mh&quot;&gt;0x2fc1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;        &lt;span class=&quot;err&quot;&gt;#&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;fd0&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;__gmon_start__@Base&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;err&quot;&gt;100&lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;f:&lt;/span&gt;       &lt;span class=&quot;err&quot;&gt;48&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;85&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;c0&lt;/span&gt;                &lt;span class=&quot;nv&quot;&gt;test&lt;/span&gt;   &lt;span class=&quot;nb&quot;&gt;rax&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;rax&lt;/span&gt;
+    &lt;span class=&quot;err&quot;&gt;1012:&lt;/span&gt;       &lt;span class=&quot;err&quot;&gt;74&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;02&lt;/span&gt;                   &lt;span class=&quot;nf&quot;&gt;je&lt;/span&gt;     &lt;span class=&quot;mi&quot;&gt;1016&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;_init&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;mh&quot;&gt;0x16&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;err&quot;&gt;1014:&lt;/span&gt;       &lt;span class=&quot;nf&quot;&gt;ff&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;d0&lt;/span&gt;                   &lt;span class=&quot;nv&quot;&gt;call&lt;/span&gt;   &lt;span class=&quot;nb&quot;&gt;rax&lt;/span&gt;
+    &lt;span class=&quot;err&quot;&gt;1016:&lt;/span&gt;       &lt;span class=&quot;err&quot;&gt;48&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;83&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;c4&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;08&lt;/span&gt;             &lt;span class=&quot;nv&quot;&gt;add&lt;/span&gt;    &lt;span class=&quot;nb&quot;&gt;rsp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mh&quot;&gt;0x8&lt;/span&gt;
+    &lt;span class=&quot;err&quot;&gt;101&lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;a:&lt;/span&gt;       &lt;span class=&quot;nf&quot;&gt;c3&lt;/span&gt;                      &lt;span class=&quot;nv&quot;&gt;ret&lt;/span&gt;
+
+&lt;span class=&quot;nf&quot;&gt;Disassembly&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;of&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;section&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;.plt&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+
+&lt;span class=&quot;err&quot;&gt;0000000000001020&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;puts@plt&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;mh&quot;&gt;0x10&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;err&quot;&gt;1020:&lt;/span&gt;       &lt;span class=&quot;nf&quot;&gt;ff&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;35&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;ca&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;f&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;00&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;00&lt;/span&gt;       &lt;span class=&quot;nv&quot;&gt;push&lt;/span&gt;   &lt;span class=&quot;kt&quot;&gt;QWORD&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;PTR&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;rip&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;mh&quot;&gt;0x2fca&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;        &lt;span class=&quot;err&quot;&gt;#&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;ff0&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;_GLOBAL_OFFSET_TABLE_&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;mh&quot;&gt;0x8&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;err&quot;&gt;1026:&lt;/span&gt;       &lt;span class=&quot;nf&quot;&gt;ff&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;25&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;cc&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;f&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;00&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;00&lt;/span&gt;       &lt;span class=&quot;nv&quot;&gt;jmp&lt;/span&gt;    &lt;span class=&quot;kt&quot;&gt;QWORD&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;PTR&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;rip&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;mh&quot;&gt;0x2fcc&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;        &lt;span class=&quot;err&quot;&gt;#&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;ff8&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;_GLOBAL_OFFSET_TABLE_&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;mh&quot;&gt;0x10&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;err&quot;&gt;102&lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;c:&lt;/span&gt;       &lt;span class=&quot;err&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;f&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;f&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;40&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;00&lt;/span&gt;             &lt;span class=&quot;nv&quot;&gt;nop&lt;/span&gt;    &lt;span class=&quot;kt&quot;&gt;DWORD&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;PTR&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;rax&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;mh&quot;&gt;0x0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+
+&lt;span class=&quot;err&quot;&gt;0000000000001030&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;puts@plt&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;err&quot;&gt;1030:&lt;/span&gt;       &lt;span class=&quot;nf&quot;&gt;ff&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;25&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;ca&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;f&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;00&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;00&lt;/span&gt;       &lt;span class=&quot;nv&quot;&gt;jmp&lt;/span&gt;    &lt;span class=&quot;kt&quot;&gt;QWORD&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;PTR&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;rip&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;mh&quot;&gt;0x2fca&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;        &lt;span class=&quot;err&quot;&gt;#&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;4000&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;puts@GLIBC_2.2.5&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;err&quot;&gt;1036:&lt;/span&gt;       &lt;span class=&quot;err&quot;&gt;68&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;00&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;00&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;00&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;00&lt;/span&gt;          &lt;span class=&quot;nf&quot;&gt;push&lt;/span&gt;   &lt;span class=&quot;mh&quot;&gt;0x0&lt;/span&gt;
+    &lt;span class=&quot;err&quot;&gt;103&lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;b:&lt;/span&gt;       &lt;span class=&quot;nf&quot;&gt;e9&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;e0&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;ff&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;ff&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;ff&lt;/span&gt;          &lt;span class=&quot;nv&quot;&gt;jmp&lt;/span&gt;    &lt;span class=&quot;mi&quot;&gt;1020&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;_init&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;mh&quot;&gt;0x20&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;
+
+&lt;span class=&quot;nf&quot;&gt;Disassembly&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;of&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;section&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;.text&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+
+&lt;span class=&quot;err&quot;&gt;0000000000001040&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;main&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;err&quot;&gt;1040:&lt;/span&gt;       &lt;span class=&quot;err&quot;&gt;48&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;83&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;ec&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;08&lt;/span&gt;             &lt;span class=&quot;nv&quot;&gt;sub&lt;/span&gt;    &lt;span class=&quot;nb&quot;&gt;rsp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mh&quot;&gt;0x8&lt;/span&gt;
+    &lt;span class=&quot;err&quot;&gt;1044:&lt;/span&gt;       &lt;span class=&quot;err&quot;&gt;48&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;8&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;d&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;d&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;b9&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;f&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;00&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;00&lt;/span&gt;    &lt;span class=&quot;nv&quot;&gt;lea&lt;/span&gt;    &lt;span class=&quot;nb&quot;&gt;rdi&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,[&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;rip&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;mh&quot;&gt;0xfb9&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;        &lt;span class=&quot;err&quot;&gt;#&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2004&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;_IO_stdin_used&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;mh&quot;&gt;0x4&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;err&quot;&gt;104&lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;b:&lt;/span&gt;       &lt;span class=&quot;nf&quot;&gt;e8&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;e0&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;ff&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;ff&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;ff&lt;/span&gt;          &lt;span class=&quot;nv&quot;&gt;call&lt;/span&gt;   &lt;span class=&quot;mi&quot;&gt;1030&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;puts@plt&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;err&quot;&gt;1050:&lt;/span&gt;       &lt;span class=&quot;err&quot;&gt;31&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;c0&lt;/span&gt;                   &lt;span class=&quot;nv&quot;&gt;xor&lt;/span&gt;    &lt;span class=&quot;nb&quot;&gt;eax&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;eax&lt;/span&gt;
+    &lt;span class=&quot;err&quot;&gt;1052:&lt;/span&gt;       &lt;span class=&quot;err&quot;&gt;48&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;83&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;c4&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;08&lt;/span&gt;             &lt;span class=&quot;nv&quot;&gt;add&lt;/span&gt;    &lt;span class=&quot;nb&quot;&gt;rsp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mh&quot;&gt;0x8&lt;/span&gt;
+    &lt;span class=&quot;err&quot;&gt;1056:&lt;/span&gt;       &lt;span class=&quot;nf&quot;&gt;c3&lt;/span&gt;                      &lt;span class=&quot;nv&quot;&gt;ret&lt;/span&gt;
+    &lt;span class=&quot;err&quot;&gt;1057:&lt;/span&gt;       &lt;span class=&quot;err&quot;&gt;66&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;f&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;f&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;84&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;00&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;00&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;00&lt;/span&gt;    &lt;span class=&quot;nv&quot;&gt;nop&lt;/span&gt;    &lt;span class=&quot;kt&quot;&gt;WORD&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;PTR&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;rax&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;rax&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;mh&quot;&gt;0x0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+    &lt;span class=&quot;err&quot;&gt;105&lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;e:&lt;/span&gt;       &lt;span class=&quot;err&quot;&gt;00&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;00&lt;/span&gt;
+
+&lt;span class=&quot;err&quot;&gt;0000000000001060&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;_start&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;err&quot;&gt;1060:&lt;/span&gt;       &lt;span class=&quot;nf&quot;&gt;f3&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;f&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;e&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;fa&lt;/span&gt;             &lt;span class=&quot;nv&quot;&gt;endbr64&lt;/span&gt;
+    &lt;span class=&quot;err&quot;&gt;1064:&lt;/span&gt;       &lt;span class=&quot;err&quot;&gt;31&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;ed&lt;/span&gt;                   &lt;span class=&quot;nv&quot;&gt;xor&lt;/span&gt;    &lt;span class=&quot;nb&quot;&gt;ebp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;ebp&lt;/span&gt;
+    &lt;span class=&quot;err&quot;&gt;1066:&lt;/span&gt;       &lt;span class=&quot;err&quot;&gt;49&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;89&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;d1&lt;/span&gt;                &lt;span class=&quot;nv&quot;&gt;mov&lt;/span&gt;    &lt;span class=&quot;nv&quot;&gt;r9&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;rdx&lt;/span&gt;
+    &lt;span class=&quot;err&quot;&gt;1069:&lt;/span&gt;       &lt;span class=&quot;err&quot;&gt;5&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;e&lt;/span&gt;                      &lt;span class=&quot;nv&quot;&gt;pop&lt;/span&gt;    &lt;span class=&quot;nb&quot;&gt;rsi&lt;/span&gt;
+    &lt;span class=&quot;err&quot;&gt;106&lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;a:&lt;/span&gt;       &lt;span class=&quot;err&quot;&gt;48&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;89&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;e2&lt;/span&gt;                &lt;span class=&quot;nv&quot;&gt;mov&lt;/span&gt;    &lt;span class=&quot;nb&quot;&gt;rdx&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;rsp&lt;/span&gt;
+    &lt;span class=&quot;err&quot;&gt;106&lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;d:&lt;/span&gt;       &lt;span class=&quot;err&quot;&gt;48&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;83&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;e4&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;f0&lt;/span&gt;             &lt;span class=&quot;nv&quot;&gt;and&lt;/span&gt;    &lt;span class=&quot;nb&quot;&gt;rsp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mh&quot;&gt;0xfffffffffffffff0&lt;/span&gt;
+    &lt;span class=&quot;err&quot;&gt;1071:&lt;/span&gt;       &lt;span class=&quot;err&quot;&gt;50&lt;/span&gt;                      &lt;span class=&quot;nf&quot;&gt;push&lt;/span&gt;   &lt;span class=&quot;nb&quot;&gt;rax&lt;/span&gt;
+    &lt;span class=&quot;err&quot;&gt;1072:&lt;/span&gt;       &lt;span class=&quot;err&quot;&gt;54&lt;/span&gt;                      &lt;span class=&quot;nf&quot;&gt;push&lt;/span&gt;   &lt;span class=&quot;nb&quot;&gt;rsp&lt;/span&gt;
+    &lt;span class=&quot;err&quot;&gt;1073:&lt;/span&gt;       &lt;span class=&quot;err&quot;&gt;45&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;31&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;c0&lt;/span&gt;                &lt;span class=&quot;nv&quot;&gt;xor&lt;/span&gt;    &lt;span class=&quot;nb&quot;&gt;r8d&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;r8d&lt;/span&gt;
+    &lt;span class=&quot;err&quot;&gt;1076:&lt;/span&gt;       &lt;span class=&quot;err&quot;&gt;31&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;c9&lt;/span&gt;                   &lt;span class=&quot;nv&quot;&gt;xor&lt;/span&gt;    &lt;span class=&quot;nb&quot;&gt;ecx&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;ecx&lt;/span&gt;
+    &lt;span class=&quot;err&quot;&gt;1078:&lt;/span&gt;       &lt;span class=&quot;err&quot;&gt;48&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;8&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;d&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;d&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;c1&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;ff&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;ff&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;ff&lt;/span&gt;    &lt;span class=&quot;nv&quot;&gt;lea&lt;/span&gt;    &lt;span class=&quot;nb&quot;&gt;rdi&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,[&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;rip&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;mh&quot;&gt;0xffffffffffffffc1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;        &lt;span class=&quot;err&quot;&gt;#&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1040&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;main&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;err&quot;&gt;107&lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;f:&lt;/span&gt;       &lt;span class=&quot;nf&quot;&gt;ff&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;15&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;b&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;f&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;00&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;00&lt;/span&gt;       &lt;span class=&quot;nv&quot;&gt;call&lt;/span&gt;   &lt;span class=&quot;kt&quot;&gt;QWORD&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;PTR&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;rip&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;mh&quot;&gt;0x2f3b&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;        &lt;span class=&quot;err&quot;&gt;#&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;fc0&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;__libc_start_main@GLIBC_2.34&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;err&quot;&gt;1085:&lt;/span&gt;       &lt;span class=&quot;nf&quot;&gt;f4&lt;/span&gt;                      &lt;span class=&quot;nv&quot;&gt;hlt&lt;/span&gt;
+    &lt;span class=&quot;err&quot;&gt;1086:&lt;/span&gt;       &lt;span class=&quot;err&quot;&gt;66&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;e&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;f&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;f&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;84&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;00&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;00&lt;/span&gt;    &lt;span class=&quot;nb&quot;&gt;cs&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;nop&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;WORD&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;PTR&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;rax&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;rax&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;mh&quot;&gt;0x0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+    &lt;span class=&quot;err&quot;&gt;108&lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;d:&lt;/span&gt;       &lt;span class=&quot;err&quot;&gt;00&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;00&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;00&lt;/span&gt;
+    &lt;span class=&quot;err&quot;&gt;1090:&lt;/span&gt;       &lt;span class=&quot;err&quot;&gt;48&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;8&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;d&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;d&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;81&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;f&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;00&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;00&lt;/span&gt;    &lt;span class=&quot;nv&quot;&gt;lea&lt;/span&gt;    &lt;span class=&quot;nb&quot;&gt;rdi&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,[&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;rip&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;mh&quot;&gt;0x2f81&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;        &lt;span class=&quot;err&quot;&gt;#&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;4018&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;__TMC_END__&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;err&quot;&gt;1097:&lt;/span&gt;       &lt;span class=&quot;err&quot;&gt;48&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;8&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;d&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;05&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;7&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;a&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;f&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;00&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;00&lt;/span&gt;    &lt;span class=&quot;nv&quot;&gt;lea&lt;/span&gt;    &lt;span class=&quot;nb&quot;&gt;rax&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,[&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;rip&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;mh&quot;&gt;0x2f7a&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;        &lt;span class=&quot;err&quot;&gt;#&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;4018&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;__TMC_END__&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;err&quot;&gt;109&lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;e:&lt;/span&gt;       &lt;span class=&quot;err&quot;&gt;48&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;39&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;f8&lt;/span&gt;                &lt;span class=&quot;nv&quot;&gt;cmp&lt;/span&gt;    &lt;span class=&quot;nb&quot;&gt;rax&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;rdi&lt;/span&gt;
+    &lt;span class=&quot;err&quot;&gt;10&lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;a1:&lt;/span&gt;       &lt;span class=&quot;err&quot;&gt;74&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;15&lt;/span&gt;                   &lt;span class=&quot;nf&quot;&gt;je&lt;/span&gt;     &lt;span class=&quot;mb&quot;&gt;10b&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;8&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;_start&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;mh&quot;&gt;0x58&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;err&quot;&gt;10&lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;a3:&lt;/span&gt;       &lt;span class=&quot;err&quot;&gt;48&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;8&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;b&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;05&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;e&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;f&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;00&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;00&lt;/span&gt;    &lt;span class=&quot;nv&quot;&gt;mov&lt;/span&gt;    &lt;span class=&quot;nb&quot;&gt;rax&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;QWORD&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;PTR&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;rip&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;mh&quot;&gt;0x2f1e&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;        &lt;span class=&quot;err&quot;&gt;#&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;fc8&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;_ITM_deregisterTMCloneTable@Base&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;err&quot;&gt;10&lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;aa:&lt;/span&gt;       &lt;span class=&quot;err&quot;&gt;48&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;85&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;c0&lt;/span&gt;                &lt;span class=&quot;nv&quot;&gt;test&lt;/span&gt;   &lt;span class=&quot;nb&quot;&gt;rax&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;rax&lt;/span&gt;
+    &lt;span class=&quot;err&quot;&gt;10&lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;ad:&lt;/span&gt;       &lt;span class=&quot;err&quot;&gt;74&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;09&lt;/span&gt;                   &lt;span class=&quot;nf&quot;&gt;je&lt;/span&gt;     &lt;span class=&quot;mb&quot;&gt;10b&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;8&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;_start&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;mh&quot;&gt;0x58&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;err&quot;&gt;10&lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;af:&lt;/span&gt;       &lt;span class=&quot;nf&quot;&gt;ff&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;e0&lt;/span&gt;                   &lt;span class=&quot;nv&quot;&gt;jmp&lt;/span&gt;    &lt;span class=&quot;nb&quot;&gt;rax&lt;/span&gt;
+    &lt;span class=&quot;err&quot;&gt;10&lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;b1:&lt;/span&gt;       &lt;span class=&quot;err&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;f&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;f&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;80&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;00&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;00&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;00&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;00&lt;/span&gt;    &lt;span class=&quot;nv&quot;&gt;nop&lt;/span&gt;    &lt;span class=&quot;kt&quot;&gt;DWORD&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;PTR&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;rax&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;mh&quot;&gt;0x0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+    &lt;span class=&quot;err&quot;&gt;10&lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;b8:&lt;/span&gt;       &lt;span class=&quot;nf&quot;&gt;c3&lt;/span&gt;                      &lt;span class=&quot;nv&quot;&gt;ret&lt;/span&gt;
+    &lt;span class=&quot;err&quot;&gt;10&lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;b9:&lt;/span&gt;       &lt;span class=&quot;err&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;f&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;f&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;80&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;00&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;00&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;00&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;00&lt;/span&gt;    &lt;span class=&quot;nv&quot;&gt;nop&lt;/span&gt;    &lt;span class=&quot;kt&quot;&gt;DWORD&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;PTR&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;rax&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;mh&quot;&gt;0x0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+    &lt;span class=&quot;err&quot;&gt;10&lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;c0:&lt;/span&gt;       &lt;span class=&quot;err&quot;&gt;48&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;8&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;d&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;d&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;51&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;f&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;00&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;00&lt;/span&gt;    &lt;span class=&quot;nv&quot;&gt;lea&lt;/span&gt;    &lt;span class=&quot;nb&quot;&gt;rdi&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,[&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;rip&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;mh&quot;&gt;0x2f51&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;        &lt;span class=&quot;err&quot;&gt;#&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;4018&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;__TMC_END__&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;err&quot;&gt;10&lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;c7:&lt;/span&gt;       &lt;span class=&quot;err&quot;&gt;48&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;8&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;d&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;35&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;4&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;a&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;f&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;00&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;00&lt;/span&gt;    &lt;span class=&quot;nv&quot;&gt;lea&lt;/span&gt;    &lt;span class=&quot;nb&quot;&gt;rsi&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,[&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;rip&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;mh&quot;&gt;0x2f4a&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;        &lt;span class=&quot;err&quot;&gt;#&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;4018&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;__TMC_END__&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;err&quot;&gt;10&lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;ce:&lt;/span&gt;       &lt;span class=&quot;err&quot;&gt;48&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;29&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;fe&lt;/span&gt;                &lt;span class=&quot;nv&quot;&gt;sub&lt;/span&gt;    &lt;span class=&quot;nb&quot;&gt;rsi&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;rdi&lt;/span&gt;
+    &lt;span class=&quot;err&quot;&gt;10&lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;d1:&lt;/span&gt;       &lt;span class=&quot;err&quot;&gt;48&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;89&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;f0&lt;/span&gt;                &lt;span class=&quot;nv&quot;&gt;mov&lt;/span&gt;    &lt;span class=&quot;nb&quot;&gt;rax&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;rsi&lt;/span&gt;
+    &lt;span class=&quot;err&quot;&gt;10&lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;d4:&lt;/span&gt;       &lt;span class=&quot;err&quot;&gt;48&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;c1&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;ee&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;f&lt;/span&gt;             &lt;span class=&quot;nv&quot;&gt;shr&lt;/span&gt;    &lt;span class=&quot;nb&quot;&gt;rsi&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mh&quot;&gt;0x3f&lt;/span&gt;
+    &lt;span class=&quot;err&quot;&gt;10&lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;d8:&lt;/span&gt;       &lt;span class=&quot;err&quot;&gt;48&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;c1&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;f8&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;03&lt;/span&gt;             &lt;span class=&quot;nv&quot;&gt;sar&lt;/span&gt;    &lt;span class=&quot;nb&quot;&gt;rax&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mh&quot;&gt;0x3&lt;/span&gt;
+    &lt;span class=&quot;err&quot;&gt;10&lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;dc:&lt;/span&gt;       &lt;span class=&quot;err&quot;&gt;48&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;01&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;c6&lt;/span&gt;                &lt;span class=&quot;nv&quot;&gt;add&lt;/span&gt;    &lt;span class=&quot;nb&quot;&gt;rsi&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;rax&lt;/span&gt;
+    &lt;span class=&quot;err&quot;&gt;10&lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;df:&lt;/span&gt;       &lt;span class=&quot;err&quot;&gt;48&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;d1&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;fe&lt;/span&gt;                &lt;span class=&quot;nv&quot;&gt;sar&lt;/span&gt;    &lt;span class=&quot;nb&quot;&gt;rsi&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;
+    &lt;span class=&quot;err&quot;&gt;10&lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;e2:&lt;/span&gt;       &lt;span class=&quot;err&quot;&gt;74&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;14&lt;/span&gt;                   &lt;span class=&quot;nf&quot;&gt;je&lt;/span&gt;     &lt;span class=&quot;mi&quot;&gt;10&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;f8&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;_start&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;mh&quot;&gt;0x98&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;err&quot;&gt;10&lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;e4:&lt;/span&gt;       &lt;span class=&quot;err&quot;&gt;48&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;8&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;b&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;05&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;ed&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;e&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;00&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;00&lt;/span&gt;    &lt;span class=&quot;nv&quot;&gt;mov&lt;/span&gt;    &lt;span class=&quot;nb&quot;&gt;rax&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;QWORD&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;PTR&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;rip&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;mh&quot;&gt;0x2eed&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;        &lt;span class=&quot;err&quot;&gt;#&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;fd8&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;_ITM_registerTMCloneTable@Base&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;err&quot;&gt;10&lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;eb:&lt;/span&gt;       &lt;span class=&quot;err&quot;&gt;48&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;85&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;c0&lt;/span&gt;                &lt;span class=&quot;nv&quot;&gt;test&lt;/span&gt;   &lt;span class=&quot;nb&quot;&gt;rax&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;rax&lt;/span&gt;
+    &lt;span class=&quot;err&quot;&gt;10&lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;ee:&lt;/span&gt;       &lt;span class=&quot;err&quot;&gt;74&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;08&lt;/span&gt;                   &lt;span class=&quot;nf&quot;&gt;je&lt;/span&gt;     &lt;span class=&quot;mi&quot;&gt;10&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;f8&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;_start&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;mh&quot;&gt;0x98&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;err&quot;&gt;10&lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;f0:&lt;/span&gt;       &lt;span class=&quot;nf&quot;&gt;ff&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;e0&lt;/span&gt;                   &lt;span class=&quot;nv&quot;&gt;jmp&lt;/span&gt;    &lt;span class=&quot;nb&quot;&gt;rax&lt;/span&gt;
+    &lt;span class=&quot;err&quot;&gt;10&lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;f2:&lt;/span&gt;       &lt;span class=&quot;err&quot;&gt;66&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;f&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;f&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;44&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;00&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;00&lt;/span&gt;       &lt;span class=&quot;nv&quot;&gt;nop&lt;/span&gt;    &lt;span class=&quot;kt&quot;&gt;WORD&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;PTR&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;rax&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;rax&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;mh&quot;&gt;0x0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+    &lt;span class=&quot;err&quot;&gt;10&lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;f8:&lt;/span&gt;       &lt;span class=&quot;nf&quot;&gt;c3&lt;/span&gt;                      &lt;span class=&quot;nv&quot;&gt;ret&lt;/span&gt;
+    &lt;span class=&quot;err&quot;&gt;10&lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;f9:&lt;/span&gt;       &lt;span class=&quot;err&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;f&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;f&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;80&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;00&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;00&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;00&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;00&lt;/span&gt;    &lt;span class=&quot;nv&quot;&gt;nop&lt;/span&gt;    &lt;span class=&quot;kt&quot;&gt;DWORD&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;PTR&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;rax&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;mh&quot;&gt;0x0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+    &lt;span class=&quot;err&quot;&gt;1100:&lt;/span&gt;       &lt;span class=&quot;nf&quot;&gt;f3&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;f&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;e&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;fa&lt;/span&gt;             &lt;span class=&quot;nv&quot;&gt;endbr64&lt;/span&gt;
+    &lt;span class=&quot;err&quot;&gt;1104:&lt;/span&gt;       &lt;span class=&quot;err&quot;&gt;80&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;d&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;d&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;f&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;00&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;00&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;00&lt;/span&gt;    &lt;span class=&quot;nv&quot;&gt;cmp&lt;/span&gt;    &lt;span class=&quot;kt&quot;&gt;BYTE&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;PTR&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;rip&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;mh&quot;&gt;0x2f0d&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt;&lt;span class=&quot;mh&quot;&gt;0x0&lt;/span&gt;        &lt;span class=&quot;err&quot;&gt;#&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;4018&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;__TMC_END__&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;err&quot;&gt;110&lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;b:&lt;/span&gt;       &lt;span class=&quot;err&quot;&gt;75&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;33&lt;/span&gt;                   &lt;span class=&quot;nf&quot;&gt;jne&lt;/span&gt;    &lt;span class=&quot;mi&quot;&gt;1140&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;_start&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;mh&quot;&gt;0xe0&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;err&quot;&gt;110&lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;d:&lt;/span&gt;       &lt;span class=&quot;err&quot;&gt;55&lt;/span&gt;                      &lt;span class=&quot;nf&quot;&gt;push&lt;/span&gt;   &lt;span class=&quot;nb&quot;&gt;rbp&lt;/span&gt;
+    &lt;span class=&quot;err&quot;&gt;110&lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;e:&lt;/span&gt;       &lt;span class=&quot;err&quot;&gt;48&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;83&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;d&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;ca&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;e&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;00&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;00&lt;/span&gt;    &lt;span class=&quot;nv&quot;&gt;cmp&lt;/span&gt;    &lt;span class=&quot;kt&quot;&gt;QWORD&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;PTR&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;rip&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;mh&quot;&gt;0x2eca&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt;&lt;span class=&quot;mh&quot;&gt;0x0&lt;/span&gt;        &lt;span class=&quot;err&quot;&gt;#&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;fe0&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;__cxa_finalize@GLIBC_2.2.5&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;err&quot;&gt;1115:&lt;/span&gt;       &lt;span class=&quot;err&quot;&gt;00&lt;/span&gt;
+    &lt;span class=&quot;err&quot;&gt;1116:&lt;/span&gt;       &lt;span class=&quot;err&quot;&gt;48&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;89&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;e5&lt;/span&gt;                &lt;span class=&quot;nv&quot;&gt;mov&lt;/span&gt;    &lt;span class=&quot;nb&quot;&gt;rbp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;rsp&lt;/span&gt;
+    &lt;span class=&quot;err&quot;&gt;1119:&lt;/span&gt;       &lt;span class=&quot;err&quot;&gt;74&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;d&lt;/span&gt;                   &lt;span class=&quot;nv&quot;&gt;je&lt;/span&gt;     &lt;span class=&quot;mi&quot;&gt;1128&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;_start&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;mh&quot;&gt;0xc8&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;err&quot;&gt;111&lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;b:&lt;/span&gt;       &lt;span class=&quot;err&quot;&gt;48&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;8&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;b&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;d&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;ee&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;e&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;00&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;00&lt;/span&gt;    &lt;span class=&quot;nv&quot;&gt;mov&lt;/span&gt;    &lt;span class=&quot;nb&quot;&gt;rdi&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;QWORD&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;PTR&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;rip&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;mh&quot;&gt;0x2eee&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;        &lt;span class=&quot;err&quot;&gt;#&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;4010&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;__dso_handle&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;err&quot;&gt;1122:&lt;/span&gt;       &lt;span class=&quot;nf&quot;&gt;ff&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;15&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;b8&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;e&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;00&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;00&lt;/span&gt;       &lt;span class=&quot;nv&quot;&gt;call&lt;/span&gt;   &lt;span class=&quot;kt&quot;&gt;QWORD&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;PTR&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;rip&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;mh&quot;&gt;0x2eb8&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;        &lt;span class=&quot;err&quot;&gt;#&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;fe0&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;__cxa_finalize@GLIBC_2.2.5&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;err&quot;&gt;1128:&lt;/span&gt;       &lt;span class=&quot;nf&quot;&gt;e8&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;63&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;ff&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;ff&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;ff&lt;/span&gt;          &lt;span class=&quot;nv&quot;&gt;call&lt;/span&gt;   &lt;span class=&quot;mi&quot;&gt;1090&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;_start&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;mh&quot;&gt;0x30&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;err&quot;&gt;112&lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;d:&lt;/span&gt;       &lt;span class=&quot;nf&quot;&gt;c6&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;05&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;e4&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;e&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;00&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;00&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;01&lt;/span&gt;    &lt;span class=&quot;nv&quot;&gt;mov&lt;/span&gt;    &lt;span class=&quot;kt&quot;&gt;BYTE&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;PTR&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;rip&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;mh&quot;&gt;0x2ee4&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt;&lt;span class=&quot;mh&quot;&gt;0x1&lt;/span&gt;        &lt;span class=&quot;err&quot;&gt;#&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;4018&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;__TMC_END__&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;err&quot;&gt;1134:&lt;/span&gt;       &lt;span class=&quot;err&quot;&gt;5&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;d&lt;/span&gt;                      &lt;span class=&quot;nv&quot;&gt;pop&lt;/span&gt;    &lt;span class=&quot;nb&quot;&gt;rbp&lt;/span&gt;
+    &lt;span class=&quot;err&quot;&gt;1135:&lt;/span&gt;       &lt;span class=&quot;nf&quot;&gt;c3&lt;/span&gt;                      &lt;span class=&quot;nv&quot;&gt;ret&lt;/span&gt;
+    &lt;span class=&quot;err&quot;&gt;1136:&lt;/span&gt;       &lt;span class=&quot;err&quot;&gt;66&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;e&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;f&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;f&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;84&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;00&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;00&lt;/span&gt;    &lt;span class=&quot;nb&quot;&gt;cs&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;nop&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;WORD&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;PTR&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;rax&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;rax&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;mh&quot;&gt;0x0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+    &lt;span class=&quot;err&quot;&gt;113&lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;d:&lt;/span&gt;       &lt;span class=&quot;err&quot;&gt;00&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;00&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;00&lt;/span&gt;
+    &lt;span class=&quot;err&quot;&gt;1140:&lt;/span&gt;       &lt;span class=&quot;nf&quot;&gt;c3&lt;/span&gt;                      &lt;span class=&quot;nv&quot;&gt;ret&lt;/span&gt;
+    &lt;span class=&quot;err&quot;&gt;1141:&lt;/span&gt;       &lt;span class=&quot;err&quot;&gt;66&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;66&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;e&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;f&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;f&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;84&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;00&lt;/span&gt;    &lt;span class=&quot;nv&quot;&gt;data16&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;cs&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;nop&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;WORD&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;PTR&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;rax&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;rax&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;mh&quot;&gt;0x0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+    &lt;span class=&quot;err&quot;&gt;1148:&lt;/span&gt;       &lt;span class=&quot;err&quot;&gt;00&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;00&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;00&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;00&lt;/span&gt;
+    &lt;span class=&quot;err&quot;&gt;114&lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;c:&lt;/span&gt;       &lt;span class=&quot;err&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;f&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;f&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;40&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;00&lt;/span&gt;             &lt;span class=&quot;nv&quot;&gt;nop&lt;/span&gt;    &lt;span class=&quot;kt&quot;&gt;DWORD&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;PTR&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;rax&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;mh&quot;&gt;0x0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+    &lt;span class=&quot;err&quot;&gt;1150:&lt;/span&gt;       &lt;span class=&quot;nf&quot;&gt;f3&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;f&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;e&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;fa&lt;/span&gt;             &lt;span class=&quot;nv&quot;&gt;endbr64&lt;/span&gt;
+    &lt;span class=&quot;err&quot;&gt;1154:&lt;/span&gt;       &lt;span class=&quot;nf&quot;&gt;e9&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;67&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;ff&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;ff&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;ff&lt;/span&gt;          &lt;span class=&quot;nv&quot;&gt;jmp&lt;/span&gt;    &lt;span class=&quot;mi&quot;&gt;10&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;c0&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;_start&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;mh&quot;&gt;0x60&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;
+
+&lt;span class=&quot;nf&quot;&gt;Disassembly&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;of&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;section&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;.fini&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+
+&lt;span class=&quot;err&quot;&gt;000000000000115&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;c&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;_fini&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;err&quot;&gt;115&lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;c:&lt;/span&gt;       &lt;span class=&quot;nf&quot;&gt;f3&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;f&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;e&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;fa&lt;/span&gt;             &lt;span class=&quot;nv&quot;&gt;endbr64&lt;/span&gt;
+    &lt;span class=&quot;err&quot;&gt;1160:&lt;/span&gt;       &lt;span class=&quot;err&quot;&gt;48&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;83&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;ec&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;08&lt;/span&gt;             &lt;span class=&quot;nv&quot;&gt;sub&lt;/span&gt;    &lt;span class=&quot;nb&quot;&gt;rsp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mh&quot;&gt;0x8&lt;/span&gt;
+    &lt;span class=&quot;err&quot;&gt;1164:&lt;/span&gt;       &lt;span class=&quot;err&quot;&gt;48&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;83&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;c4&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;08&lt;/span&gt;             &lt;span class=&quot;nv&quot;&gt;add&lt;/span&gt;    &lt;span class=&quot;nb&quot;&gt;rsp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mh&quot;&gt;0x8&lt;/span&gt;
+    &lt;span class=&quot;err&quot;&gt;1168:&lt;/span&gt;       &lt;span class=&quot;nf&quot;&gt;c3&lt;/span&gt;                      &lt;span class=&quot;nv&quot;&gt;ret&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+</description>
+        <pubDate>Fri, 15 Mar 2024 05:05:23 +0000</pubDate>
+        <link>/blog/learn-about-linkers/</link>
+        <guid isPermaLink="true">/blog/learn-about-linkers/</guid>
+      </item>
+    
+
+    
+      
+        
+      
+    
+      
+    
+      
+        
+          <item>
+            <title></title>
+            <description>&lt;h3&gt;   &lt;/h3&gt;
+
+&lt;div id=&quot;categories&quot;&gt;
+
+  &lt;div class=&quot;category-box&quot;&gt;
+    
+    &lt;div id=&quot;#kernel&quot;&gt;&lt;/div&gt;
+    &lt;h4 class=&quot;category-head&quot;&gt;&lt;a href=&quot;/blog/categories/kernel&quot;&gt;kernel&lt;/a&gt;&lt;/h4&gt;
+    &lt;a name=&quot;kernel&quot;&gt;&lt;/a&gt;
+     
+    &lt;article class=&quot;center&quot;&gt;
+      &lt;h6&gt;&lt;a href=&quot;/blog/linux-kernel-flow/&quot;&gt;Packet flow in Linux Kernel&lt;/a&gt;&lt;/h6&gt;
+    &lt;/article&gt;
+
+
+    
+    &lt;article class=&quot;center&quot;&gt;
+      &lt;h6&gt;&lt;a href=&quot;/blog/learn-about-linkers/&quot;&gt;Reverse Engineering: An Introduction to Linkers&lt;/a&gt;&lt;/h6&gt;
+    &lt;/article&gt;
+
+
+    
+
+  &lt;/div&gt;
+
+  &lt;div class=&quot;category-box&quot;&gt;
+    
+    &lt;div id=&quot;#reverse-engineering&quot;&gt;&lt;/div&gt;
+    &lt;h4 class=&quot;category-head&quot;&gt;&lt;a href=&quot;/blog/categories/reverse-engineering&quot;&gt;reverse-engineering&lt;/a&gt;&lt;/h4&gt;
+    &lt;a name=&quot;reverse-engineering&quot;&gt;&lt;/a&gt;
+     
+    &lt;article class=&quot;center&quot;&gt;
+      &lt;h6&gt;&lt;a href=&quot;/blog/learn-about-linkers/&quot;&gt;Reverse Engineering: An Introduction to Linkers&lt;/a&gt;&lt;/h6&gt;
+    &lt;/article&gt;
+
+
+    
+
+  &lt;/div&gt;
+
+  &lt;div class=&quot;category-box&quot;&gt;
+    
+    &lt;div id=&quot;#linux&quot;&gt;&lt;/div&gt;
+    &lt;h4 class=&quot;category-head&quot;&gt;&lt;a href=&quot;/blog/categories/linux&quot;&gt;linux&lt;/a&gt;&lt;/h4&gt;
+    &lt;a name=&quot;linux&quot;&gt;&lt;/a&gt;
+     
+    &lt;article class=&quot;center&quot;&gt;
+      &lt;h6&gt;&lt;a href=&quot;/blog/linux-kernel-flow/&quot;&gt;Packet flow in Linux Kernel&lt;/a&gt;&lt;/h6&gt;
+    &lt;/article&gt;
+
+
+    
+    &lt;article class=&quot;center&quot;&gt;
+      &lt;h6&gt;&lt;a href=&quot;/blog/learn-about-linkers/&quot;&gt;Reverse Engineering: An Introduction to Linkers&lt;/a&gt;&lt;/h6&gt;
+    &lt;/article&gt;
+
+
+    
+
+  &lt;/div&gt;
+
+  &lt;div class=&quot;category-box&quot;&gt;
+    
+    &lt;div id=&quot;#operating-systems&quot;&gt;&lt;/div&gt;
+    &lt;h4 class=&quot;category-head&quot;&gt;&lt;a href=&quot;/blog/categories/operating-systems&quot;&gt;operating-systems&lt;/a&gt;&lt;/h4&gt;
+    &lt;a name=&quot;operating-systems&quot;&gt;&lt;/a&gt;
+     
+    &lt;article class=&quot;center&quot;&gt;
+      &lt;h6&gt;&lt;a href=&quot;/blog/learn-about-linkers/&quot;&gt;Reverse Engineering: An Introduction to Linkers&lt;/a&gt;&lt;/h6&gt;
+    &lt;/article&gt;
+
+
+    
+
+  &lt;/div&gt;
+
+  &lt;div class=&quot;category-box&quot;&gt;
+    
+    &lt;div id=&quot;#encryption&quot;&gt;&lt;/div&gt;
+    &lt;h4 class=&quot;category-head&quot;&gt;&lt;a href=&quot;/blog/categories/encryption&quot;&gt;encryption&lt;/a&gt;&lt;/h4&gt;
+    &lt;a name=&quot;encryption&quot;&gt;&lt;/a&gt;
+     
+    &lt;article class=&quot;center&quot;&gt;
+      &lt;h6&gt;&lt;a href=&quot;/blog/public-key-diffie-rsa/&quot;&gt;Public-Key Cryptography: Diffie-Hellman&lt;/a&gt;&lt;/h6&gt;
+    &lt;/article&gt;
+
+
+    
+
+  &lt;/div&gt;
+
+  &lt;div class=&quot;category-box&quot;&gt;
+    
+    &lt;div id=&quot;#math&quot;&gt;&lt;/div&gt;
+    &lt;h4 class=&quot;category-head&quot;&gt;&lt;a href=&quot;/blog/categories/math&quot;&gt;math&lt;/a&gt;&lt;/h4&gt;
+    &lt;a name=&quot;math&quot;&gt;&lt;/a&gt;
+     
+    &lt;article class=&quot;center&quot;&gt;
+      &lt;h6&gt;&lt;a href=&quot;/blog/asymptotic-analysis-sequence/&quot;&gt;Asymptotic Analysis: Arithmetic Sequence&lt;/a&gt;&lt;/h6&gt;
+    &lt;/article&gt;
+
+
+    
+    &lt;article class=&quot;center&quot;&gt;
+      &lt;h6&gt;&lt;a href=&quot;/blog/public-key-diffie-rsa/&quot;&gt;Public-Key Cryptography: Diffie-Hellman&lt;/a&gt;&lt;/h6&gt;
+    &lt;/article&gt;
+
+
+    
+
+  &lt;/div&gt;
+
+  &lt;div class=&quot;category-box&quot;&gt;
+    
+    &lt;div id=&quot;#security&quot;&gt;&lt;/div&gt;
+    &lt;h4 class=&quot;category-head&quot;&gt;&lt;a href=&quot;/blog/categories/security&quot;&gt;security&lt;/a&gt;&lt;/h4&gt;
+    &lt;a name=&quot;security&quot;&gt;&lt;/a&gt;
+     
+    &lt;article class=&quot;center&quot;&gt;
+      &lt;h6&gt;&lt;a href=&quot;/blog/rust-vs-cpp/&quot;&gt;The Rust Programming Language: Will Rust replace C/C++?&lt;/a&gt;&lt;/h6&gt;
+    &lt;/article&gt;
+
+
+    
+    &lt;article class=&quot;center&quot;&gt;
+      &lt;h6&gt;&lt;a href=&quot;/blog/public-key-diffie-rsa/&quot;&gt;Public-Key Cryptography: Diffie-Hellman&lt;/a&gt;&lt;/h6&gt;
+    &lt;/article&gt;
+
+
+    
+
+  &lt;/div&gt;
+
+  &lt;div class=&quot;category-box&quot;&gt;
+    
+    &lt;div id=&quot;#algorithm&quot;&gt;&lt;/div&gt;
+    &lt;h4 class=&quot;category-head&quot;&gt;&lt;a href=&quot;/blog/categories/algorithm&quot;&gt;algorithm&lt;/a&gt;&lt;/h4&gt;
+    &lt;a name=&quot;algorithm&quot;&gt;&lt;/a&gt;
+     
+    &lt;article class=&quot;center&quot;&gt;
+      &lt;h6&gt;&lt;a href=&quot;/blog/asymptotic-analysis-sequence/&quot;&gt;Asymptotic Analysis: Arithmetic Sequence&lt;/a&gt;&lt;/h6&gt;
+    &lt;/article&gt;
+
+
+    
+
+  &lt;/div&gt;
+
+  &lt;div class=&quot;category-box&quot;&gt;
+    
+    &lt;div id=&quot;#programming&quot;&gt;&lt;/div&gt;
+    &lt;h4 class=&quot;category-head&quot;&gt;&lt;a href=&quot;/blog/categories/programming&quot;&gt;programming&lt;/a&gt;&lt;/h4&gt;
+    &lt;a name=&quot;programming&quot;&gt;&lt;/a&gt;
+     
+    &lt;article class=&quot;center&quot;&gt;
+      &lt;h6&gt;&lt;a href=&quot;/blog/rust-vs-cpp/&quot;&gt;The Rust Programming Language: Will Rust replace C/C++?&lt;/a&gt;&lt;/h6&gt;
+    &lt;/article&gt;
+
+
+    
+    &lt;article class=&quot;center&quot;&gt;
+      &lt;h6&gt;&lt;a href=&quot;/blog/asymptotic-analysis-sequence/&quot;&gt;Asymptotic Analysis: Arithmetic Sequence&lt;/a&gt;&lt;/h6&gt;
+    &lt;/article&gt;
+
+
+    
+
+  &lt;/div&gt;
+
+  &lt;div class=&quot;category-box&quot;&gt;
+    
+    &lt;div id=&quot;#arm&quot;&gt;&lt;/div&gt;
+    &lt;h4 class=&quot;category-head&quot;&gt;&lt;a href=&quot;/blog/categories/arm&quot;&gt;arm&lt;/a&gt;&lt;/h4&gt;
+    &lt;a name=&quot;arm&quot;&gt;&lt;/a&gt;
+     
+    &lt;article class=&quot;center&quot;&gt;
+      &lt;h6&gt;&lt;a href=&quot;/blog/arm-rabbit-trail/&quot;&gt;ARM: Going down a rabbit trail in ARM&lt;/a&gt;&lt;/h6&gt;
+    &lt;/article&gt;
+
+
+    
+
+  &lt;/div&gt;
+
+  &lt;div class=&quot;category-box&quot;&gt;
+    
+    &lt;div id=&quot;#architecture&quot;&gt;&lt;/div&gt;
+    &lt;h4 class=&quot;category-head&quot;&gt;&lt;a href=&quot;/blog/categories/architecture&quot;&gt;architecture&lt;/a&gt;&lt;/h4&gt;
+    &lt;a name=&quot;architecture&quot;&gt;&lt;/a&gt;
+     
+    &lt;article class=&quot;center&quot;&gt;
+      &lt;h6&gt;&lt;a href=&quot;/blog/arm-rabbit-trail/&quot;&gt;ARM: Going down a rabbit trail in ARM&lt;/a&gt;&lt;/h6&gt;
+    &lt;/article&gt;
+
+
+    
+
+  &lt;/div&gt;
+
+  &lt;div class=&quot;category-box&quot;&gt;
+    
+    &lt;div id=&quot;#cpu&quot;&gt;&lt;/div&gt;
+    &lt;h4 class=&quot;category-head&quot;&gt;&lt;a href=&quot;/blog/categories/cpu&quot;&gt;cpu&lt;/a&gt;&lt;/h4&gt;
+    &lt;a name=&quot;cpu&quot;&gt;&lt;/a&gt;
+     
+    &lt;article class=&quot;center&quot;&gt;
+      &lt;h6&gt;&lt;a href=&quot;/blog/arm-rabbit-trail/&quot;&gt;ARM: Going down a rabbit trail in ARM&lt;/a&gt;&lt;/h6&gt;
+    &lt;/article&gt;
+
+
+    
+
+  &lt;/div&gt;
+
+  &lt;div class=&quot;category-box&quot;&gt;
+    
+    &lt;div id=&quot;#operating systems&quot;&gt;&lt;/div&gt;
+    &lt;h4 class=&quot;category-head&quot;&gt;&lt;a href=&quot;/blog/categories/operating systems&quot;&gt;operating systems&lt;/a&gt;&lt;/h4&gt;
+    &lt;a name=&quot;operating systems&quot;&gt;&lt;/a&gt;
+     
+    &lt;article class=&quot;center&quot;&gt;
+      &lt;h6&gt;&lt;a href=&quot;/blog/linux-kernel-flow/&quot;&gt;Packet flow in Linux Kernel&lt;/a&gt;&lt;/h6&gt;
+    &lt;/article&gt;
+
+
+    
+
+  &lt;/div&gt;
+
+  &lt;div class=&quot;category-box&quot;&gt;
+    
+    &lt;div id=&quot;#hpc&quot;&gt;&lt;/div&gt;
+    &lt;h4 class=&quot;category-head&quot;&gt;&lt;a href=&quot;/blog/categories/hpc&quot;&gt;hpc&lt;/a&gt;&lt;/h4&gt;
+    &lt;a name=&quot;hpc&quot;&gt;&lt;/a&gt;
+     
+    &lt;article class=&quot;center&quot;&gt;
+      &lt;h6&gt;&lt;a href=&quot;/blog/linux-kernel-flow/&quot;&gt;Packet flow in Linux Kernel&lt;/a&gt;&lt;/h6&gt;
+    &lt;/article&gt;
+
+
+    
+
+  &lt;/div&gt;
+
+  &lt;div class=&quot;category-box&quot;&gt;
+    
+    &lt;div id=&quot;#networking&quot;&gt;&lt;/div&gt;
+    &lt;h4 class=&quot;category-head&quot;&gt;&lt;a href=&quot;/blog/categories/networking&quot;&gt;networking&lt;/a&gt;&lt;/h4&gt;
+    &lt;a name=&quot;networking&quot;&gt;&lt;/a&gt;
+     
+    &lt;article class=&quot;center&quot;&gt;
+      &lt;h6&gt;&lt;a href=&quot;/blog/linux-kernel-flow/&quot;&gt;Packet flow in Linux Kernel&lt;/a&gt;&lt;/h6&gt;
+    &lt;/article&gt;
+
+
+    
+
+  &lt;/div&gt;
+
+  &lt;div class=&quot;category-box&quot;&gt;
+    
+    &lt;div id=&quot;#systems&quot;&gt;&lt;/div&gt;
+    &lt;h4 class=&quot;category-head&quot;&gt;&lt;a href=&quot;/blog/categories/systems&quot;&gt;systems&lt;/a&gt;&lt;/h4&gt;
+    &lt;a name=&quot;systems&quot;&gt;&lt;/a&gt;
+     
+    &lt;article class=&quot;center&quot;&gt;
+      &lt;h6&gt;&lt;a href=&quot;/blog/linux-kernel-flow/&quot;&gt;Packet flow in Linux Kernel&lt;/a&gt;&lt;/h6&gt;
+    &lt;/article&gt;
+
+
+    
+
+  &lt;/div&gt;
+
+  &lt;div class=&quot;category-box&quot;&gt;
+    
+    &lt;div id=&quot;#rust&quot;&gt;&lt;/div&gt;
+    &lt;h4 class=&quot;category-head&quot;&gt;&lt;a href=&quot;/blog/categories/rust&quot;&gt;rust&lt;/a&gt;&lt;/h4&gt;
+    &lt;a name=&quot;rust&quot;&gt;&lt;/a&gt;
+     
+    &lt;article class=&quot;center&quot;&gt;
+      &lt;h6&gt;&lt;a href=&quot;/blog/rust-vs-cpp/&quot;&gt;The Rust Programming Language: Will Rust replace C/C++?&lt;/a&gt;&lt;/h6&gt;
+    &lt;/article&gt;
+
+
+    
+
+  &lt;/div&gt;
+
+  &lt;div class=&quot;category-box&quot;&gt;
+    
+    &lt;div id=&quot;#opinion&quot;&gt;&lt;/div&gt;
+    &lt;h4 class=&quot;category-head&quot;&gt;&lt;a href=&quot;/blog/categories/opinion&quot;&gt;opinion&lt;/a&gt;&lt;/h4&gt;
+    &lt;a name=&quot;opinion&quot;&gt;&lt;/a&gt;
+     
+    &lt;article class=&quot;center&quot;&gt;
+      &lt;h6&gt;&lt;a href=&quot;/blog/rust-vs-cpp/&quot;&gt;The Rust Programming Language: Will Rust replace C/C++?&lt;/a&gt;&lt;/h6&gt;
+    &lt;/article&gt;
+
+
+    
+
+  &lt;/div&gt;
+
+&lt;/div&gt;
+
+</description>
+            <link>/blog/categories/</link>
+          </item>
+        
+      
+    
+      
+    
+      
+    
+      
+        
+          <item>
+            <title>Guides</title>
+            <description>&lt;h5&gt; Posts by Category : Guides &lt;/h5&gt;
+
+&lt;div class=&quot;card&quot;&gt;
+
+ &lt;li class=&quot;category-posts&quot;&gt;&lt;span&gt;30 Mar 2024&lt;/span&gt; &amp;nbsp; &lt;a href=&quot;/blog/public-key-diffie-rsa/&quot;&gt;Public-Key Cryptography: Diffie-Hellman&lt;/a&gt;&lt;/li&gt;
+
+&lt;/div&gt;
+</description>
+            <link>/blog/categories/encryption/</link>
+          </item>
+        
+      
+    
+      
+    
+      
+        
+          <item>
+            <title>Guides</title>
+            <description>&lt;h5&gt; Posts by Category : {{ page.title }} &lt;/h5&gt;
+
+&lt;div class=&quot;card&quot;&gt;
+{% for post in site.categories.guides %}
+ &lt;li class=&quot;category-posts&quot;&gt;&lt;span&gt;{{ post.date | date_to_string }}&lt;/span&gt; &amp;nbsp; &lt;a href=&quot;{{ post.url }}&quot;&gt;{{ post.title }}&lt;/a&gt;&lt;/li&gt;
+{% endfor %}
+&lt;/div&gt;</description>
+            <link>/blog/categories/guides/</link>
+          </item>
+        
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+        
+          <item>
+            <title>Get Started</title>
+            <description># Trending topics in Cybersecurity
+
+
+## Want to stay up to date on current security threats ?
+
+This page will provide a brief description and link to recent security bugs.  Occasionally, I may include links to non security related trends.
+
+
+
+## Apple M-Series Chip Vulnerability &quot;GoFetch&quot;
+
+The GoFetch vulnerability allows an attacker to steal secret keys from cryptographic applications.  The exploit targets a CPU feature known as data memory-dependent prefetcher.  CPU prefetching is very important optimization that improves CPU performance.  The CPU can make a prediction on what the computer will soon need and prefetch instructions.  The DMP can observe data values in memory.  In the Apple m-series chip, the DMP will dereference any data that resembles a pointer, which violates constant-time programming.  If an attacker can correctly guess bits of a cryptographic key, they can reassemble the entire key.
+
+&lt;iframe width=&quot;560&quot; height=&quot;315&quot; src=&quot;https://www.youtube.com/embed/wpDXpmOxR1Y&quot; title=&quot;YouTube video player&quot; frameborder=&quot;0&quot; allow=&quot;accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture&quot; allowfullscreen&gt;&lt;/iframe&gt;
+
+
+To read more about this vulnerability, visit the official [GoFetch information page](https://gofetch.fail/).
+</description>
+            <link>/current-trends/</link>
+          </item>
+        
+      
+    
+      
+        
+          <item>
+            <title>Jekyll</title>
+            <description>&lt;h5&gt; Posts by Category : {{ page.title }} &lt;/h5&gt;
+
+&lt;div class=&quot;card&quot;&gt;
+{% for post in site.categories.jekyll %}
+ &lt;li class=&quot;category-posts&quot;&gt;&lt;span&gt;{{ post.date | date_to_string }}&lt;/span&gt; &amp;nbsp; &lt;a href=&quot;{{ post.url }}&quot;&gt;{{ post.title }}&lt;/a&gt;&lt;/li&gt;
+{% endfor %}
+&lt;/div&gt;</description>
+            <link>/blog/categories/jekyll/</link>
+          </item>
+        
+      
+    
+      
+        
+          <item>
+            <title>Guides</title>
+            <description>&lt;h5&gt; Posts by Category : {{ page.title }} &lt;/h5&gt;
+
+&lt;div class=&quot;card&quot;&gt;
+{% for post in site.categories.kernel %}
+ &lt;li class=&quot;category-posts&quot;&gt;&lt;span&gt;{{ post.date | date_to_string }}&lt;/span&gt; &amp;nbsp; &lt;a href=&quot;{{ post.url }}&quot;&gt;{{ post.title }}&lt;/a&gt;&lt;/li&gt;
+{% endfor %}
+&lt;/div&gt;</description>
+            <link>/blog/categories/kernel/</link>
+          </item>
+        
+      
+    
+      
+        
+          <item>
+            <title>Guides</title>
+            <description>&lt;h5&gt; Posts by Category : {{ page.title }} &lt;/h5&gt;
+
+&lt;div class=&quot;card&quot;&gt;
+{% for post in site.categories.linux %}
+ &lt;li class=&quot;category-posts&quot;&gt;&lt;span&gt;{{ post.date | date_to_string }}&lt;/span&gt; &amp;nbsp; &lt;a href=&quot;{{ post.url }}&quot;&gt;{{ post.title }}&lt;/a&gt;&lt;/li&gt;
+{% endfor %}
+&lt;/div&gt;</description>
+            <link>/blog/categories/linux/</link>
+          </item>
+        
+      
+    
+      
+    
+      
+        
+          <item>
+            <title>Guides</title>
+            <description>&lt;h5&gt; Posts by Category : {{ page.title }} &lt;/h5&gt;
+
+&lt;div class=&quot;card&quot;&gt;
+{% for post in site.categories.encryption %}
+ &lt;li class=&quot;category-posts&quot;&gt;&lt;span&gt;{{ post.date | date_to_string }}&lt;/span&gt; &amp;nbsp; &lt;a href=&quot;{{ post.url }}&quot;&gt;{{ post.title }}&lt;/a&gt;&lt;/li&gt;
+{% endfor %}
+&lt;/div&gt;</description>
+            <link>/blog/categories/math/</link>
+          </item>
+        
+      
+    
+      
+    
+      
+        
+          <item>
+            <title>Guides</title>
+            <description>&lt;h5&gt; Posts by Category : {{ page.title }} &lt;/h5&gt;
+
+&lt;div class=&quot;card&quot;&gt;
+{% for post in site.categories.operating-systems %}
+ &lt;li class=&quot;category-posts&quot;&gt;&lt;span&gt;{{ post.date | date_to_string }}&lt;/span&gt; &amp;nbsp; &lt;a href=&quot;{{ post.url }}&quot;&gt;{{ post.title }}&lt;/a&gt;&lt;/li&gt;
+{% endfor %}
+&lt;/div&gt;</description>
+            <link>/blog/categories/operating-systems/</link>
+          </item>
+        
+      
+    
+      
+        
+          <item>
+            <title>Guides</title>
+            <description>&lt;h5&gt; Posts by Category : {{ page.title }} &lt;/h5&gt;
+
+&lt;div class=&quot;card&quot;&gt;
+{% for post in site.categories.reverse-engineering %}
+ &lt;li class=&quot;category-posts&quot;&gt;&lt;span&gt;{{ post.date | date_to_string }}&lt;/span&gt; &amp;nbsp; &lt;a href=&quot;{{ post.url }}&quot;&gt;{{ post.title }}&lt;/a&gt;&lt;/li&gt;
+{% endfor %}
+&lt;/div&gt;</description>
+            <link>/blog/categories/reverse-engineering/</link>
+          </item>
+        
+      
+    
+      
+        
+          <item>
+            <title>Guides</title>
+            <description>&lt;h5&gt; Posts by Category : {{ page.title }} &lt;/h5&gt;
+
+&lt;div class=&quot;card&quot;&gt;
+{% for post in site.categories.encryption %}
+ &lt;li class=&quot;category-posts&quot;&gt;&lt;span&gt;{{ post.date | date_to_string }}&lt;/span&gt; &amp;nbsp; &lt;a href=&quot;{{ post.url }}&quot;&gt;{{ post.title }}&lt;/a&gt;&lt;/li&gt;
+{% endfor %}
+&lt;/div&gt;</description>
+            <link>/blog/categories/security/</link>
+          </item>
+        
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+
+  </channel>
+</rss>
+
